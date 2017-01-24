@@ -8,6 +8,10 @@
 
 Earth Science Knowledge Graph - An Automatic Approach to Building Earth Science Knowledge Graph to Improve Data Discovery
 
+# Community
+
+[![Google Group](https://img.shields.io/badge/-Google%20Group-lightgrey.svg)](https://groups.google.com/forum/#!forum/eskg-dev)
+
 # License
 
 ESKG is licensed permissively under the [Apache License v2.0](https://www.apache.org/licenses/LICENSE-2.0) a copy of which ships with this source code.
