@@ -25,6 +25,10 @@ navigate ES data via knowledge graph interaction.
 
 ESKG was initially conceived and funded through the ESIP Testbed initiative. ESIP funding acknowledged.
 
+# Community
+
+[![Google Group](https://img.shields.io/badge/-Google%20Group-lightgrey.svg)](https://groups.google.com/forum/#!forum/eskg-dev)
+
 # License
 
 ESKG is licensed permissively under the [Apache License v2.0](https://www.apache.org/licenses/LICENSE-2.0) 
