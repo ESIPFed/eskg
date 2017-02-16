@@ -14,6 +14,10 @@ However, building a domain-specific knowledge graph is labour-intensive and hard
  1. developing a knowledge graph derived from Web Pages via natural language processing and knowledge extraction techniques, and 
  2. allowing users to traverse, explore, query, reason and navigate ES data via knowledge graph interaction.
 
+# Tutorial
+
+Please see the [wiki entry](https://github.com/ESIPFed/eskg/wiki/ESKG-Tutorial--End-to-End-Knowledge-Graph-Construction) covering an end-to-end example of knowledge graph construction using ESKG.
+
 # Acknowledgements
 
 ESKG was initially conceived and funded through the ESIP Testbed initiative. ESIP funding acknowledged.
