@@ -39,50 +39,49 @@ import org.slf4j.LoggerFactory;
 import edu.uci.ics.crawler4j.crawler.Page;
 
 /**
- * Primary interface for implementing basic site crawler's 
- * to extract semantic content of small/medium size sites.
+ * Primary interface for implementing basic site crawler's to extract semantic
+ * content of small/medium size sites.
  */
 public class ESKGCrawler {
 
-  private static final Logger LOG = LoggerFactory.getLogger(ESKGCrawler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ESKGCrawler.class);
 
-  private static final String seedOpt = "seedUrl";
-  private static final String filterOpt = "pageFilter";
-  private static final String storageOpt = "storageFolder";
-  private static final String crawlerOpt = "numCrawlers";
-  private static final String pagesOpt = "maxPages";
-  private static final String depthOpt = "maxDepth";
-  private static final String politeOpt = "politenessDelay";
+    private static final String seedOpt = "seedUrl";
+    private static final String filterOpt = "pageFilter";
+    private static final String storageOpt = "storageFolder";
+    private static final String crawlerOpt = "numCrawlers";
+    private static final String pagesOpt = "maxPages";
+    private static final String depthOpt = "maxDepth";
+    private static final String politeOpt = "politenessDelay";
 
-  private static SiteCrawler crawler;
+    private static SiteCrawler crawler;
 
-  private static Pattern pageFilter = Pattern.compile(SiteCrawler.DEFAULT_PAGE_FILTER_RE);
+    private static Pattern pageFilter = Pattern.compile(SiteCrawler.DEFAULT_PAGE_FILTER_RE);
 
-  private static File storageFolder = new File(System.getProperty("java.io.tmpdir"), "crawler-metadata-" + UUID.randomUUID().toString());
+    private static File storageFolder = new File(System.getProperty("java.io.tmpdir"), "crawler-metadata-" + UUID.randomUUID().toString());
 
-  private static int numCrawlers = SiteCrawler.DEFAULT_NUM_OF_CRAWLERS;
+    private static int numCrawlers = SiteCrawler.DEFAULT_NUM_OF_CRAWLERS;
 
-  private static int maxPages = Integer.MAX_VALUE;
+    private static int maxPages = Integer.MAX_VALUE;
 
-  private static int maxDepth = Integer.MAX_VALUE;
+    private static int maxDepth = Integer.MAX_VALUE;
 
-  private static int politenessDelay = Integer.MAX_VALUE;
+    private static int politenessDelay = Integer.MAX_VALUE;
 
-  private static URL seedUrl;
+    private static URL seedUrl;
 
-  /**
-   * Default constructor.
-   */
-  private ESKGCrawler() {
-    try {
-      crawler = new SiteCrawler(File.createTempFile("eskg_crawl", ""));
-    } catch (IOException e) {
-      LOG.error("Error whilst creating ESKG site crawler: {}.", e);
+    /**
+     * Default constructor.
+     */
+    private ESKGCrawler() {
+        try {
+            crawler = new SiteCrawler(File.createTempFile("eskg_crawl", ""));
+        } catch (IOException e) {
+            LOG.error("Error whilst creating ESKG site crawler: {}.", e);
+        }
     }
-  }
 
-
-  private static void crawl(SiteCrawler crawler) {
+    private static void crawl(SiteCrawler crawler) {
     final Set<String> distinctPages = new HashSet<>();
     crawler.addListener(new CrawlerListener() {
       @Override
@@ -112,10 +111,10 @@ public class ESKGCrawler {
 
   }
 
-  /**
-   * @param args
-   */
-  public static void main(String[] args) {
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
 
     Option sOpt = Option.builder().hasArg(true).numberOfArgs(1)
         .argName("seed").required(true).longOpt(seedOpt)
@@ -204,5 +203,4 @@ public class ESKGCrawler {
 
     crawl(crawler);
   }
-
 }
