@@ -14,7 +14,6 @@
 package org.esipfed.eskg.nlp;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
@@ -22,6 +21,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+
+import org.apache.commons.io.FileUtils;
 
 import edu.knowitall.openie.Argument;
 import edu.knowitall.openie.Instance;
@@ -37,7 +38,7 @@ import scala.collection.Seq;
 
 public class OpenIE {
 
-    public OpenIE() {
+    private OpenIE() {
         // default constructor
     }
 
@@ -62,7 +63,7 @@ public class OpenIE {
         edu.knowitall.openie.OpenIE openIE = new edu.knowitall.openie.OpenIE(new ClearParser(new ClearPostagger(new ClearTokenizer())), new ClearSrl(), false, false);
 
         // any text file that contains English sentences would work
-        File file = new File("C:/Users/Yongyao/Desktop/papers/reverb/test.txt");
+        File file = FileUtils.toFile(OpenIE.class.getClassLoader().getResource("test.txt"));
         String text = readFile(file.getAbsolutePath(), StandardCharsets.UTF_8);
 
         if (sentenceDetector != null) {
