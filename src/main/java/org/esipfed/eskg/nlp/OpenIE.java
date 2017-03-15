@@ -23,6 +23,8 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import edu.knowitall.openie.Argument;
 import edu.knowitall.openie.Instance;
@@ -37,6 +39,8 @@ import scala.collection.JavaConversions;
 import scala.collection.Seq;
 
 public class OpenIE {
+
+    private static final Logger LOG = LoggerFactory.getLogger(OpenIE.class);
 
     private OpenIE() {
         // default constructor
@@ -56,10 +60,10 @@ public class OpenIE {
             final SentenceModel sentenceModel = new SentenceModel(modelIn);
             modelIn.close();
             sentenceDetector = new SentenceDetectorME(sentenceModel);
-        } catch (final IOException ioe) {
-            ioe.printStackTrace();
+        } catch (IOException ioe) {
+            LOG.error("Error either reading 'en-sent.bin' file or creating SentanceModel: ", ioe);
+            throw new IOException(ioe);
         }
-        System.out.println("---Started---");
         edu.knowitall.openie.OpenIE openIE = new edu.knowitall.openie.OpenIE(new ClearParser(new ClearPostagger(new ClearTokenizer())), new ClearSrl(), false, false);
 
         // any text file that contains English sentences would work
@@ -85,7 +89,7 @@ public class OpenIE {
                         sb.append(argument.text()).append("; ");
                     }
 
-                    System.out.println(sb.toString());
+                    LOG.info(sb.toString());
                 }
             }
         }

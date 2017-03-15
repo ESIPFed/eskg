@@ -11,7 +11,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.esipfed.eskg.crawler;
+package org.esipfed.eskg.aquisition;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,13 +46,13 @@ public class ESKGCrawler {
 
     private static final Logger LOG = LoggerFactory.getLogger(ESKGCrawler.class);
 
-    private static final String seedOpt = "seedUrl";
-    private static final String filterOpt = "pageFilter";
-    private static final String storageOpt = "storageFolder";
-    private static final String crawlerOpt = "numCrawlers";
-    private static final String pagesOpt = "maxPages";
-    private static final String depthOpt = "maxDepth";
-    private static final String politeOpt = "politenessDelay";
+    private static final String SEED_OPT = "seedUrl";
+    private static final String FILTER_OPT = "pageFilter";
+    private static final String STORAGE_OPT = "storageFolder";
+    private static final String CRAWLER_OPT = "numCrawlers";
+    private static final String PAGES_OPT = "maxPages";
+    private static final String DEPTH_OPT = "maxDepth";
+    private static final String POLITE_OPT = "politenessDelay";
 
     private static SiteCrawler crawler;
 
@@ -81,7 +81,7 @@ public class ESKGCrawler {
         }
     }
 
-    private static void crawl(SiteCrawler crawler) {
+    private static void crawl(SiteCrawler crawler) throws InterruptedException {
     final Set<String> distinctPages = new HashSet<>();
     crawler.addListener(new CrawlerListener() {
       @Override
@@ -103,6 +103,7 @@ public class ESKGCrawler {
         ESKGCrawler.class.wait(15 * 1000);
       } catch (InterruptedException e) {
         LOG.error("Crawler has been interrupted: {}", e);
+        throw new InterruptedException();
       }
     }
     crawler.stop();
@@ -113,35 +114,36 @@ public class ESKGCrawler {
 
     /**
      * @param args
+     * @throws InterruptedException
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
     Option sOpt = Option.builder().hasArg(true).numberOfArgs(1)
-        .argName("seed").required(true).longOpt(seedOpt)
+        .argName("seed").required(true).longOpt(SEED_OPT)
         .desc("An individual seed URL used to bootstrap the crawl.").build();
 
     Option pfOpt = Option.builder().hasArg(true).numberOfArgs(1)
-        .argName("filter").required(false).longOpt(filterOpt)
+        .argName("filter").required(false).longOpt(FILTER_OPT)
         .desc("Regex used to filter out page URLs during crawling.").build();
 
     Option sfOpt = Option.builder().hasArg(true).numberOfArgs(1)
-        .argName("storage").required(false).longOpt(storageOpt)
+        .argName("storage").required(false).longOpt(STORAGE_OPT)
         .desc("Folder used to store crawler temporary data.").build();
 
     Option ncOpt = Option.builder().hasArg(true).numberOfArgs(1)
-        .argName("nCrawlers").required(false).longOpt(crawlerOpt)
+        .argName("nCrawlers").required(false).longOpt(CRAWLER_OPT)
         .desc("Sets the number of crawlers.").build();
 
     Option mpOpt = Option.builder().hasArg(true).numberOfArgs(1)
-        .argName("mPages").required(false).longOpt(pagesOpt)
+        .argName("mPages").required(false).longOpt(PAGES_OPT)
         .desc("Max number of pages before interrupting crawl.").build();
 
     Option mdOpt = Option.builder().hasArg(true).numberOfArgs(1)
-        .argName("mDepth").required(false).longOpt(depthOpt)
+        .argName("mDepth").required(false).longOpt(DEPTH_OPT)
         .desc("Max allowed crawler depth.").build();
 
     Option pdOpt = Option.builder().hasArg(true).numberOfArgs(1)
-        .argName("pDelay").required(false).longOpt(politeOpt)
+        .argName("pDelay").required(false).longOpt(POLITE_OPT)
         .desc("Politeness delay in milliseconds.").build();
 
     Options opts = new Options();
@@ -159,36 +161,36 @@ public class ESKGCrawler {
       System.exit(-1);
     }
 
-    if (cmd.hasOption(seedOpt)) {
+    if (cmd.hasOption(SEED_OPT)) {
       try {
-        seedUrl = new URI(cmd.getOptionValue(seedOpt)).toURL();
+        seedUrl = new URI(cmd.getOptionValue(SEED_OPT)).toURL();
       } catch (MalformedURLException | URISyntaxException e) {
         LOG.error("Error whilst creating seed URL. {}", e);
       }
     }
-    if (cmd.hasOption(filterOpt)) {
-      pageFilter = Pattern.compile(cmd.getOptionValue(filterOpt));
+    if (cmd.hasOption(FILTER_OPT)) {
+      pageFilter = Pattern.compile(cmd.getOptionValue(FILTER_OPT));
     }
-    if (cmd.hasOption(storageOpt)) {
+    if (cmd.hasOption(STORAGE_OPT)) {
       try {
-        crawler = new SiteCrawler(File.createTempFile(cmd.getOptionValue(storageOpt), ""));
+        crawler = new SiteCrawler(File.createTempFile(cmd.getOptionValue(STORAGE_OPT), ""));
       } catch (IOException e) {
         LOG.error("Error whilst creating ESKG site crawler: {}.", e);
       }
     } else {
       crawler = new SiteCrawler(storageFolder);
     }
-    if (cmd.hasOption(crawlerOpt)) {
-      numCrawlers = Integer.parseInt(cmd.getOptionValue(crawlerOpt));
+    if (cmd.hasOption(CRAWLER_OPT)) {
+      numCrawlers = Integer.parseInt(cmd.getOptionValue(CRAWLER_OPT));
     }
-    if (cmd.hasOption(pagesOpt)) {
-      maxPages = Integer.parseInt(cmd.getOptionValue(pagesOpt));
+    if (cmd.hasOption(PAGES_OPT)) {
+      maxPages = Integer.parseInt(cmd.getOptionValue(PAGES_OPT));
     }
-    if (cmd.hasOption(depthOpt)) {
-      maxDepth = Integer.parseInt(cmd.getOptionValue(depthOpt));
+    if (cmd.hasOption(DEPTH_OPT)) {
+      maxDepth = Integer.parseInt(cmd.getOptionValue(DEPTH_OPT));
     }
-    if (cmd.hasOption(politeOpt)) {
-      politenessDelay = Integer.parseInt(cmd.getOptionValue(politeOpt));
+    if (cmd.hasOption(POLITE_OPT)) {
+      politenessDelay = Integer.parseInt(cmd.getOptionValue(POLITE_OPT));
     }
 
     crawler.setMaxDepth(maxDepth);
