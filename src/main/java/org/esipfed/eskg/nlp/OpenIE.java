@@ -14,7 +14,6 @@
 package org.esipfed.eskg.nlp;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
@@ -23,10 +22,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import edu.knowitall.openie.Argument;
 import edu.knowitall.openie.Instance;
-import edu.knowitall.openie.OpenIE;
 import edu.knowitall.tool.parse.ClearParser;
 import edu.knowitall.tool.postag.ClearPostagger;
 import edu.knowitall.tool.srl.ClearSrl;
@@ -39,72 +40,60 @@ import scala.collection.Seq;
 
 public class OpenIE {
 
-	public OpenIE() {
-		// TODO Auto-generated constructor stub
-	}
+    private static final Logger LOG = LoggerFactory.getLogger(OpenIE.class);
 
-	static String readFile(String path, Charset encoding) 
-			throws IOException 
-	{
-		byte[] encoded = Files.readAllBytes(Paths.get(path));
-		return new String(encoded, encoding);
-	}
+    private OpenIE() {
+        // default constructor
+    }
 
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
+    static String readFile(String path, Charset encoding) throws IOException {
+        byte[] encoded = Files.readAllBytes(Paths.get(path));
+        return new String(encoded, encoding);
+    }
 
-		SentenceDetector sentenceDetector = null;
-		InputStream modelIn = null;
+    public static void main(String[] args) throws IOException {
 
-		try {
-			//need to change this to the resource folder
-			File fi = new File("C:/Users/Yongyao/Desktop/papers/reverb/en-sent.bin");
-			
-			modelIn = new FileInputStream(fi);
-			final SentenceModel sentenceModel = new SentenceModel(modelIn);
-			modelIn.close();
-			sentenceDetector = new SentenceDetectorME(sentenceModel);
-		}
-		catch (final IOException ioe) {
-			ioe.printStackTrace();
-		}
-		System.out.println("---Started---");
-		OpenIE openIE = new OpenIE(new ClearParser(new ClearPostagger(new ClearTokenizer())), new ClearSrl(), false, false);
+        SentenceDetector sentenceDetector = null;
+        try {
+            // need to change this to the resource folder
+            InputStream modelIn = OpenIE.class.getClassLoader().getResourceAsStream("en-sent.bin");
+            final SentenceModel sentenceModel = new SentenceModel(modelIn);
+            modelIn.close();
+            sentenceDetector = new SentenceDetectorME(sentenceModel);
+        } catch (IOException ioe) {
+            LOG.error("Error either reading 'en-sent.bin' file or creating SentanceModel: ", ioe);
+            throw new IOException(ioe);
+        }
+        edu.knowitall.openie.OpenIE openIE = new edu.knowitall.openie.OpenIE(new ClearParser(new ClearPostagger(new ClearTokenizer())), new ClearSrl(), false, false);
 
-		//any text file that contains English sentences would work
-		File file = new File("C:/Users/Yongyao/Desktop/papers/reverb/test.txt");
-		String text = readFile(file.getAbsolutePath(), StandardCharsets.UTF_8);
+        // any text file that contains English sentences would work
+        File file = FileUtils.toFile(OpenIE.class.getClassLoader().getResource("test.txt"));
+        String text = readFile(file.getAbsolutePath(), StandardCharsets.UTF_8);
 
-		String sentences[]= sentenceDetector.sentDetect(text);
-		for(int i=0; i<sentences.length; i++)
-		{
+        if (sentenceDetector != null) {
+            String[] sentences = sentenceDetector.sentDetect(text);
+            for (int i = 0; i < sentences.length; i++) {
 
-			Seq<Instance> extractions = openIE.extract(sentences[i]);
+                Seq<Instance> extractions = openIE.extract(sentences[i]);
 
-			List<Instance> list_extractions = JavaConversions.seqAsJavaList(extractions);
+                List<Instance> listExtractions = JavaConversions.seqAsJavaList(extractions);
 
+                for (Instance instance : listExtractions) {
+                    StringBuilder sb = new StringBuilder();
 
-			for(Instance instance : list_extractions) {
-				StringBuilder sb = new StringBuilder();
+                    sb.append(instance.confidence()).append('\t').append(instance.extr().context()).append('\t').append(instance.extr().arg1().text()).append('\t')
+                                    .append(instance.extr().rel().text()).append('\t');
 
-				sb.append(instance.confidence())
-				.append('\t')
-				.append(instance.extr().context())
-				.append('\t')
-				.append(instance.extr().arg1().text())
-				.append('\t')
-				.append(instance.extr().rel().text())
-				.append('\t');
+                    List<Argument> listArg2s = JavaConversions.seqAsJavaList(instance.extr().arg2s());
+                    for (Argument argument : listArg2s) {
+                        sb.append(argument.text()).append("; ");
+                    }
 
-				List<Argument> list_arg2s = JavaConversions.seqAsJavaList(instance.extr().arg2s());
-				for(Argument argument : list_arg2s) {
-					sb.append(argument.text()).append("; ");
-				}
+                    LOG.info(sb.toString());
+                }
+            }
+        }
 
-				System.out.println(sb.toString());
-			}
-		}
-
-	}
+    }
 
 }
