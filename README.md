@@ -1,8 +1,6 @@
 # eskg
 
 <img src="http://www.esipfed.org/sites/default/files/esip-logo.png" align="right" width="300" />
-<a href="http://esipfed.org">![](http://badge.esipfed.org/testbed.svg?display=logo)</a>
-<a href="http://wiki.esipfed.org/index.php/Semantic_Technologies">![](http://badge.esipfed.org/semanticweb.svg?display=logo)</a>
 
 # Introduction
 
