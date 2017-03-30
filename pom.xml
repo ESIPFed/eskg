@@ -308,6 +308,7 @@
   </profiles>
 
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- Dependencies -->
 
     <junit.version>4.7</junit.version>
