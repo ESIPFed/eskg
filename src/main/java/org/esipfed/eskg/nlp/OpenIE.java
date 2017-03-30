@@ -40,60 +40,60 @@ import scala.collection.Seq;
 
 public class OpenIE {
 
-    private static final Logger LOG = LoggerFactory.getLogger(OpenIE.class);
+  private static final Logger LOG = LoggerFactory.getLogger(OpenIE.class);
 
-    private OpenIE() {
-        // default constructor
+  private OpenIE() {
+    // default constructor
+  }
+
+  static String readFile(String path, Charset encoding) throws IOException {
+    byte[] encoded = Files.readAllBytes(Paths.get(path));
+    return new String(encoded, encoding);
+  }
+
+  public static void main(String[] args) throws IOException {
+
+    SentenceDetector sentenceDetector = null;
+    try {
+      // need to change this to the resource folder
+      InputStream modelIn = OpenIE.class.getClassLoader().getResourceAsStream("en-sent.bin");
+      final SentenceModel sentenceModel = new SentenceModel(modelIn);
+      modelIn.close();
+      sentenceDetector = new SentenceDetectorME(sentenceModel);
+    } catch (IOException ioe) {
+      LOG.error("Error either reading 'en-sent.bin' file or creating SentanceModel: ", ioe);
+      throw new IOException(ioe);
     }
+    edu.knowitall.openie.OpenIE openIE = new edu.knowitall.openie.OpenIE(new ClearParser(new ClearPostagger(new ClearTokenizer())), new ClearSrl(), false, false);
 
-    static String readFile(String path, Charset encoding) throws IOException {
-        byte[] encoded = Files.readAllBytes(Paths.get(path));
-        return new String(encoded, encoding);
-    }
+    // any text file that contains English sentences would work
+    File file = FileUtils.toFile(OpenIE.class.getClassLoader().getResource("test.txt"));
+    String text = readFile(file.getAbsolutePath(), StandardCharsets.UTF_8);
 
-    public static void main(String[] args) throws IOException {
+    if (sentenceDetector != null) {
+      String[] sentences = sentenceDetector.sentDetect(text);
+      for (int i = 0; i < sentences.length; i++) {
 
-        SentenceDetector sentenceDetector = null;
-        try {
-            // need to change this to the resource folder
-            InputStream modelIn = OpenIE.class.getClassLoader().getResourceAsStream("en-sent.bin");
-            final SentenceModel sentenceModel = new SentenceModel(modelIn);
-            modelIn.close();
-            sentenceDetector = new SentenceDetectorME(sentenceModel);
-        } catch (IOException ioe) {
-            LOG.error("Error either reading 'en-sent.bin' file or creating SentanceModel: ", ioe);
-            throw new IOException(ioe);
+        Seq<Instance> extractions = openIE.extract(sentences[i]);
+
+        List<Instance> listExtractions = JavaConversions.seqAsJavaList(extractions);
+
+        for (Instance instance : listExtractions) {
+          StringBuilder sb = new StringBuilder();
+
+          sb.append(instance.confidence()).append('\t').append(instance.extr().context()).append('\t').append(instance.extr().arg1().text()).append('\t').append(instance.extr().rel().text())
+                  .append('\t');
+
+          List<Argument> listArg2s = JavaConversions.seqAsJavaList(instance.extr().arg2s());
+          for (Argument argument : listArg2s) {
+            sb.append(argument.text()).append("; ");
+          }
+
+          LOG.info(sb.toString());
         }
-        edu.knowitall.openie.OpenIE openIE = new edu.knowitall.openie.OpenIE(new ClearParser(new ClearPostagger(new ClearTokenizer())), new ClearSrl(), false, false);
-
-        // any text file that contains English sentences would work
-        File file = FileUtils.toFile(OpenIE.class.getClassLoader().getResource("test.txt"));
-        String text = readFile(file.getAbsolutePath(), StandardCharsets.UTF_8);
-
-        if (sentenceDetector != null) {
-            String[] sentences = sentenceDetector.sentDetect(text);
-            for (int i = 0; i < sentences.length; i++) {
-
-                Seq<Instance> extractions = openIE.extract(sentences[i]);
-
-                List<Instance> listExtractions = JavaConversions.seqAsJavaList(extractions);
-
-                for (Instance instance : listExtractions) {
-                    StringBuilder sb = new StringBuilder();
-
-                    sb.append(instance.confidence()).append('\t').append(instance.extr().context()).append('\t').append(instance.extr().arg1().text()).append('\t')
-                                    .append(instance.extr().rel().text()).append('\t');
-
-                    List<Argument> listArg2s = JavaConversions.seqAsJavaList(instance.extr().arg2s());
-                    for (Argument argument : listArg2s) {
-                        sb.append(argument.text()).append("; ");
-                    }
-
-                    LOG.info(sb.toString());
-                }
-            }
-        }
-
+      }
     }
+
+  }
 
 }

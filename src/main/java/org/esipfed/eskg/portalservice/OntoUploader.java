@@ -52,8 +52,7 @@ public class OntoUploader {
       conn.setRequestMethod("GET");
       conn.setRequestProperty("Authorization", "apikey token=" + API_KEY);
       conn.setRequestProperty("Accept", "application/json");
-      rd = new BufferedReader(
-              new InputStreamReader(conn.getInputStream(), Charset.defaultCharset()));
+      rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), Charset.defaultCharset()));
       while ((line = rd.readLine()) != null) {
         result += line;
       }
@@ -64,7 +63,7 @@ public class OntoUploader {
     return result;
   }
 
-  //post text in json format
+  // post text in json format
   private static String postJSON(String urlToPost, String body) throws IOException {
     URL url = null;
     HttpURLConnection conn = null;
@@ -125,7 +124,7 @@ public class OntoUploader {
     return result;
   }
 
-  //post text file
+  // post text file
   private static String postFile(String urlToPost, String body, String filePath) {
     URL url;
     HttpURLConnection conn;
@@ -152,11 +151,20 @@ public class OntoUploader {
       OutputStream output = conn.getOutputStream();
       PrintWriter writer = new PrintWriter(new OutputStreamWriter(output, charset), true);
       writer.append("Content-Disposition: form-data; name=\"textFile\"; filename=\"" + ontologyFile.getName() + "\"").append(CRLF);
-      writer.append("Content-Type: text/plain; charset=" + charset).append(CRLF); // Text file itself must be saved in this charset!
+      writer.append("Content-Type: text/plain; charset=" + charset).append(CRLF); // Text
+                                                                                  // file
+                                                                                  // itself
+                                                                                  // must
+                                                                                  // be
+                                                                                  // saved
+                                                                                  // in
+                                                                                  // this
+                                                                                  // charset!
       writer.append(CRLF).flush();
       Files.copy(ontologyFile.toPath(), output);
       output.flush(); // Important before continuing with writer!
-      writer.append(CRLF).flush(); // CRLF is important! It indicates end of boundary.
+      writer.append(CRLF).flush(); // CRLF is important! It indicates end of
+                                   // boundary.
 
       InputStream is;
       boolean error = false;
@@ -186,8 +194,8 @@ public class OntoUploader {
     String getResponse = OntoUploader.get(REST_URL + "/ontologies/GCMD-DIF/submissions");
     LOG.info(getResponse);
 
-    //http://data.bioontology.org/documentation#OntologySubmission
-    //need to figure out the format of each parameter in the post body
+    // http://data.bioontology.org/documentation#OntologySubmission
+    // need to figure out the format of each parameter in the post body
     String postResponse = OntoUploader.postFile(REST_URL + "/ontologies/GCMD-DIF/submissions", null, "/Users/yjiang/Documents/mudrod_data/ontotest.owl");
     LOG.info(postResponse);
   }
