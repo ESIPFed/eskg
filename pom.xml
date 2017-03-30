@@ -428,26 +428,5 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  
-  <!-- dependencyManagement>
-  <dependencies>
-      <dependency>
-      <groupId>org.allenai.openie</groupId>
-      <artifactId>openie_2.11</artifactId>
-      <version>4.2.6</version>
-      <scope>compile</scope>
-      <type>pom</type>
-      <exclusions>
-        <exclusion>
-          <groupId>ch.qos.logback</groupId>
-          <artifactId>logback-classic</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>ch.qos.logback</groupId>
-          <artifactId>logback-core</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    </dependencies>
-  </dependencyManagement-->
+
 </project>

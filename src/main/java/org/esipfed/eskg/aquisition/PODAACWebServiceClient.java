@@ -20,6 +20,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -56,10 +57,6 @@ public class PODAACWebServiceClient {
    */
   private static final String DATASET_SEARCH = "https://podaac.jpl.nasa.gov/ws/search/dataset/?q=*:*&itemsPerPage=1000&format=atom";
 
-  private static final String DATASET_METADATA = "http://podaac.jpl.nasa.gov/ws/metadata/dataset/";
-
-  private ArrayList<String> datasetIds;
-
   /**
    * Default constructor
    */
@@ -74,35 +71,26 @@ public class PODAACWebServiceClient {
    * @throws IOException
    */
   public void fetchDatasets() throws IOException {
+    List<String> gcmdDatasetList = new ArrayList<>();
     try {
-      executeDatasetSearch();
+      gcmdDatasetList = parseDatasetSearchAtomXML(executePODAACQuery(DATASET_SEARCH));
     } catch (IOException e) {
       LOG.error("Error executing PO.DAAC Dataset Search: {} {}", DATASET_SEARCH, e);
       throw new IOException(e);
     }
-    fetchDatasetMetadata();
+    retrieveGCMDRecords(gcmdDatasetList);
   }
 
-  /**
-   * This method utilizes the ArrayList populated by
-   * {@link #parseXML(ByteArrayInputStream)} to aquire the metadata (in GCMD
-   * format) for each dataset present within PO.DAAC. The query used to do this
-   * can be seen in
-   */
-  private void fetchDatasetMetadata() {
-    // TODO Auto-generated method stub
-
-  }
-
-  private void executeDatasetSearch() throws IOException {
+  private ByteArrayInputStream executePODAACQuery(String queryString) throws IOException {
     HttpClient client = HttpClientBuilder.create().build();
-    HttpGet request = new HttpGet(DATASET_SEARCH);
+    HttpGet request = new HttpGet(queryString);
 
     // add request header
     request.addHeader("User-Agent", "ESKG PO.DAAC WebService Client");
+    LOG.info("Executing GET request: {}", request.toString());
     HttpResponse response = client.execute(request);
 
-    LOG.info("Response Code : " + response.getStatusLine().getStatusCode());
+    LOG.info("Response Code : {}", response.getStatusLine().getStatusCode());
 
     BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), Charset.defaultCharset()));
 
@@ -111,7 +99,8 @@ public class PODAACWebServiceClient {
     while ((line = rd.readLine()) != null) {
       result.append(line);
     }
-    parseXML(new ByteArrayInputStream(result.toString().getBytes(StandardCharsets.UTF_8)));
+    return new ByteArrayInputStream(result.toString().getBytes(StandardCharsets.UTF_8));
+    
   }
 
   /**
@@ -124,33 +113,71 @@ public class PODAACWebServiceClient {
    * @param byteArrayInputStream
    * @return
    */
-  private void parseXML(ByteArrayInputStream byteArrayInputStream) {
+  private List<String> parseDatasetSearchAtomXML(ByteArrayInputStream byteArrayInputStream) {
+    List<String> datasetGCMDList = new ArrayList<>();
     try {
 
       DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
       DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
       Document doc = dBuilder.parse(byteArrayInputStream);
       doc.getDocumentElement().normalize();
+      Element root = doc.getDocumentElement();
+      NodeList firstChildNodes = root.getChildNodes();
 
-      NodeList nList = doc.getElementsByTagName("entry");
+      for (int i = 0; i < firstChildNodes.getLength(); i++) {
+        if ("entry".equals(firstChildNodes.item(i).getNodeName())) {
+          Node entryNode = firstChildNodes.item(i);
 
-      datasetIds = new ArrayList<>();
-      for (int temp = 0; temp < nList.getLength(); temp++) {
+          if (entryNode.getNodeType() == Node.ELEMENT_NODE) {
 
-        Node nNode = nList.item(temp);
-
-        if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-
-          Element eElement = (Element) nNode;
-
-          LOG.debug("Adding following DatasetID to Dataset list: ", eElement.getElementsByTagName("podaac:datasetId").item(0).getTextContent());
-          datasetIds.add(eElement.getElementsByTagName("podaac:datasetId").item(0).getTextContent());
-
+            Element entryElement = (Element) entryNode;
+            NodeList entryElementChildren = entryElement.getChildNodes();
+            for (int j = 0; j < entryElementChildren.getLength(); j++) {
+              Node entryElementChild = entryElementChildren.item(j);
+              if ("link".equals(entryElementChild.getNodeName())) {
+                Element linkNode = (Element)entryElementChild;
+                if (linkNode.getAttribute("title") != null && linkNode.getAttribute("title").contentEquals("GCMD Metadata")) {
+                  String gcmdHrefValue = linkNode.getAttributes().getNamedItem("href").getNodeValue();
+                  datasetGCMDList.add(gcmdHrefValue);
+                  LOG.info("Added new Dataset record to list: {}", gcmdHrefValue);
+                }
+              }
+            }
+          }
         }
       }
     } catch (Exception e) {
       LOG.error("Error whilst parsing Atom XML response from Dataset Search: ", e);
     }
+    LOG.info("Total number of dataset's retrieved: {}", datasetGCMDList.size());
+    return datasetGCMDList;
+  }
+
+  /**
+   * Method accepts a list of URLs which point to individual
+   * GCMD manifestations of PO.DAAC Datasets. These URLs are fetched
+   * and the XML results are mapped individually into a PO.DAAC Datasets
+   * Ontology.
+   * @param gcmdDatasetList an {@link java.util.List<String>} of URLs which
+   * represent GCMD manifestations of PO.DAAC datasets. An example would be 
+   * http://podaac.jpl.nasa.gov/ws/metadata/dataset&ampdatasetId=PODAAC-PATHF-5DD50&ampformat=gcmd
+   * @return 
+   */
+  private List<Object> retrieveGCMDRecords(List<String> gcmdDatasetList) {
+    List<Object> gcmdXMLRecords = new ArrayList<>();
+    for (int i = 0; i < gcmdDatasetList.size(); i++) {
+      try {
+        gcmdXMLRecords.add(parseGCMDXML(executePODAACQuery(gcmdDatasetList.get(i))));
+      } catch (IOException e) {
+        LOG.error("Error executing PO.DAAC query for GCMD record: {} {}", gcmdDatasetList.get(i), e);
+      }
+    }
+    return gcmdXMLRecords;
+    
+  }
+  private Object parseGCMDXML(ByteArrayInputStream executePODAACQuery) {
+    // TODO Auto-generated method stub
+    return null;
   }
 
   /**
