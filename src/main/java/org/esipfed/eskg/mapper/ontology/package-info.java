@@ -12,6 +12,6 @@
  * limitations under the License.
  */
 /**
- * Contains all the core org.esipfed.eskg.ontology engineering functionality for ESKG.
+ * Contains all the core org.esipfed.eskg.mapper.ontology engineering functionality for ESKG.
  */
-package org.esipfed.eskg.ontology;
+package org.esipfed.eskg.mapper.ontology;

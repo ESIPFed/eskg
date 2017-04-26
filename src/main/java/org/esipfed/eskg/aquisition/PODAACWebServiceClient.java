@@ -29,6 +29,10 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.esipfed.eskg.mapper.PODAACWebServiceObjectMapper;
+import org.esipfed.eskg.mapper.ObjectMapper.MapperID;
+import org.esipfed.eskg.mapper.ontology.PODAACOntologyMapper;
+import org.esipfed.eskg.structures.DIF;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -78,7 +82,8 @@ public class PODAACWebServiceClient {
       LOG.error("Error executing PO.DAAC Dataset Search: {} {}", DATASET_SEARCH, e);
       throw new IOException(e);
     }
-    retrieveGCMDRecords(gcmdDatasetList);
+    PODAACOntologyMapper ontologyMapper = new PODAACOntologyMapper();
+    ontologyMapper.map(retrieveGCMDRecords(gcmdDatasetList));
   }
 
   private ByteArrayInputStream executePODAACQuery(String queryString) throws IOException {
@@ -163,21 +168,21 @@ public class PODAACWebServiceClient {
    * http://podaac.jpl.nasa.gov/ws/metadata/dataset&ampdatasetId=PODAAC-PATHF-5DD50&ampformat=gcmd
    * @return 
    */
-  private List<Object> retrieveGCMDRecords(List<String> gcmdDatasetList) {
-    List<Object> gcmdXMLRecords = new ArrayList<>();
+  private List<DIF> retrieveGCMDRecords(List<String> gcmdDatasetList) {
+    List<DIF> gcmdXMLPOJORecords = new ArrayList<>();
     for (int i = 0; i < gcmdDatasetList.size(); i++) {
       try {
-        gcmdXMLRecords.add(parseGCMDXML(executePODAACQuery(gcmdDatasetList.get(i))));
+        gcmdXMLPOJORecords.add((DIF) parseGCMDXML(executePODAACQuery(gcmdDatasetList.get(i))));
       } catch (IOException e) {
         LOG.error("Error executing PO.DAAC query for GCMD record: {} {}", gcmdDatasetList.get(i), e);
       }
     }
-    return gcmdXMLRecords;
+    return gcmdXMLPOJORecords;
     
   }
-  private Object parseGCMDXML(ByteArrayInputStream executePODAACQuery) {
-    // TODO Auto-generated method stub
-    return null;
+  private DIF parseGCMDXML(ByteArrayInputStream gcmdXmlByteArrayInputStream) {
+    PODAACWebServiceObjectMapper objectMapper = new PODAACWebServiceObjectMapper();
+    return (DIF) objectMapper.map(MapperID.PODAAC_GCMD.name(), gcmdXmlByteArrayInputStream);
   }
 
   /**

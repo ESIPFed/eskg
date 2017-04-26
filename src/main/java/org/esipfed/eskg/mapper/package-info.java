@@ -11,19 +11,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.esipfed.eskg.ontology;
-
-/**
- * @author lewismc
- *
- */
-public class PODAACOntologyMapper {
-
-  /**
-   * 
-   */
-  public PODAACOntologyMapper() {
-    // TODO Auto-generated constructor stub
-  }
-
-}
+package org.esipfed.eskg.mapper;
