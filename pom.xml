@@ -220,7 +220,7 @@
           <bundledSignatures>
             <bundledSignature>jdk-unsafe</bundledSignature>
             <bundledSignature>jdk-deprecated</bundledSignature>
-            <bundledSignature>jdk-system-out</bundledSignature>
+            <!--bundledSignature>jdk-system-out</bundledSignature-->
             <!--bundledSignature>commons-io-unsafe-${commons-io.version}</bundledSignature -->
           </bundledSignatures>
         </configuration>
@@ -349,6 +349,7 @@
     <skipTests>false</skipTests>
     <assembly.finalName>${project.build.finalName}</assembly.finalName>
     <slf4j.version>1.7.22</slf4j.version>
+    <jena.version>3.2.0</jena.version>
   </properties>
   <dependencies>
 
@@ -381,6 +382,12 @@
       <artifactId>jdom2</artifactId>
      <version>2.0.6</version>
      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.jena</groupId>
+      <artifactId>apache-jena-libs</artifactId>
+      <type>pom</type>
+      <version>${jena.version}</version>
     </dependency>
 
     <!-- OpenIE -->

@@ -37,5 +37,5 @@ public interface ObjectMapper {
    */
   public Object map(String mapperId, ByteArrayInputStream inputStream);
 
-  void map(List<org.esipfed.eskg.structures.DIF> pojoList);
+  void map(List<DIF> pojoList);
 }

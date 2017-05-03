@@ -86,7 +86,9 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
       dif.setAccessConstraints(difElement.getChild("Access_Constraints", ns).getTextTrim());
       dif.setUseConstraints(difElement.getChild("Use_Constraints", ns).getTextTrim());
       dif.getDataSetLanguage().add(difElement.getChild("Data_Set_Language", ns).getTextTrim());
-      dif.setOriginatingCenter(difElement.getChild("Originating_Center", ns).getTextTrim());
+      if (difElement.getChild("Originating_Center", ns).getTextTrim() != null) {
+        dif.setOriginatingCenter(difElement.getChild("Originating_Center", ns).getTextTrim());
+      }
       dif.setMetadataName(difElement.getChild("Metadata_Name", ns).getTextTrim());
       dif.setMetadataVersion(difElement.getChild("Metadata_Version", ns).getTextTrim());
       dif.setDIFCreationDate(difElement.getChild("DIF_Creation_Date", ns).getTextTrim());
