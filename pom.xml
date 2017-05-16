@@ -49,6 +49,14 @@
         <enabled>true</enabled>
       </snapshots>
     </repository>
+    <repository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>bintray-allenai-maven</id>
+      <name>bintray</name>
+      <url>http://allenai.bintray.com/maven</url>
+    </repository>
   </repositories>
 
   <scm>
