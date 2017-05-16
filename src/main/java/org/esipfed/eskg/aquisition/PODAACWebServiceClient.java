@@ -59,7 +59,11 @@ public class PODAACWebServiceClient {
    * request the response to be serialized as ATOM such that we can extract
    * individual dataset records.
    */
-  private static final String DATASET_SEARCH = "https://podaac.jpl.nasa.gov/ws/search/dataset/?q=*:*&itemsPerPage=1000&format=atom";
+  private static final String DATASET_SEARCH = 
+          "https://podaac.jpl.nasa.gov/ws/search/dataset/?q=*:*&itemsPerPage=1000&format=atom";
+  
+  private static final String DATASET_SEARCH_2 = 
+          "https://podaac.jpl.nasa.gov/ws/search/dataset/?q=*:*&itemsPerPage=1000&format=atom&startIndex=400";
 
   /**
    * Default constructor
@@ -77,7 +81,13 @@ public class PODAACWebServiceClient {
   public void fetchDatasets() throws IOException {
     List<String> gcmdDatasetList = new ArrayList<>();
     try {
-      gcmdDatasetList = parseDatasetSearchAtomXML(executePODAACQuery(DATASET_SEARCH));
+      for (int i = 0; i < 2; i++) {
+        if (i == 0) {
+          gcmdDatasetList.addAll(parseDatasetSearchAtomXML(executePODAACQuery(DATASET_SEARCH)));
+        } else if (i == 1) {
+          gcmdDatasetList.addAll(parseDatasetSearchAtomXML(executePODAACQuery(DATASET_SEARCH_2)));
+        }
+      }
     } catch (IOException e) {
       LOG.error("Error executing PO.DAAC Dataset Search: {} {}", DATASET_SEARCH, e);
       throw new IOException(e);
