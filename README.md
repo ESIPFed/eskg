@@ -47,7 +47,7 @@ Please see the [wiki entry](https://github.com/ESIPFed/eskg/wiki/ESKG-Tutorial--
 
 # Acknowledgements
 
-ESKG was initially conceived and funded through the ESIP Testbed initiative. ESIP funding acknowledged.
+ESKG was initially conceived and funded through the [ESIP Testbed initiative](http://testbed.esipfed.org/). [ESIP](http://esipfed.org/) funding acknowledged.
 
 # Community
 
