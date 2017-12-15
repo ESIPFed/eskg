@@ -16,11 +16,13 @@ package org.esipfed.eskg.aquisition;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -49,6 +51,8 @@ import org.w3c.dom.NodeList;
 public class PODAACWebServiceClient {
 
   private static final Logger LOG = LoggerFactory.getLogger(PODAACWebServiceClient.class);
+  private static final String ESKG_DEFAULT_PROPERTIES_FILE = "gora.properties";
+  private Properties props;
 
   /*
    * Dataset Search service searches PO.DAAC's dataset catalog, over Level 2,
@@ -61,7 +65,7 @@ public class PODAACWebServiceClient {
    */
   private static final String DATASET_SEARCH = 
           "https://podaac.jpl.nasa.gov/ws/search/dataset/?q=*:*&itemsPerPage=1000&format=atom";
-  
+
   private static final String DATASET_SEARCH_2 = 
           "https://podaac.jpl.nasa.gov/ws/search/dataset/?q=*:*&itemsPerPage=1000&format=atom&startIndex=400";
 
@@ -76,7 +80,7 @@ public class PODAACWebServiceClient {
    * Core function which encapsulates all data acquisition and model mapping for
    * PO.DAAC Dataset Search and Dataset Metadata WebServices.
    * 
-   * @throws IOException
+   * @throws IOException if there is an issue querying the PO.DAAC Webservices
    */
   public void fetchDatasets() throws IOException {
     List<String> gcmdDatasetList = new ArrayList<>();
@@ -93,7 +97,7 @@ public class PODAACWebServiceClient {
       throw new IOException(e);
     }
     PODAACOntologyMapper ontologyMapper = new PODAACOntologyMapper();
-    ontologyMapper.map(retrieveGCMDRecords(gcmdDatasetList));
+    ontologyMapper.map(retrieveGCMDRecords(gcmdDatasetList), props);
   }
 
   private ByteArrayInputStream executePODAACQuery(String queryString) throws IOException {
@@ -115,7 +119,7 @@ public class PODAACWebServiceClient {
       result.append(line);
     }
     return new ByteArrayInputStream(result.toString().getBytes(StandardCharsets.UTF_8));
-    
+
   }
 
   /**
@@ -188,7 +192,7 @@ public class PODAACWebServiceClient {
       }
     }
     return gcmdXMLPOJORecords;
-    
+
   }
   private DIF parseGCMDXML(ByteArrayInputStream gcmdXmlByteArrayInputStream) {
     PODAACWebServiceObjectMapper objectMapper = new PODAACWebServiceObjectMapper();
@@ -196,11 +200,39 @@ public class PODAACWebServiceClient {
   }
 
   /**
-   * @param args
-   * @throws IOException
+   * Creates a new {@link Properties}. It adds the default gora configuration
+   * resources. This properties object can be modified and used to instantiate
+   * store instances. It is recommended to use a properties object for a single
+   * store, because the properties object is passed on to store initialization
+   * methods that are able to store the properties as a field.   
+   * @return The new properties object.
+   */
+  private void createProps() {
+    try {
+      Properties properties = new Properties();
+      InputStream stream = PODAACWebServiceClient.class.getClassLoader()
+              .getResourceAsStream(ESKG_DEFAULT_PROPERTIES_FILE);
+      if(stream != null) {
+        try {
+          properties.load(stream);
+          props = properties;
+        } finally {
+          stream.close();
+        }
+      } else {
+        LOG.warn(ESKG_DEFAULT_PROPERTIES_FILE + " not found, properties will be empty.");
+      }
+    } catch(Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+  /**
+   * @param args no args required 
+   * @throws IOException if there is an issue querying the PO.DAAC Webservice
    */
   public static void main(String[] args) throws IOException {
     PODAACWebServiceClient client = new PODAACWebServiceClient();
+    client.createProps();
     client.fetchDatasets();
   }
 

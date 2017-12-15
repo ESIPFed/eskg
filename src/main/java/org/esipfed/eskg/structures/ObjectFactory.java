@@ -168,7 +168,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DIF }
-     * 
+     * @return {@link DIF}
      */
     public DIF createDIF() {
         return new DIF();
@@ -176,7 +176,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DataSetCitation }
-     * 
+     * @return {@link DataSetCitation}
      */
     public DataSetCitation createDataSetCitation() {
         return new DataSetCitation();
@@ -184,7 +184,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Personnel }
-     * 
+     * @return {@link Personnel}
      */
     public Personnel createPersonnel() {
         return new Personnel();
@@ -192,7 +192,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ContactAddress }
-     * 
+     * @return {@link ContactAddress}
      */
     public ContactAddress createContactAddress() {
         return new ContactAddress();
@@ -200,7 +200,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Discipline }
-     * 
+     * @return {@link Discipline}
      */
     public Discipline createDiscipline() {
         return new Discipline();
@@ -208,7 +208,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Parameters }
-     * 
+     * @return {@link Parameters}
      */
     public Parameters createParameters() {
         return new Parameters();
@@ -216,7 +216,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link SensorName }
-     * 
+     * @return {@link SensorName}
      */
     public SensorName createSensorName() {
         return new SensorName();
@@ -224,7 +224,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link SourceName }
-     * 
+     * @return {@link SourceName}
      */
     public SourceName createSourceName() {
         return new SourceName();
@@ -232,7 +232,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link TemporalCoverage }
-     * 
+     * @return {@link TemporalCoverage}
      */
     public TemporalCoverage createTemporalCoverage() {
         return new TemporalCoverage();
@@ -240,7 +240,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link PaleoTemporalCoverage }
-     * 
+     * @return {@link PaleoTemporalCoverage}
      */
     public PaleoTemporalCoverage createPaleoTemporalCoverage() {
         return new PaleoTemporalCoverage();
@@ -248,7 +248,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ChronostratigraphicUnit }
-     * 
+     * @return {@link ChronostratigraphicUnit}
      */
     public ChronostratigraphicUnit createChronostratigraphicUnit() {
         return new ChronostratigraphicUnit();
@@ -256,7 +256,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link SpatialCoverage }
-     * 
+     * @return {@link SpatialCoverage}
      */
     public SpatialCoverage createSpatialCoverage() {
         return new SpatialCoverage();
@@ -264,7 +264,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Location }
-     * 
+     * @return {@link Location}
      */
     public Location createLocation() {
         return new Location();
@@ -272,7 +272,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DataResolution }
-     * 
+     * @return {@link DataResolution}
      */
     public DataResolution createDataResolution() {
         return new DataResolution();
@@ -280,7 +280,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Project }
-     * 
+     * @return {@link Project}
      */
     public Project createProject() {
         return new Project();
@@ -288,7 +288,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DataCenter }
-     * 
+     * @return {@link DataCenter}
      */
     public DataCenter createDataCenter() {
         return new DataCenter();
@@ -296,7 +296,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DataCenterName }
-     * 
+     * @return {@link DataCenterName}
      */
     public DataCenterName createDataCenterName() {
         return new DataCenterName();
@@ -304,7 +304,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Distribution }
-     * 
+     * @return {@link Distribution}
      */
     public Distribution createDistribution() {
         return new Distribution();
@@ -312,7 +312,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link MultimediaSample }
-     * 
+     * @return {@link MultimediaSample}
      */
     public MultimediaSample createMultimediaSample() {
         return new MultimediaSample();
@@ -320,7 +320,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Reference }
-     * 
+     * @return {@link Reference}
      */
     public Reference createReference() {
         return new Reference();
@@ -328,7 +328,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Summary }
-     * 
+     * @return {@link Summary}
      */
     public Summary createSummary() {
         return new Summary();
@@ -336,7 +336,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link RelatedURL }
-     * 
+     * @return {@link RelatedURL}
      */
     public RelatedURL createRelatedURL() {
         return new RelatedURL();
@@ -344,7 +344,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link URLContentType }
-     * 
+     * @return {@link URLContentType}
      */
     public URLContentType createURLContentType() {
         return new URLContentType();
@@ -352,7 +352,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link IDNNode }
-     * 
+     * @return {@link IDNNode}
      */
     public IDNNode createIDNNode() {
         return new IDNNode();
@@ -360,1037 +360,1152 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Entry_ID")
     public JAXBElement<String> createEntryID(String value) {
-        return new JAXBElement<String>(_EntryID_QNAME, String.class, null, value);
+        return new JAXBElement<>(_EntryID_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Entry_Title")
     public JAXBElement<String> createEntryTitle(String value) {
-        return new JAXBElement<String>(_EntryTitle_QNAME, String.class, null, value);
+        return new JAXBElement<>(_EntryTitle_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Dataset_Creator")
     public JAXBElement<String> createDatasetCreator(String value) {
-        return new JAXBElement<String>(_DatasetCreator_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DatasetCreator_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Dataset_Title")
     public JAXBElement<String> createDatasetTitle(String value) {
-        return new JAXBElement<String>(_DatasetTitle_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DatasetTitle_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Dataset_Series_Name")
     public JAXBElement<String> createDatasetSeriesName(String value) {
-        return new JAXBElement<String>(_DatasetSeriesName_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DatasetSeriesName_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Dataset_Release_Date")
     public JAXBElement<String> createDatasetReleaseDate(String value) {
-        return new JAXBElement<String>(_DatasetReleaseDate_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DatasetReleaseDate_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Dataset_Release_Place")
     public JAXBElement<String> createDatasetReleasePlace(String value) {
-        return new JAXBElement<String>(_DatasetReleasePlace_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DatasetReleasePlace_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Dataset_Publisher")
     public JAXBElement<String> createDatasetPublisher(String value) {
-        return new JAXBElement<String>(_DatasetPublisher_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DatasetPublisher_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Version")
     public JAXBElement<String> createVersion(String value) {
-        return new JAXBElement<String>(_Version_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Version_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Issue_Identification")
     public JAXBElement<String> createIssueIdentification(String value) {
-        return new JAXBElement<String>(_IssueIdentification_QNAME, String.class, null, value);
+        return new JAXBElement<>(_IssueIdentification_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Data_Presentation_Form")
     public JAXBElement<String> createDataPresentationForm(String value) {
-        return new JAXBElement<String>(_DataPresentationForm_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DataPresentationForm_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Other_Citation_Details")
     public JAXBElement<String> createOtherCitationDetails(String value) {
-        return new JAXBElement<String>(_OtherCitationDetails_QNAME, String.class, null, value);
+        return new JAXBElement<>(_OtherCitationDetails_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Online_Resource")
     public JAXBElement<String> createOnlineResource(String value) {
-        return new JAXBElement<String>(_OnlineResource_QNAME, String.class, null, value);
+        return new JAXBElement<>(_OnlineResource_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Role")
     public JAXBElement<String> createRole(String value) {
-        return new JAXBElement<String>(_Role_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Role_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "First_Name")
     public JAXBElement<String> createFirstName(String value) {
-        return new JAXBElement<String>(_FirstName_QNAME, String.class, null, value);
+        return new JAXBElement<>(_FirstName_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Middle_Name")
     public JAXBElement<String> createMiddleName(String value) {
-        return new JAXBElement<String>(_MiddleName_QNAME, String.class, null, value);
+        return new JAXBElement<>(_MiddleName_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Last_Name")
     public JAXBElement<String> createLastName(String value) {
-        return new JAXBElement<String>(_LastName_QNAME, String.class, null, value);
+        return new JAXBElement<>(_LastName_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Email")
     public JAXBElement<String> createEmail(String value) {
-        return new JAXBElement<String>(_Email_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Email_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Phone")
     public JAXBElement<String> createPhone(String value) {
-        return new JAXBElement<String>(_Phone_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Phone_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Fax")
     public JAXBElement<String> createFax(String value) {
-        return new JAXBElement<String>(_Fax_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Fax_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Address")
     public JAXBElement<String> createAddress(String value) {
-        return new JAXBElement<String>(_Address_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Address_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "City")
     public JAXBElement<String> createCity(String value) {
-        return new JAXBElement<String>(_City_QNAME, String.class, null, value);
+        return new JAXBElement<>(_City_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Province_or_State")
     public JAXBElement<String> createProvinceOrState(String value) {
-        return new JAXBElement<String>(_ProvinceOrState_QNAME, String.class, null, value);
+        return new JAXBElement<>(_ProvinceOrState_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Postal_Code")
     public JAXBElement<String> createPostalCode(String value) {
-        return new JAXBElement<String>(_PostalCode_QNAME, String.class, null, value);
+        return new JAXBElement<>(_PostalCode_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Country")
     public JAXBElement<String> createCountry(String value) {
-        return new JAXBElement<String>(_Country_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Country_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Discipline_Name")
     public JAXBElement<String> createDisciplineName(String value) {
-        return new JAXBElement<String>(_DisciplineName_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DisciplineName_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Subdiscipline")
     public JAXBElement<String> createSubdiscipline(String value) {
-        return new JAXBElement<String>(_Subdiscipline_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Subdiscipline_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Detailed_Subdiscipline")
     public JAXBElement<String> createDetailedSubdiscipline(String value) {
-        return new JAXBElement<String>(_DetailedSubdiscipline_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DetailedSubdiscipline_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Category")
     public JAXBElement<String> createCategory(String value) {
-        return new JAXBElement<String>(_Category_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Category_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Topic")
     public JAXBElement<String> createTopic(String value) {
-        return new JAXBElement<String>(_Topic_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Topic_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Term")
     public JAXBElement<String> createTerm(String value) {
-        return new JAXBElement<String>(_Term_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Term_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Variable_Level_1")
     public JAXBElement<String> createVariableLevel1(String value) {
-        return new JAXBElement<String>(_VariableLevel1_QNAME, String.class, null, value);
+        return new JAXBElement<>(_VariableLevel1_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Variable_Level_2")
     public JAXBElement<String> createVariableLevel2(String value) {
-        return new JAXBElement<String>(_VariableLevel2_QNAME, String.class, null, value);
+        return new JAXBElement<>(_VariableLevel2_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Variable_Level_3")
     public JAXBElement<String> createVariableLevel3(String value) {
-        return new JAXBElement<String>(_VariableLevel3_QNAME, String.class, null, value);
+        return new JAXBElement<>(_VariableLevel3_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Detailed_Variable")
     public JAXBElement<String> createDetailedVariable(String value) {
-        return new JAXBElement<String>(_DetailedVariable_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DetailedVariable_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "ISO_Topic_Category")
     public JAXBElement<String> createISOTopicCategory(String value) {
-        return new JAXBElement<String>(_ISOTopicCategory_QNAME, String.class, null, value);
+        return new JAXBElement<>(_ISOTopicCategory_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Keyword")
     public JAXBElement<String> createKeyword(String value) {
-        return new JAXBElement<String>(_Keyword_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Keyword_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Short_Name")
     public JAXBElement<String> createShortName(String value) {
-        return new JAXBElement<String>(_ShortName_QNAME, String.class, null, value);
+        return new JAXBElement<>(_ShortName_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Long_Name")
     public JAXBElement<String> createLongName(String value) {
-        return new JAXBElement<String>(_LongName_QNAME, String.class, null, value);
+        return new JAXBElement<>(_LongName_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Start_Date")
     public JAXBElement<String> createStartDate(String value) {
-        return new JAXBElement<String>(_StartDate_QNAME, String.class, null, value);
+        return new JAXBElement<>(_StartDate_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Stop_Date")
     public JAXBElement<String> createStopDate(String value) {
-        return new JAXBElement<String>(_StopDate_QNAME, String.class, null, value);
+        return new JAXBElement<>(_StopDate_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Paleo_Start_Date")
     public JAXBElement<String> createPaleoStartDate(String value) {
-        return new JAXBElement<String>(_PaleoStartDate_QNAME, String.class, null, value);
+        return new JAXBElement<>(_PaleoStartDate_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Paleo_Stop_Date")
     public JAXBElement<String> createPaleoStopDate(String value) {
-        return new JAXBElement<String>(_PaleoStopDate_QNAME, String.class, null, value);
+        return new JAXBElement<>(_PaleoStopDate_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Eon")
     public JAXBElement<String> createEon(String value) {
-        return new JAXBElement<String>(_Eon_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Eon_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Era")
     public JAXBElement<String> createEra(String value) {
-        return new JAXBElement<String>(_Era_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Era_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Period")
     public JAXBElement<String> createPeriod(String value) {
-        return new JAXBElement<String>(_Period_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Period_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Epoch")
     public JAXBElement<String> createEpoch(String value) {
-        return new JAXBElement<String>(_Epoch_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Epoch_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Stage")
     public JAXBElement<String> createStage(String value) {
-        return new JAXBElement<String>(_Stage_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Stage_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Detailed_Classification")
     public JAXBElement<String> createDetailedClassification(String value) {
-        return new JAXBElement<String>(_DetailedClassification_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DetailedClassification_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Data_Set_Progress")
     public JAXBElement<String> createDataSetProgress(String value) {
-        return new JAXBElement<String>(_DataSetProgress_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DataSetProgress_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Southernmost_Latitude")
     public JAXBElement<String> createSouthernmostLatitude(String value) {
-        return new JAXBElement<String>(_SouthernmostLatitude_QNAME, String.class, null, value);
+        return new JAXBElement<>(_SouthernmostLatitude_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Northernmost_Latitude")
     public JAXBElement<String> createNorthernmostLatitude(String value) {
-        return new JAXBElement<String>(_NorthernmostLatitude_QNAME, String.class, null, value);
+        return new JAXBElement<>(_NorthernmostLatitude_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Westernmost_Longitude")
     public JAXBElement<String> createWesternmostLongitude(String value) {
-        return new JAXBElement<String>(_WesternmostLongitude_QNAME, String.class, null, value);
+        return new JAXBElement<>(_WesternmostLongitude_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Easternmost_Longitude")
     public JAXBElement<String> createEasternmostLongitude(String value) {
-        return new JAXBElement<String>(_EasternmostLongitude_QNAME, String.class, null, value);
+        return new JAXBElement<>(_EasternmostLongitude_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Minimum_Altitude")
     public JAXBElement<String> createMinimumAltitude(String value) {
-        return new JAXBElement<String>(_MinimumAltitude_QNAME, String.class, null, value);
+        return new JAXBElement<>(_MinimumAltitude_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Maximum_Altitude")
     public JAXBElement<String> createMaximumAltitude(String value) {
-        return new JAXBElement<String>(_MaximumAltitude_QNAME, String.class, null, value);
+        return new JAXBElement<>(_MaximumAltitude_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Minimum_Depth")
     public JAXBElement<String> createMinimumDepth(String value) {
-        return new JAXBElement<String>(_MinimumDepth_QNAME, String.class, null, value);
+        return new JAXBElement<>(_MinimumDepth_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Maximum_Depth")
     public JAXBElement<String> createMaximumDepth(String value) {
-        return new JAXBElement<String>(_MaximumDepth_QNAME, String.class, null, value);
+        return new JAXBElement<>(_MaximumDepth_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Location_Category")
     public JAXBElement<String> createLocationCategory(String value) {
-        return new JAXBElement<String>(_LocationCategory_QNAME, String.class, null, value);
+        return new JAXBElement<>(_LocationCategory_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Location_Type")
     public JAXBElement<String> createLocationType(String value) {
-        return new JAXBElement<String>(_LocationType_QNAME, String.class, null, value);
+        return new JAXBElement<>(_LocationType_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Location_Subregion1")
     public JAXBElement<String> createLocationSubregion1(String value) {
-        return new JAXBElement<String>(_LocationSubregion1_QNAME, String.class, null, value);
+        return new JAXBElement<>(_LocationSubregion1_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Location_Subregion2")
     public JAXBElement<String> createLocationSubregion2(String value) {
-        return new JAXBElement<String>(_LocationSubregion2_QNAME, String.class, null, value);
+        return new JAXBElement<>(_LocationSubregion2_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Location_Subregion3")
     public JAXBElement<String> createLocationSubregion3(String value) {
-        return new JAXBElement<String>(_LocationSubregion3_QNAME, String.class, null, value);
+        return new JAXBElement<>(_LocationSubregion3_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Detailed_Location")
     public JAXBElement<String> createDetailedLocation(String value) {
-        return new JAXBElement<String>(_DetailedLocation_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DetailedLocation_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Latitude_Resolution")
     public JAXBElement<String> createLatitudeResolution(String value) {
-        return new JAXBElement<String>(_LatitudeResolution_QNAME, String.class, null, value);
+        return new JAXBElement<>(_LatitudeResolution_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Longitude_Resolution")
     public JAXBElement<String> createLongitudeResolution(String value) {
-        return new JAXBElement<String>(_LongitudeResolution_QNAME, String.class, null, value);
+        return new JAXBElement<>(_LongitudeResolution_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Horizontal_Resolution_Range")
     public JAXBElement<String> createHorizontalResolutionRange(String value) {
-        return new JAXBElement<String>(_HorizontalResolutionRange_QNAME, String.class, null, value);
+        return new JAXBElement<>(_HorizontalResolutionRange_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Vertical_Resolution")
     public JAXBElement<String> createVerticalResolution(String value) {
-        return new JAXBElement<String>(_VerticalResolution_QNAME, String.class, null, value);
+        return new JAXBElement<>(_VerticalResolution_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Vertical_Resolution_Range")
     public JAXBElement<String> createVerticalResolutionRange(String value) {
-        return new JAXBElement<String>(_VerticalResolutionRange_QNAME, String.class, null, value);
+        return new JAXBElement<>(_VerticalResolutionRange_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Temporal_Resolution")
     public JAXBElement<String> createTemporalResolution(String value) {
-        return new JAXBElement<String>(_TemporalResolution_QNAME, String.class, null, value);
+        return new JAXBElement<>(_TemporalResolution_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Temporal_Resolution_Range")
     public JAXBElement<String> createTemporalResolutionRange(String value) {
-        return new JAXBElement<String>(_TemporalResolutionRange_QNAME, String.class, null, value);
+        return new JAXBElement<>(_TemporalResolutionRange_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Quality")
     public JAXBElement<String> createQuality(String value) {
-        return new JAXBElement<String>(_Quality_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Quality_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Access_Constraints")
     public JAXBElement<String> createAccessConstraints(String value) {
-        return new JAXBElement<String>(_AccessConstraints_QNAME, String.class, null, value);
+        return new JAXBElement<>(_AccessConstraints_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Use_Constraints")
     public JAXBElement<String> createUseConstraints(String value) {
-        return new JAXBElement<String>(_UseConstraints_QNAME, String.class, null, value);
+        return new JAXBElement<>(_UseConstraints_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Data_Set_Language")
     public JAXBElement<String> createDataSetLanguage(String value) {
-        return new JAXBElement<String>(_DataSetLanguage_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DataSetLanguage_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Originating_Center")
     public JAXBElement<String> createOriginatingCenter(String value) {
-        return new JAXBElement<String>(_OriginatingCenter_QNAME, String.class, null, value);
+        return new JAXBElement<>(_OriginatingCenter_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Data_Center_URL")
     public JAXBElement<String> createDataCenterURL(String value) {
-        return new JAXBElement<String>(_DataCenterURL_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DataCenterURL_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Data_Set_ID")
     public JAXBElement<String> createDataSetID(String value) {
-        return new JAXBElement<String>(_DataSetID_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DataSetID_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Distribution_Media")
     public JAXBElement<String> createDistributionMedia(String value) {
-        return new JAXBElement<String>(_DistributionMedia_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DistributionMedia_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Distribution_Size")
     public JAXBElement<String> createDistributionSize(String value) {
-        return new JAXBElement<String>(_DistributionSize_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DistributionSize_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Distribution_Format")
     public JAXBElement<String> createDistributionFormat(String value) {
-        return new JAXBElement<String>(_DistributionFormat_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DistributionFormat_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Fees")
     public JAXBElement<String> createFees(String value) {
-        return new JAXBElement<String>(_Fees_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Fees_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "File")
     public JAXBElement<String> createFile(String value) {
-        return new JAXBElement<String>(_File_QNAME, String.class, null, value);
+        return new JAXBElement<>(_File_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "URL")
     public JAXBElement<String> createURL(String value) {
-        return new JAXBElement<String>(_URL_QNAME, String.class, null, value);
+        return new JAXBElement<>(_URL_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Format")
     public JAXBElement<String> createFormat(String value) {
-        return new JAXBElement<String>(_Format_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Format_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Caption")
     public JAXBElement<String> createCaption(String value) {
-        return new JAXBElement<String>(_Caption_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Caption_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Description")
     public JAXBElement<String> createDescription(String value) {
-        return new JAXBElement<String>(_Description_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Description_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Author")
     public JAXBElement<String> createAuthor(String value) {
-        return new JAXBElement<String>(_Author_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Author_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Publication_Date")
     public JAXBElement<String> createPublicationDate(String value) {
-        return new JAXBElement<String>(_PublicationDate_QNAME, String.class, null, value);
+        return new JAXBElement<>(_PublicationDate_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Title")
     public JAXBElement<String> createTitle(String value) {
-        return new JAXBElement<String>(_Title_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Title_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Series")
     public JAXBElement<String> createSeries(String value) {
-        return new JAXBElement<String>(_Series_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Series_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Edition")
     public JAXBElement<String> createEdition(String value) {
-        return new JAXBElement<String>(_Edition_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Edition_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Volume")
     public JAXBElement<String> createVolume(String value) {
-        return new JAXBElement<String>(_Volume_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Volume_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Issue")
     public JAXBElement<String> createIssue(String value) {
-        return new JAXBElement<String>(_Issue_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Issue_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Report_Number")
     public JAXBElement<String> createReportNumber(String value) {
-        return new JAXBElement<String>(_ReportNumber_QNAME, String.class, null, value);
+        return new JAXBElement<>(_ReportNumber_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Publication_Place")
     public JAXBElement<String> createPublicationPlace(String value) {
-        return new JAXBElement<String>(_PublicationPlace_QNAME, String.class, null, value);
+        return new JAXBElement<>(_PublicationPlace_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Publisher")
     public JAXBElement<String> createPublisher(String value) {
-        return new JAXBElement<String>(_Publisher_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Publisher_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Pages")
     public JAXBElement<String> createPages(String value) {
-        return new JAXBElement<String>(_Pages_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Pages_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "ISBN")
     public JAXBElement<String> createISBN(String value) {
-        return new JAXBElement<String>(_ISBN_QNAME, String.class, null, value);
+        return new JAXBElement<>(_ISBN_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "DOI")
     public JAXBElement<String> createDOI(String value) {
-        return new JAXBElement<String>(_DOI_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DOI_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Other_Reference_Details")
     public JAXBElement<String> createOtherReferenceDetails(String value) {
-        return new JAXBElement<String>(_OtherReferenceDetails_QNAME, String.class, null, value);
+        return new JAXBElement<>(_OtherReferenceDetails_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Abstract")
     public JAXBElement<String> createAbstract(String value) {
-        return new JAXBElement<String>(_Abstract_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Abstract_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Purpose")
     public JAXBElement<String> createPurpose(String value) {
-        return new JAXBElement<String>(_Purpose_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Purpose_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Type")
     public JAXBElement<String> createType(String value) {
-        return new JAXBElement<String>(_Type_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Type_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Subtype")
     public JAXBElement<String> createSubtype(String value) {
-        return new JAXBElement<String>(_Subtype_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Subtype_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Parent_DIF")
     public JAXBElement<String> createParentDIF(String value) {
-        return new JAXBElement<String>(_ParentDIF_QNAME, String.class, null, value);
+        return new JAXBElement<>(_ParentDIF_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Originating_Metadata_Node")
     public JAXBElement<String> createOriginatingMetadataNode(String value) {
-        return new JAXBElement<String>(_OriginatingMetadataNode_QNAME, String.class, null, value);
+        return new JAXBElement<>(_OriginatingMetadataNode_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Metadata_Name")
     public JAXBElement<String> createMetadataName(String value) {
-        return new JAXBElement<String>(_MetadataName_QNAME, String.class, null, value);
+        return new JAXBElement<>(_MetadataName_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Metadata_Version")
     public JAXBElement<String> createMetadataVersion(String value) {
-        return new JAXBElement<String>(_MetadataVersion_QNAME, String.class, null, value);
+        return new JAXBElement<>(_MetadataVersion_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "DIF_Creation_Date")
     public JAXBElement<String> createDIFCreationDate(String value) {
-        return new JAXBElement<String>(_DIFCreationDate_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DIFCreationDate_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Last_DIF_Revision_Date")
     public JAXBElement<String> createLastDIFRevisionDate(String value) {
-        return new JAXBElement<String>(_LastDIFRevisionDate_QNAME, String.class, null, value);
+        return new JAXBElement<>(_LastDIFRevisionDate_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "DIF_Revision_History")
     public JAXBElement<String> createDIFRevisionHistory(String value) {
-        return new JAXBElement<String>(_DIFRevisionHistory_QNAME, String.class, null, value);
+        return new JAXBElement<>(_DIFRevisionHistory_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Future_DIF_Review_Date")
     public JAXBElement<String> createFutureDIFReviewDate(String value) {
-        return new JAXBElement<String>(_FutureDIFReviewDate_QNAME, String.class, null, value);
+        return new JAXBElement<>(_FutureDIFReviewDate_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "Private")
     public JAXBElement<String> createPrivate(String value) {
-        return new JAXBElement<String>(_Private_QNAME, String.class, null, value);
+        return new JAXBElement<>(_Private_QNAME, String.class, null, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
+     * @param value {@link String} entry
+     * @return {@link JAXBElement}
      */
     @XmlElementDecl(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", name = "FAX")
     public JAXBElement<String> createFAX(String value) {
-        return new JAXBElement<String>(_FAX_QNAME, String.class, null, value);
+        return new JAXBElement<>(_FAX_QNAME, String.class, null, value);
     }
 
 }

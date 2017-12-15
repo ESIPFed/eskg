@@ -138,11 +138,11 @@ public class DataCenter {
      * Objects of the following type(s) are allowed in the list
      * {@link String }
      * 
-     * 
+     * @return the List of dataset ID's
      */
     public List<String> getDataSetID() {
         if (dataSetID == null) {
-            dataSetID = new ArrayList<String>();
+            dataSetID = new ArrayList<>();
         }
         return this.dataSetID;
     }
@@ -167,7 +167,7 @@ public class DataCenter {
      * Objects of the following type(s) are allowed in the list
      * {@link Personnel }
      * 
-     * 
+     * @return the List of Personnel
      */
     public List<Personnel> getPersonnel() {
         if (personnel == null) {

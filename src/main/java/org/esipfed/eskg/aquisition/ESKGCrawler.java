@@ -113,10 +113,18 @@ public class ESKGCrawler {
   }
 
   /**
-   * @param args
-   * @throws InterruptedException
+   * <ul>
+   * <li><b>seed</b>; An individual seed URL used to bootstrap the crawl</li>
+   * <li><b>filter</b>; Regex used to filter out page URLs during crawling.</li>
+   * <li><b>storage</b>; Folder used to store crawler temporary data.</li>
+   * <li><b>nCrawler</b>; Sets the number of crawlers.</li>
+   * <li><b>mPages</b>; Max number of pages before interrupting crawl.</li>
+   * <li><b>mDepth</b>; Max allowed crawler depth.</li>
+   * <li><b>pDelay</b>; Politeness delay in milliseconds.</li>
+   * </ul>
+   * @param args includes options as per description
    */
-  public static void main(String[] args) throws InterruptedException {
+  public static void main(String[] args) {
 
     Option sOpt = Option.builder().hasArg(true).numberOfArgs(1)
         .argName("seed").required(true).longOpt(SEED_OPT)
@@ -203,6 +211,10 @@ public class ESKGCrawler {
     LOG.info("Setting crawler politeness to: {}", politenessDelay);
     crawler.setWebCrawler(SiteCrawler.DEFAULT_WEB_CRAWLER);
 
-    crawl(crawler);
+    try {
+      crawl(crawler);
+    } catch (InterruptedException e) {
+      LOG.error("Error executing crawl." , e);
+    }
   }
 }

@@ -14,18 +14,10 @@
 package org.esipfed.eskg.mapper.ontology;
 
 import java.io.ByteArrayInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.nio.charset.Charset;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
+import java.util.Properties;
 
 import org.apache.jena.datatypes.RDFDatatype;
 import org.apache.jena.ontology.Individual;
@@ -38,6 +30,9 @@ import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
 import org.esipfed.eskg.mapper.ObjectMapper;
+import org.esipfed.eskg.storage.ESIPCORClient;
+//import org.esipfed.eskg.storage.ESIPSemanticPortalClient;
+import org.esipfed.eskg.storage.LocalFileClient;
 import org.esipfed.eskg.structures.DIF;
 import org.esipfed.eskg.structures.DataCenter;
 import org.esipfed.eskg.structures.DataCenterName;
@@ -54,19 +49,14 @@ import org.esipfed.eskg.structures.SourceName;
 import org.esipfed.eskg.structures.SpatialCoverage;
 import org.esipfed.eskg.structures.Summary;
 import org.esipfed.eskg.structures.TemporalCoverage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author lewismc
- *
  */
 public class PODAACOntologyMapper implements ObjectMapper {
 
-  private static final Logger LOG = LoggerFactory.getLogger(PODAACOntologyMapper.class);
-
   private static final String SWEET_REPR_DATA_PRODUCT = 
-          "https://sweet.jpl.nasa.gov/2.3/reprDataProduct.owl";
+          "https://sweetontology.net/reprDataProduct";
   private static final String SWEET_REPR_DATA_PRODUCT_NS = SWEET_REPR_DATA_PRODUCT + "#";
   private static final String MUDROD_GCMD_DIF_9_8_2 = 
           "https://raw.githubusercontent.com/mudrod/mudrod_ontologies/master/dif_v9.8.2.owl";
@@ -84,10 +74,10 @@ public class PODAACOntologyMapper implements ObjectMapper {
   }
 
   @Override
-  public void map(List<DIF> pojoList) {
+  public void map(List<DIF> pojoList, Properties props) {
     // create the base model
     OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
-    ontModel.read(SWEET_REPR_DATA_PRODUCT, "RDF/XML");
+    ontModel.read(SWEET_REPR_DATA_PRODUCT, "TTL");
 
     // get the reprDataProduct.owl#Dataset class reference
     Resource dataset = ontModel.getResource(SWEET_REPR_DATA_PRODUCT_NS + "Dataset");
@@ -100,20 +90,23 @@ public class PODAACOntologyMapper implements ObjectMapper {
       Individual gcmdDif = podaacDataset.createIndividual(SWEET_REPR_DATA_PRODUCT_NS + dif.getEntryID());
       buildIndividual(dif, gcmdDif);
     }
-    writeOntologyModelToFile(ontModel);
+    writeOntologyModel(ontModel, props);
   }
 
-  private void writeOntologyModelToFile(OntModel ontModel) {
-    final SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss", Locale.getDefault());
-    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-    try (OutputStream fos = new FileOutputStream(String.format(Locale.getDefault(), 
-            "podaac_datasets_%s.owl", sdf.format(timestamp)));
-            Writer writer = new OutputStreamWriter(fos, Charset.defaultCharset())){
-      ontModel.write(writer);
-    } catch (IOException e) {
-      LOG.error("Error whilst writing Ontology to file.", e);
+  private void writeOntologyModel(OntModel ontModel, Properties props) {
+    switch (props.getProperty("eskg.storage", "file")) {
+      case "cor":
+        ESIPCORClient corClient = new ESIPCORClient();
+        corClient.write(ontModel, props);
+        break;
+      case "semanticportal":
+        //ESIPSemanticPortalClient.write(ontModel, props);
+        break;
+      default:
+        LocalFileClient lClient = new LocalFileClient();
+        lClient.write(ontModel, props);
+        break;
     }
-    LOG.info("Successfully wrote Ontology Model.");
   }
 
   private void buildIndividual(DIF dif, Individual gcmdDif) {
@@ -314,7 +307,7 @@ public class PODAACOntologyMapper implements ObjectMapper {
     //Summary
     Summary summary = dif.getSummary();
     if (summary != null) {
-      for (Iterator iterator = summary.getContent().iterator(); iterator.hasNext();) {
+      for (Iterator<?> iterator = summary.getContent().iterator(); iterator.hasNext();) {
         gcmdDif.addProperty(p("hasSummary"), l(iterator.next()));
       }
 
@@ -332,6 +325,7 @@ public class PODAACOntologyMapper implements ObjectMapper {
 
   }
 
+  @SuppressWarnings("unused")
   private static Resource r(String localname) {
     return ResourceFactory.createResource(MUDROD_GCMD_DIF_9_8_2_NS + localname);
   }
@@ -348,6 +342,7 @@ public class PODAACOntologyMapper implements ObjectMapper {
     }
   }
 
+  @SuppressWarnings("unused")
   private static Literal l(String lexicalform, RDFDatatype datatype) {
     return ResourceFactory.createTypedLiteral(lexicalform, datatype);
   }
@@ -358,6 +353,6 @@ public class PODAACOntologyMapper implements ObjectMapper {
     dif.setEntryID("Sample_Entry_ID");
     difList.add(dif);
     PODAACOntologyMapper mapper = new PODAACOntologyMapper();
-    mapper.map(difList);
+    mapper.map(difList, new Properties());
   }
 }

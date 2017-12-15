@@ -94,11 +94,11 @@ public class ContactAddress {
      * Objects of the following type(s) are allowed in the list
      * {@link String }
      * 
-     * 
+     * @return the address List
      */
     public List<String> getAddress() {
         if (address == null) {
-            address = new ArrayList<String>();
+            address = new ArrayList<>();
         }
         return this.address;
     }

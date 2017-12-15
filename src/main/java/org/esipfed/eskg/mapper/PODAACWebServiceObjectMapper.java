@@ -15,6 +15,7 @@ package org.esipfed.eskg.mapper;
 
 import java.io.ByteArrayInputStream;
 import java.util.List;
+import java.util.Properties;
 
 import org.esipfed.eskg.structures.DIF;
 import org.esipfed.eskg.structures.DataCenter;
@@ -385,7 +386,7 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
   }
 
   @Override
-  public void map(List<DIF> pojoList) {
+  public void map(List<DIF> pojoList, Properties props) {
     // TODO Auto-generated method stub
 
   }

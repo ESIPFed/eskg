@@ -274,7 +274,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link DataSetCitation }
      * 
-     * 
+     * @return the List of DataSetCitation's
      */
     public List<DataSetCitation> getDataSetCitation() {
         if (dataSetCitation == null) {
@@ -303,7 +303,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link Personnel }
      * 
-     * 
+     * @return the List of Personnel
      */
     public List<Personnel> getPersonnel() {
         if (personnel == null) {
@@ -332,7 +332,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link Discipline }
      * 
-     * 
+     * @return the List of Disciplines
      */
     public List<Discipline> getDiscipline() {
         if (discipline == null) {
@@ -361,7 +361,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link Parameters }
      * 
-     * 
+     * @return the List of Parameter's
      */
     public List<Parameters> getParameters() {
         if (parameters == null) {
@@ -390,7 +390,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link String }
      * 
-     * 
+     * @return the List of ISOTopicCategories
      */
     public List<String> getISOTopicCategory() {
         if (isoTopicCategory == null) {
@@ -419,7 +419,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link String }
      * 
-     * 
+     * @return the List of Keywords
      */
     public List<String> getKeyword() {
         if (keyword == null) {
@@ -448,7 +448,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link SensorName }
      * 
-     * 
+     * @return the List of SensorNames
      */
     public List<SensorName> getSensorName() {
         if (sensorName == null) {
@@ -477,7 +477,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link SourceName }
      * 
-     * 
+     * @return the List of SourceName's
      */
     public List<SourceName> getSourceName() {
         if (sourceName == null) {
@@ -506,7 +506,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link TemporalCoverage }
      * 
-     * 
+     * @return the List of TemporalCoverage's
      */
     public List<TemporalCoverage> getTemporalCoverage() {
         if (temporalCoverage == null) {
@@ -535,7 +535,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link PaleoTemporalCoverage }
      * 
-     * 
+     * @return the List of PaleoTemporalCoverage's
      */
     public List<PaleoTemporalCoverage> getPaleoTemporalCoverage() {
         if (paleoTemporalCoverage == null) {
@@ -588,7 +588,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link SpatialCoverage }
      * 
-     * 
+     * @return the List of SpatialCoverage's
      */
     public List<SpatialCoverage> getSpatialCoverage() {
         if (spatialCoverage == null) {
@@ -617,7 +617,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link Location }
      * 
-     * 
+     * @return the List of Location's
      */
     public List<Location> getLocation() {
         if (location == null) {
@@ -646,7 +646,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link DataResolution }
      * 
-     * 
+     * @return the List of Dataresolution's
      */
     public List<DataResolution> getDataResolution() {
         if (dataResolution == null) {
@@ -675,7 +675,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link Project }
      * 
-     * 
+     * @return the List of Projects
      */
     public List<Project> getProject() {
         if (project == null) {
@@ -776,7 +776,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link String }
      * 
-     * 
+     * @return the List of DataSetLanguages
      */
     public List<String> getDataSetLanguage() {
         if (dataSetLanguage == null) {
@@ -829,7 +829,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link DataCenter }
      * 
-     * 
+     * @return the List of DataCenter's
      */
     public List<DataCenter> getDataCenter() {
         if (dataCenter == null) {
@@ -858,7 +858,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link Distribution }
      * 
-     * 
+     * @return the List of Distributions
      */
     public List<Distribution> getDistribution() {
         if (distribution == null) {
@@ -887,7 +887,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link MultimediaSample }
      * 
-     * 
+     * @return the List of MultimediaSample's
      */
     public List<MultimediaSample> getMultimediaSample() {
         if (multimediaSample == null) {
@@ -916,7 +916,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link Reference }
      * 
-     * 
+     * @return the List of References
      */
     public List<Reference> getReference() {
         if (reference == null) {
@@ -969,7 +969,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link RelatedURL }
      * 
-     * 
+     * @return the List of RelatedURLs
      */
     public List<RelatedURL> getRelatedURL() {
         if (relatedURL == null) {
@@ -998,7 +998,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link String }
      * 
-     * 
+     * @return the List of ParentDIF's
      */
     public List<String> getParentDIF() {
         if (parentDIF == null) {
@@ -1027,7 +1027,7 @@ public class DIF {
      * Objects of the following type(s) are allowed in the list
      * {@link IDNNode }
      * 
-     * 
+     * @return the List of IDNNodes
      */
     public List<IDNNode> getIDNNode() {
         if (idnNode == null) {

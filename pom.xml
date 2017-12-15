@@ -397,6 +397,12 @@
       <type>pom</type>
       <version>${jena.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-rs-client</artifactId>
+      <version>3.0.15</version>
+      <scope>compile</scope>
+    </dependency>
 
     <!-- OpenIE -->
     <dependency>

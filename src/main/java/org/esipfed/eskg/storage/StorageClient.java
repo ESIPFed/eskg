@@ -11,4 +11,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.esipfed.eskg.portalservice;
+package org.esipfed.eskg.storage;
+
+import java.util.Properties;
+
+import org.apache.jena.ontology.OntModel;
+
+/**
+ * Interface providing key functionality for interacting with 
+ * ontology models at various locations.
+ * @author lewismc
+ */
+@FunctionalInterface
+public interface StorageClient {
+  
+  /** Write an ontology model
+   * 
+   * @param ontModel the {@link org.apache.jena.ontology.OntModel} to be written
+   * @param props runtime properties used by the storage client implementation
+   */
+  public void write(OntModel ontModel, Properties props);
+
+}
