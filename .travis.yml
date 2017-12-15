@@ -20,7 +20,7 @@ jdk:
 
 script:
   - jdk_switcher use oraclejdk8
-  - mvn test javadoc:aggregate
+  - MAVEN_OPTS="-Dorg.slf4j.simpleLogger.defaultLogLevel=ERROR" mvn --batch-mode test javadoc:aggregate
 #after_success:
 #  - mvn jacoco:report org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.host.url=https://sonarqube.com -Dsonar.login=803861c9f2087ac0b7ca049677f0f7382b8476b7
 #  - bash <(curl -s https://codecov.io/bash)
