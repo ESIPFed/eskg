@@ -51,7 +51,7 @@ import org.w3c.dom.NodeList;
 public class PODAACWebServiceClient {
 
   private static final Logger LOG = LoggerFactory.getLogger(PODAACWebServiceClient.class);
-  private static final String ESKG_DEFAULT_PROPERTIES_FILE = "gora.properties";
+  private static final String ESKG_DEFAULT_PROPERTIES_FILE = "eskg.properties";
   private Properties props;
 
   /*
@@ -80,7 +80,8 @@ public class PODAACWebServiceClient {
    * Core function which encapsulates all data acquisition and model mapping for
    * PO.DAAC Dataset Search and Dataset Metadata WebServices.
    * 
-   * @throws IOException if there is an issue querying the PO.DAAC Webservices
+   * @throws IOException
+   *           if there is an issue querying the PO.DAAC Webservices
    */
   public void fetchDatasets() throws IOException {
     List<String> gcmdDatasetList = new ArrayList<>();
@@ -106,7 +107,7 @@ public class PODAACWebServiceClient {
 
     // add request header
     request.addHeader("User-Agent", "ESKG PO.DAAC WebService Client");
-    LOG.info("Executing GET request: {}", request.toString());
+    LOG.info("Executing: {}", request.toString());
     HttpResponse response = client.execute(request);
 
     LOG.info("Response Code : {}", response.getStatusLine().getStatusCode());
@@ -114,7 +115,7 @@ public class PODAACWebServiceClient {
     BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), Charset.defaultCharset()));
 
     StringBuilder result = new StringBuilder();
-    String line = "";
+    String line;
     while ((line = rd.readLine()) != null) {
       result.append(line);
     }
@@ -173,14 +174,17 @@ public class PODAACWebServiceClient {
   }
 
   /**
-   * Method accepts a list of URLs which point to individual
-   * GCMD manifestations of PO.DAAC Datasets. These URLs are fetched
-   * and the XML results are mapped individually into a PO.DAAC Datasets
-   * Ontology.
-   * @param gcmdDatasetList an {@link java.util.List<String>} of URLs which
-   * represent GCMD manifestations of PO.DAAC datasets. An example would be 
-   * http://podaac.jpl.nasa.gov/ws/metadata/dataset&ampdatasetId=PODAAC-PATHF-5DD50&ampformat=gcmd
-   * @return 
+   * Method accepts a list of URLs which point to individual GCMD manifestations
+   * of PO.DAAC Datasets. These URLs are fetched and the XML results are mapped
+   * individually into a PO.DAAC Datasets Ontology.
+   * 
+   * @param gcmdDatasetList
+   *          an {@link java.util.List<String>} of URLs which represent GCMD
+   *          manifestations of PO.DAAC datasets. An example would be
+   *          http://podaac
+   *          .jpl.nasa.gov/ws/metadata/dataset&ampdatasetId=PODAAC-
+   *          PATHF-5DD50&ampformat=gcmd
+   * @return
    */
   private List<DIF> retrieveGCMDRecords(List<String> gcmdDatasetList) {
     List<DIF> gcmdXMLPOJORecords = new ArrayList<>();
@@ -194,6 +198,7 @@ public class PODAACWebServiceClient {
     return gcmdXMLPOJORecords;
 
   }
+
   private DIF parseGCMDXML(ByteArrayInputStream gcmdXmlByteArrayInputStream) {
     PODAACWebServiceObjectMapper objectMapper = new PODAACWebServiceObjectMapper();
     return (DIF) objectMapper.map(MapperID.PODAAC_GCMD.name(), gcmdXmlByteArrayInputStream);
@@ -204,15 +209,15 @@ public class PODAACWebServiceClient {
    * resources. This properties object can be modified and used to instantiate
    * store instances. It is recommended to use a properties object for a single
    * store, because the properties object is passed on to store initialization
-   * methods that are able to store the properties as a field.   
+   * methods that are able to store the properties as a field.
+   * 
    * @return The new properties object.
    */
   private void createProps() {
     try {
       Properties properties = new Properties();
-      InputStream stream = PODAACWebServiceClient.class.getClassLoader()
-              .getResourceAsStream(ESKG_DEFAULT_PROPERTIES_FILE);
-      if(stream != null) {
+      InputStream stream = PODAACWebServiceClient.class.getClassLoader().getResourceAsStream(ESKG_DEFAULT_PROPERTIES_FILE);
+      if (stream != null) {
         try {
           properties.load(stream);
           props = properties;
@@ -222,13 +227,16 @@ public class PODAACWebServiceClient {
       } else {
         LOG.warn(ESKG_DEFAULT_PROPERTIES_FILE + " not found, properties will be empty.");
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       throw new RuntimeException(e);
     }
   }
+
   /**
-   * @param args no args required 
-   * @throws IOException if there is an issue querying the PO.DAAC Webservice
+   * @param args
+   *          no args required
+   * @throws IOException
+   *           if there is an issue querying the PO.DAAC Webservice
    */
   public static void main(String[] args) throws IOException {
     PODAACWebServiceClient client = new PODAACWebServiceClient();

@@ -18,17 +18,21 @@ import java.util.Properties;
 import org.apache.jena.ontology.OntModel;
 
 /**
- * Interface providing key functionality for interacting with 
- * ontology models at various locations.
+ * Interface providing key functionality for interacting with ontology models at
+ * various locations.
+ * 
  * @author lewismc
  */
 @FunctionalInterface
 public interface StorageClient {
-  
-  /** Write an ontology model
+
+  /**
+   * Write an ontology model
    * 
-   * @param ontModel the {@link org.apache.jena.ontology.OntModel} to be written
-   * @param props runtime properties used by the storage client implementation
+   * @param ontModel
+   *          the {@link org.apache.jena.ontology.OntModel} to be written
+   * @param props
+   *          runtime properties used by the storage client implementation
    */
   public void write(OntModel ontModel, Properties props);
 

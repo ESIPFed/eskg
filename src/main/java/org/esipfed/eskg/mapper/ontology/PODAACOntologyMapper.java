@@ -14,12 +14,13 @@
 package org.esipfed.eskg.mapper.ontology;
 
 import java.io.ByteArrayInputStream;
+import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
 import org.apache.jena.datatypes.RDFDatatype;
+import org.apache.jena.datatypes.xsd.XSDDatatype;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
@@ -33,6 +34,7 @@ import org.esipfed.eskg.mapper.ObjectMapper;
 import org.esipfed.eskg.storage.ESIPCORClient;
 //import org.esipfed.eskg.storage.ESIPSemanticPortalClient;
 import org.esipfed.eskg.storage.LocalFileClient;
+import org.esipfed.eskg.structures.ContactAddress;
 import org.esipfed.eskg.structures.DIF;
 import org.esipfed.eskg.structures.DataCenter;
 import org.esipfed.eskg.structures.DataCenterName;
@@ -55,12 +57,11 @@ import org.esipfed.eskg.structures.TemporalCoverage;
  */
 public class PODAACOntologyMapper implements ObjectMapper {
 
-  private static final String SWEET_REPR_DATA_PRODUCT = 
-          "https://sweetontology.net/reprDataProduct";
-  private static final String SWEET_REPR_DATA_PRODUCT_NS = SWEET_REPR_DATA_PRODUCT + "#";
-  private static final String MUDROD_GCMD_DIF_9_8_2 = 
-          "https://raw.githubusercontent.com/mudrod/mudrod_ontologies/master/dif_v9.8.2.owl";
-  private static final String MUDROD_GCMD_DIF_9_8_2_NS = MUDROD_GCMD_DIF_9_8_2 + "#";
+  private static final String SWEET_REPR_DATA_PRODUCT = "http://sweetontology.net/reprDataProduct";
+  private static final String SWEET_REPR_DATA_PRODUCT_NS = SWEET_REPR_DATA_PRODUCT + "/";
+  private static final String MUDROD_GCMD_DIF_9_8_2 = "https://raw.githubusercontent.com/mudrod/mudrod_ontologies/master/dif_v9.8.2.owl";
+  private static final String MUDROD_GCMD_DIF_9_8_2_NS = MUDROD_GCMD_DIF_9_8_2 + "/";
+
   /**
    * 
    */
@@ -77,17 +78,19 @@ public class PODAACOntologyMapper implements ObjectMapper {
   public void map(List<DIF> pojoList, Properties props) {
     // create the base model
     OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
-    ontModel.read(SWEET_REPR_DATA_PRODUCT, "TTL");
+    ontModel.setNsPrefix("dif_v9.8.2", MUDROD_GCMD_DIF_9_8_2);
+    ontModel.read(SWEET_REPR_DATA_PRODUCT, null, "TURTLE");
 
-    // get the reprDataProduct.owl#Dataset class reference
+    // get the https://sweetontology.net/reprDataProduct/Dataset class reference
     Resource dataset = ontModel.getResource(SWEET_REPR_DATA_PRODUCT_NS + "Dataset");
-    // create the reprDataProduct.owl#PODAACDataset class reference
+    // create the https://sweetontology.net/reprDataProduct/PODAACDataset class
+    // reference
     OntClass podaacDataset = ontModel.createClass(SWEET_REPR_DATA_PRODUCT_NS + "PODAACDataset");
-    // make reprDataProduct.owl#PODAACDataset a subclass of reprDataProduct.owl#Dataset
+    // make PODAACDataset a subclass of Dataset
     podaacDataset.addSuperClass(dataset);
-    // create an individual for each DIF POJO with the  
+    // create an individual for each DIF POJO
     for (DIF dif : pojoList) {
-      Individual gcmdDif = podaacDataset.createIndividual(SWEET_REPR_DATA_PRODUCT_NS + dif.getEntryID());
+      Individual gcmdDif = podaacDataset.createIndividual("http://cor.esipfed.org/ont/eskg/" + dif.getEntryID());
       buildIndividual(dif, gcmdDif);
     }
     writeOntologyModel(ontModel, props);
@@ -96,224 +99,281 @@ public class PODAACOntologyMapper implements ObjectMapper {
   private void writeOntologyModel(OntModel ontModel, Properties props) {
     switch (props.getProperty("eskg.storage", "file")) {
       case "cor":
-        ESIPCORClient corClient = new ESIPCORClient();
-        corClient.write(ontModel, props);
-        break;
+      ESIPCORClient corClient = new ESIPCORClient();
+      corClient.write(ontModel, props);
+      break;
       case "semanticportal":
-        //ESIPSemanticPortalClient.write(ontModel, props);
-        break;
+      // ESIPSemanticPortalClient.write(ontModel, props);
+      break;
       default:
-        LocalFileClient lClient = new LocalFileClient();
-        lClient.write(ontModel, props);
-        break;
+      LocalFileClient lClient = new LocalFileClient();
+      lClient.write(ontModel, props);
+      break;
     }
   }
 
   private void buildIndividual(DIF dif, Individual gcmdDif) {
 
-    //TODO use Data Types within Literal value assignments
-    //Entry_ID
+    gcmdDif.addVersionInfo(new Timestamp(System.currentTimeMillis()).toInstant().toString());
+    // Entry_ID
     gcmdDif.addProperty(p("hasEntryID"), l(dif.getEntryID()));
-    //Entry_Title
-    gcmdDif.addProperty(p("hasEntryTitle"), l(dif.getEntryTitle()));
-    //ISO_Topic_Category
+    // Entry_Title
+    gcmdDif.addProperty(p("hasEntryTitle"), dif.getEntryTitle(), "en");
+    // ISO_Topic_Category
     for (String isoTopicCategory : dif.getISOTopicCategory()) {
-      gcmdDif.addProperty(p("hasISOTopicCategory"), l(isoTopicCategory));
+      gcmdDif.addProperty(p("hasISOTopicCategory"), isoTopicCategory, "en");
     }
-    //Access_Constraints
-    gcmdDif.addProperty(p("hasAccessConstraints"), l(dif.getAccessConstraints()));
-    //Use_Constraints
-    gcmdDif.addProperty(p("hasUseConstraints"), l(dif.getUseConstraints()));
-    //Data_Set_Language
-    gcmdDif.addProperty(p("hasDataSetLanguage"), l(dif.getDataSetLanguage()));
-    //Originating_Center
-    gcmdDif.addProperty(p("hasOriginatingCenter"), l(dif.getOriginatingCenter()));
-    //Metadata_Name
-    gcmdDif.addProperty(p("hasMetadataName"), l(dif.getMetadataName()));
-    //Metadata_Version
-    gcmdDif.addProperty(p("hasMetadataVersion"), l(dif.getMetadataVersion()));
-    //DIF_Creation_Date
-    gcmdDif.addProperty(p("hasDIFCreationDate"), l(dif.getDIFCreationDate()));
-    //Last_DIF_Revision_Date
-    gcmdDif.addProperty(p("hasLastDIFRevisionDate"), l(dif.getLastDIFRevisionDate()));
-    //DIF_Revision_History
-    gcmdDif.addProperty(p("hasDIFRevisionHistory"), l(dif.getDIFRevisionHistory()));
+    // Access_Constraints
+    gcmdDif.addProperty(p("hasAccessConstraints"), dif.getAccessConstraints(), "en");
+    // Use_Constraints
+    gcmdDif.addProperty(p("hasUseConstraints"), dif.getUseConstraints(), "en");
+    // Data_Set_Language
+    for (int i = 0; i < dif.getDataSetLanguage().size(); i++) {
+      gcmdDif.addProperty(p("hasDataSetLanguage"), dif.getDataSetLanguage().get(i), "en");
+    }
+    // Originating_Center
+    if (dif.getOriginatingCenter() != null) {
+      gcmdDif.addProperty(p("hasOriginatingCenter"), dif.getOriginatingCenter(), "en");
+    }
+    // Metadata_Name
+    gcmdDif.addProperty(p("hasMetadataName"), dif.getMetadataName(), "en");
+    // Metadata_Version
+    gcmdDif.addLiteral(p("hasMetadataVersion"), Float.parseFloat(dif.getMetadataVersion()));
+    // DIF_Creation_Date
+    gcmdDif.addProperty(p("hasDIFCreationDate"), dif.getDIFCreationDate(), XSDDatatype.XSDdate);
+    // Last_DIF_Revision_Date
+    gcmdDif.addProperty(p("hasLastDIFRevisionDate"), dif.getLastDIFRevisionDate(), XSDDatatype.XSDdate);
+    // DIF_Revision_History
+    gcmdDif.addProperty(p("hasDIFRevisionHistory"), dif.getDIFRevisionHistory(), "en");
 
-    //Data_Set_Citation
+    // Data_Set_Citation
     for (DataSetCitation dataSetCitation : dif.getDataSetCitation()) {
-      gcmdDif.addProperty(p("hasDataSetCitationDatasetCreator"), l(dataSetCitation.getDatasetCreator()));
-      gcmdDif.addProperty(p("hasDataSetCitationDatasetTitle"), l(dataSetCitation.getDatasetTitle()));
-      gcmdDif.addProperty(p("hasDataSetCitationDatasetSeriesName"), l(dataSetCitation.getDatasetSeriesName()));
-      gcmdDif.addProperty(p("hasDataSetCitationDatasetReleaseDate"), l(dataSetCitation.getDatasetReleaseDate()));
-      gcmdDif.addProperty(p("hasDataSetCitationDatasetReleasePlace"), l(dataSetCitation.getDatasetReleasePlace()));
-      gcmdDif.addProperty(p("hasDataSetCitationDatasetPublisher"), l(dataSetCitation.getDatasetPublisher()));
-      gcmdDif.addProperty(p("hasDataSetCitationVersion"), l(dataSetCitation.getVersion()));
-      if (dataSetCitation.getOtherCitationDetails() != null) {
-        gcmdDif.addProperty(p("hasDataSetCitationOtherCitationDetails"), l(dataSetCitation.getOtherCitationDetails()));
+      gcmdDif.addProperty(p("hasDataSetCitationDatasetCreator"), dataSetCitation.getDatasetCreator(), "en");
+      gcmdDif.addProperty(p("hasDataSetCitationDatasetTitle"), dataSetCitation.getDatasetTitle(), "en");
+      if (dataSetCitation.getDatasetSeriesName() != null) {
+        gcmdDif.addProperty(p("hasDataSetCitationDatasetSeriesName"), dataSetCitation.getDatasetSeriesName(), "en");
       }
+      gcmdDif.addProperty(p("hasDataSetCitationDatasetReleaseDate"), dataSetCitation.getDatasetReleaseDate(), XSDDatatype.XSDdate);
+      if (dataSetCitation.getDatasetReleasePlace() != null) {
+        gcmdDif.addProperty(p("hasDataSetCitationDatasetReleasePlace"), dataSetCitation.getDatasetReleasePlace(), "en");
+      }
+      if (dataSetCitation.getDatasetPublisher() != null) {
+        gcmdDif.addProperty(p("hasDataSetCitationDatasetPublisher"), dataSetCitation.getDatasetPublisher(), "en");
+      }
+      try {
+        gcmdDif.addLiteral(p("hasDataSetCitationVersion"), Float.parseFloat(dataSetCitation.getVersion()));
+      } catch (NumberFormatException e) {
+        gcmdDif.addLiteral(p("hasDataSetCitationVersion"), l(dataSetCitation.getVersion()));
+      }
+      
+      if (dataSetCitation.getOtherCitationDetails() != null) {
+        gcmdDif.addProperty(p("hasDataSetCitationOtherCitationDetails"), dataSetCitation.getOtherCitationDetails(), "en");
+      }
+      //possibility of URL data type?
       gcmdDif.addProperty(p("hasDataSetCitationOnlineResource"), l(dataSetCitation.getOnlineResource()));
     }
 
-    //Personnel
+    // Personnel
     for (Personnel personnel : dif.getPersonnel()) {
-      gcmdDif.addProperty(p("hasPersonnelRole"), l(personnel.getRole()));
-      gcmdDif.addProperty(p("hasPersonnelFirstName"), l(personnel.getFirstName()));
-      gcmdDif.addProperty(p("hasPersonnelLastName"), l(personnel.getLastName()));
-      gcmdDif.addProperty(p("hasPersonnelEmail"), l(personnel.getEmail()));
-      gcmdDif.addProperty(p("hasPersonnelFax"), l(personnel.getFax()));
+      for (int i = 0; i < personnel.getFax().size(); i++) {
+        gcmdDif.addProperty(p("hasPersonnelRole"), personnel.getRole().get(i), "en");
+      }
+      gcmdDif.addProperty(p("hasPersonnelFirstName"), personnel.getFirstName(), "en");
+      gcmdDif.addProperty(p("hasPersonnelLastName"), personnel.getLastName(), "en");
+      for (int i = 0; i < personnel.getEmail().size(); i++) {
+        gcmdDif.addProperty(p("hasPersonnelEmail"), personnel.getEmail().get(i), "en");
+      }
+      for (int i = 0; i < personnel.getFax().size(); i++) {
+        gcmdDif.addProperty(p("hasPersonnelFax"), l(personnel.getFax().get(i)));
+      }
     }
 
-    //Parameters
+    // Parameters
     for (Parameters parameter : dif.getParameters()) {
-      gcmdDif.addProperty(p("hasParameterCategory"), l(parameter.getCategory()));
-      gcmdDif.addProperty(p("hasParameterTopic"), l(parameter.getTopic()));
-      gcmdDif.addProperty(p("hasParameterTerm"), l(parameter.getTerm()));
-      gcmdDif.addProperty(p("hasParameterVariableLevel1"), l(parameter.getVariableLevel1()));
+      gcmdDif.addProperty(p("hasParameterCategory"), parameter.getCategory(), "en");
+      gcmdDif.addProperty(p("hasParameterTopic"), parameter.getTopic(), "en");
+      gcmdDif.addProperty(p("hasParameterTerm"), parameter.getTerm(), "en");
+      gcmdDif.addProperty(p("hasParameterVariableLevel1"), parameter.getVariableLevel1(), "en");
       if (parameter.getVariableLevel2() != null) {
-        gcmdDif.addProperty(p("hasParameterVariableLevel2"), l(parameter.getVariableLevel2()));
+        gcmdDif.addProperty(p("hasParameterVariableLevel2"), parameter.getVariableLevel2(), "en");
       }
       if (parameter.getVariableLevel3() != null) {
-        gcmdDif.addProperty(p("hasParameterVariableLevel3"), l(parameter.getVariableLevel3()));
+        gcmdDif.addProperty(p("hasParameterVariableLevel3"), parameter.getVariableLevel3(), "en");
       }
     }
 
-    //Sensor_Name
+    // Sensor_Name
     for (SensorName sensorName : dif.getSensorName()) {
-      gcmdDif.addProperty(p("hasSensorNameShortName"), l(sensorName.getShortName()));
-      gcmdDif.addProperty(p("hasSensorNameLongName"), l(sensorName.getLongName()));
+      gcmdDif.addProperty(p("hasSensorNameShortName"), sensorName.getShortName(), "en");
+      gcmdDif.addProperty(p("hasSensorNameLongName"), sensorName.getLongName(), "en");
     }
 
-    //Source_Name
+    // Source_Name
     for (SourceName sourceName : dif.getSourceName()) {
-      gcmdDif.addProperty(p("hasSourceNameShortName"), l(sourceName.getShortName()));
-      gcmdDif.addProperty(p("hasSourceNameLongName"), l(sourceName.getLongName()));
+      gcmdDif.addProperty(p("hasSourceNameShortName"), sourceName.getShortName(), "en");
+      gcmdDif.addProperty(p("hasSourceNameLongName"), sourceName.getLongName(), "en");
     }
 
-    //Temporal_Coverage
+    // Temporal_Coverage
     for (TemporalCoverage temporalCoverage : dif.getTemporalCoverage()) {
       if (temporalCoverage.getStartDate() != null) {
-        gcmdDif.addProperty(p("hasTemporalCoverageStartDate"), l(temporalCoverage.getStartDate()));
+        gcmdDif.addProperty(p("hasTemporalCoverageStartDate"), temporalCoverage.getStartDate(), XSDDatatype.XSDdate);
       }
       if (temporalCoverage.getStopDate() != null) {
-        gcmdDif.addProperty(p("hasTemporalCoverageStopDate"), l(temporalCoverage.getStopDate()));
+        gcmdDif.addProperty(p("hasTemporalCoverageStopDate"), temporalCoverage.getStopDate(), XSDDatatype.XSDdate);
       }
     }
 
-    //Spatial_Coverage
+    // Spatial_Coverage
     for (SpatialCoverage spatialCoverage : dif.getSpatialCoverage()) {
-      gcmdDif.addProperty(p("hasSpatialCoverageEasternmostLongitude"), l(spatialCoverage.getEasternmostLongitude()));
+      try {
+        if (spatialCoverage.getEasternmostLongitude() != null) {
+          gcmdDif.addLiteral(p("hasSpatialCoverageEasternmostLongitude"), Float.parseFloat(spatialCoverage.getEasternmostLongitude()));
+        }
+      } catch (NumberFormatException e) {
+        gcmdDif.addLiteral(p("hasSpatialCoverageEasternmostLongitude"), l(spatialCoverage.getEasternmostLongitude()));
+      }
+      
       if (spatialCoverage.getMaximumAltitude() != null) {
-        gcmdDif.addProperty(p("hasSpatialCoverageMaximumAltitude"), l(spatialCoverage.getMaximumAltitude()));
+        gcmdDif.addLiteral(p("hasSpatialCoverageMaximumAltitude"), Float.parseFloat(spatialCoverage.getMaximumAltitude()));
       }
       if (spatialCoverage.getMaximumDepth() != null) {
-        gcmdDif.addProperty(p("hasSpatialCoverageMaximumDepth"), l(spatialCoverage.getMaximumDepth()));
+        gcmdDif.addLiteral(p("hasSpatialCoverageMaximumDepth"), Float.parseFloat(spatialCoverage.getMaximumDepth()));
       }
       if (spatialCoverage.getMinimumAltitude() != null) {
-        gcmdDif.addProperty(p("hasSpatialCoverageMinimumAltitude"), l(spatialCoverage.getMinimumAltitude()));
+        gcmdDif.addLiteral(p("hasSpatialCoverageMinimumAltitude"), Float.parseFloat(spatialCoverage.getMinimumAltitude()));
       }
       if (spatialCoverage.getMinimumDepth() != null) {
-        gcmdDif.addProperty(p("hasSpatialCoverageMinimumDepth"), l(spatialCoverage.getMinimumDepth()));
+        gcmdDif.addLiteral(p("hasSpatialCoverageMinimumDepth"), Float.parseFloat(spatialCoverage.getMinimumDepth()));
       }
-      gcmdDif.addProperty(p("hasSpatialCoverageNorthernmostLatitude"), l(spatialCoverage.getNorthernmostLatitude()));
-      gcmdDif.addProperty(p("hasSpatialCoverageSouthernmostLatitude"), l(spatialCoverage.getSouthernmostLatitude()));
-      gcmdDif.addProperty(p("hasSpatialCoverageWesternmostLongitude"), l(spatialCoverage.getWesternmostLongitude()));
+      try {
+        if (spatialCoverage.getNorthernmostLatitude() != null) {
+          gcmdDif.addLiteral(p("hasSpatialCoverageNorthernmostLatitude"), Float.parseFloat(spatialCoverage.getNorthernmostLatitude()));
+        }
+      } catch (NumberFormatException e) {
+        gcmdDif.addLiteral(p("hasSpatialCoverageNorthernmostLatitude"), l(spatialCoverage.getNorthernmostLatitude()));
+      }
+      try {
+        if (spatialCoverage.getSouthernmostLatitude() != null) {
+          gcmdDif.addLiteral(p("hasSpatialCoverageSouthernmostLatitude"), Float.parseFloat(spatialCoverage.getSouthernmostLatitude()));
+        }
+      } catch (NumberFormatException e) {
+        gcmdDif.addLiteral(p("hasSpatialCoverageSouthernmostLatitude"), l(spatialCoverage.getSouthernmostLatitude()));
+      }
+      try {
+        if (spatialCoverage.getWesternmostLongitude() != null) {
+          gcmdDif.addLiteral(p("hasSpatialCoverageWesternmostLongitude"), Float.parseFloat(spatialCoverage.getWesternmostLongitude()));
+        }
+      } catch (NumberFormatException e) {
+        gcmdDif.addLiteral(p("hasSpatialCoverageWesternmostLongitude"), l(spatialCoverage.getWesternmostLongitude()));
+      }
     }
 
-    //Location
+    // Location
     for (Location location : dif.getLocation()) {
       if (location.getDetailedLocation() != null) {
-        gcmdDif.addProperty(p("hasLocationDetailedLocation"), l(location.getDetailedLocation()));
+        gcmdDif.addProperty(p("hasLocationDetailedLocation"), location.getDetailedLocation(), "en");
       }
-      gcmdDif.addProperty(p("hasLocationLocationCategory"), l(location.getLocationCategory()));
+      gcmdDif.addProperty(p("hasLocationLocationCategory"), location.getLocationCategory(), "en");
       if (location.getLocationSubregion1() != null) {
-        gcmdDif.addProperty(p("hasLocationLocationSubregion1"), l(location.getLocationSubregion1()));
+        gcmdDif.addProperty(p("hasLocationLocationSubregion1"), location.getLocationSubregion1(), "en");
       }
       if (location.getLocationSubregion2() != null) {
-        gcmdDif.addProperty(p("hasLocationLocationSubregion2"), l(location.getLocationSubregion2()));
+        gcmdDif.addProperty(p("hasLocationLocationSubregion2"), location.getLocationSubregion2(), "en");
       }
       if (location.getLocationSubregion3() != null) {
-        gcmdDif.addProperty(p("hasLocationLocationSubregion3"), l(location.getLocationSubregion3()));
+        gcmdDif.addProperty(p("hasLocationLocationSubregion3"), location.getLocationSubregion3(), "en");
       }
-      gcmdDif.addProperty(p("hasLocationLocationType"), l(location.getLocationType()));
+      gcmdDif.addProperty(p("hasLocationLocationType"), location.getLocationType(), "en");
     }
 
-    //Data_Resolution
+    // Data_Resolution
     for (DataResolution dataResolution : dif.getDataResolution()) {
       if (dataResolution.getHorizontalResolutionRange() != null) {
-        gcmdDif.addProperty(p("hasDataResolutionHorizontalResolutionRange"), l(dataResolution.getHorizontalResolutionRange()));
+        gcmdDif.addProperty(p("hasDataResolutionHorizontalResolutionRange"), dataResolution.getHorizontalResolutionRange(), "en");
       }
       if (dataResolution.getLatitudeResolution() != null) {
-        gcmdDif.addProperty(p("hasDataResolutionLatitudeResolution"), l(dataResolution.getLatitudeResolution()));
+        gcmdDif.addLiteral(p("hasDataResolutionLatitudeResolution"), Float.parseFloat(dataResolution.getLatitudeResolution()));
       }
       if (dataResolution.getLongitudeResolution() != null) {
-        gcmdDif.addProperty(p("hasDataResolutionLongitudeResolution"), l(dataResolution.getLongitudeResolution()));
+        gcmdDif.addLiteral(p("hasDataResolutionLongitudeResolution"), Float.parseFloat(dataResolution.getLongitudeResolution()));
       }
       if (dataResolution.getTemporalResolution() != null) {
-        gcmdDif.addProperty(p("hasDataResolutionTemporalResolution"), l(dataResolution.getTemporalResolution()));
+        gcmdDif.addProperty(p("hasDataResolutionTemporalResolution"), dataResolution.getTemporalResolution(), "en");
       }
       if (dataResolution.getTemporalResolutionRange() != null) {
-        gcmdDif.addProperty(p("hasDataResolutionTemporalResolutionRange"), l(dataResolution.getTemporalResolutionRange()));
+        gcmdDif.addProperty(p("hasDataResolutionTemporalResolutionRange"), dataResolution.getTemporalResolutionRange(), "en");
       }
       if (dataResolution.getVerticalResolution() != null) {
-        gcmdDif.addProperty(p("hasDataResolutionVerticalResolution"), l(dataResolution.getVerticalResolution()));
+        gcmdDif.addProperty(p("hasDataResolutionVerticalResolution"), dataResolution.getVerticalResolution(), "en");
       }
       if (dataResolution.getVerticalResolutionRange() != null) {
-        gcmdDif.addProperty(p("hasDataResolutionVerticalResolutionRange"), l(dataResolution.getVerticalResolutionRange()));
+        gcmdDif.addProperty(p("hasDataResolutionVerticalResolutionRange"), dataResolution.getVerticalResolutionRange(), "en");
       }
     }
 
-    //Project
+    // Project
     for (Project project : dif.getProject()) {
-      gcmdDif.addProperty(p("hasProjectLongName"), l(project.getLongName()));
-      gcmdDif.addProperty(p("hasProjectShortName"), l(project.getShortName()));
+      gcmdDif.addProperty(p("hasProjectLongName"), project.getLongName(), "en");
+      gcmdDif.addProperty(p("hasProjectShortName"), project.getShortName(), "en");
     }
 
-    //Data_Center
+    // Data_Center
     for (DataCenter dataCenter : dif.getDataCenter()) {
       DataCenterName dataCenterName = dataCenter.getDataCenterName();
-      gcmdDif.addProperty(p("hasDataCenterDataCenterNameLongName"), l(dataCenterName.getLongName()));
-      gcmdDif.addProperty(p("hasDataCenterDataCenterNameShortName"), l(dataCenterName.getShortName()));
+      gcmdDif.addProperty(p("hasDataCenterDataCenterNameLongName"), dataCenterName.getLongName(), "en");
+      gcmdDif.addProperty(p("hasDataCenterDataCenterNameShortName"), dataCenterName.getShortName(), "en");
       gcmdDif.addProperty(p("hasDataCenterDataCenterURL"), l(dataCenter.getDataCenterURL()));
       List<Personnel> personnelList = dataCenter.getPersonnel();
       for (Personnel personnel : personnelList) {
-        gcmdDif.addProperty(p("hasDataCenterPersonnelFirstName"), l(personnel.getFirstName()));
-        gcmdDif.addProperty(p("hasDataCenterPersonnelLastName"), l(personnel.getLastName()));
+        gcmdDif.addProperty(p("hasDataCenterPersonnelFirstName"), personnel.getFirstName(), "en");
+        gcmdDif.addProperty(p("hasDataCenterPersonnelLastName"), personnel.getLastName(), "en");
         if (personnel.getMiddleName() != null) {
-          gcmdDif.addProperty(p("hasDataCenterPersonnelMiddleName"), l(personnel.getMiddleName()));
+          gcmdDif.addProperty(p("hasDataCenterPersonnelMiddleName"), personnel.getMiddleName(), "en");
         }
         if (personnel.getContactAddress() != null) {
-          gcmdDif.addProperty(p("hasDataCenterPersonnelContactAddress"), l(personnel.getContactAddress()));
+          ContactAddress contactAddress = personnel.getContactAddress();
+          gcmdDif.addProperty(p("hasDataCenterPersonnelContactAddressCity"), contactAddress.getCity(), "en");
+          gcmdDif.addProperty(p("hasDataCenterPersonnelContactAddressCountry"), contactAddress.getCountry(), "en");
+          gcmdDif.addProperty(p("hasDataCenterPersonnelContactAddressPostalCode"), contactAddress.getPostalCode(), "en");
+          gcmdDif.addProperty(p("hasDataCenterPersonnelContactAddressProvinceOrState"), contactAddress.getProvinceOrState(), "en");
         }
         if (personnel.getEmail() != null) {
-          gcmdDif.addProperty(p("hasDataCenterPersonnelEmail"), l(personnel.getEmail()));
+          for (int i = 0; i < personnel.getEmail().size(); i++) {
+            gcmdDif.addProperty(p("hasDataCenterPersonnelEmail"), personnel.getEmail().get(i), "en");
+          }
         }
         if (personnel.getFax() != null) {
-          gcmdDif.addProperty(p("hasDataCenterPersonnelFax"), l(personnel.getFax()));
+          for (int i = 0; i < personnel.getFax().size(); i++) {
+            gcmdDif.addProperty(p("hasDataCenterPersonnelFax"), l(personnel.getFax().get(i)));
+          }
         }
         if (personnel.getPhone() != null) {
-          gcmdDif.addProperty(p("hasDataCenterPersonnelPhone"), l(personnel.getPhone()));
+          for (int i = 0; i < personnel.getPhone().size(); i++) {
+            gcmdDif.addProperty(p("hasDataCenterPersonnelPhone"), l(personnel.getPhone().get(i)));
+          }
         }
         if (personnel.getRole() != null) {
-          gcmdDif.addProperty(p("hasDataCenterPersonnelRole"), l(personnel.getRole()));
+          for (int i = 0; i < personnel.getRole().size(); i++) {
+            gcmdDif.addProperty(p("hasDataCenterPersonnelRole"), personnel.getRole().get(i), "en");
+          }
         }
       }
     }
 
-    //Reference
+    // Reference
     for (Reference reference : dif.getReference()) {
-      gcmdDif.addProperty(p("hasReference"), l(reference.toString()));
+      gcmdDif.addProperty(p("hasReference"), reference.toString(), "en");
     }
 
-    //Summary
+    // Summary
     Summary summary = dif.getSummary();
     if (summary != null) {
-      for (Iterator<?> iterator = summary.getContent().iterator(); iterator.hasNext();) {
-        gcmdDif.addProperty(p("hasSummary"), l(iterator.next()));
-      }
-
+      gcmdDif.addProperty(p("hasSummaryAbsract"), summary.getAbstract(), "en");
     }
 
-    //IDN_Node
+
+    // IDN_Node
     for (IDNNode idnNode : dif.getIDNNode()) {
       if (idnNode.getLongName() != null) {
         gcmdDif.addProperty(p("hasIDNNodeLongName"), l(idnNode.getLongName()));

@@ -26,11 +26,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -51,145 +53,124 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "file",
-    "url",
-    "format",
-    "caption",
-    "description"
-})
+@XmlType(name = "", propOrder = { "file", "url", "format", "caption", "description" })
 @XmlRootElement(name = "Multimedia_Sample")
 public class MultimediaSample {
 
-    @XmlElement(name = "File")
-    protected String file;
-    @XmlElement(name = "URL")
-    protected String url;
-    @XmlElement(name = "Format")
-    protected String format;
-    @XmlElement(name = "Caption")
-    protected String caption;
-    @XmlElement(name = "Description")
-    protected String description;
+  @XmlElement(name = "File")
+  protected String file;
+  @XmlElement(name = "URL")
+  protected String url;
+  @XmlElement(name = "Format")
+  protected String format;
+  @XmlElement(name = "Caption")
+  protected String caption;
+  @XmlElement(name = "Description")
+  protected String description;
 
-    /**
-     * Gets the value of the file property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getFile() {
-        return file;
-    }
+  /**
+   * Gets the value of the file property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getFile() {
+    return file;
+  }
 
-    /**
-     * Sets the value of the file property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setFile(String value) {
-        this.file = value;
-    }
+  /**
+   * Sets the value of the file property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setFile(String value) {
+    this.file = value;
+  }
 
-    /**
-     * Gets the value of the url property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getURL() {
-        return url;
-    }
+  /**
+   * Gets the value of the url property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getURL() {
+    return url;
+  }
 
-    /**
-     * Sets the value of the url property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setURL(String value) {
-        this.url = value;
-    }
+  /**
+   * Sets the value of the url property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setURL(String value) {
+    this.url = value;
+  }
 
-    /**
-     * Gets the value of the format property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getFormat() {
-        return format;
-    }
+  /**
+   * Gets the value of the format property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getFormat() {
+    return format;
+  }
 
-    /**
-     * Sets the value of the format property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setFormat(String value) {
-        this.format = value;
-    }
+  /**
+   * Sets the value of the format property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setFormat(String value) {
+    this.format = value;
+  }
 
-    /**
-     * Gets the value of the caption property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCaption() {
-        return caption;
-    }
+  /**
+   * Gets the value of the caption property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getCaption() {
+    return caption;
+  }
 
-    /**
-     * Sets the value of the caption property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCaption(String value) {
-        this.caption = value;
-    }
+  /**
+   * Sets the value of the caption property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setCaption(String value) {
+    this.caption = value;
+  }
 
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDescription() {
-        return description;
-    }
+  /**
+   * Gets the value of the description property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getDescription() {
+    return description;
+  }
 
-    /**
-     * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDescription(String value) {
-        this.description = value;
-    }
+  /**
+   * Sets the value of the description property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setDescription(String value) {
+    this.description = value;
+  }
 
 }

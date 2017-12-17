@@ -26,11 +26,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -52,172 +54,147 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "eon",
-    "era",
-    "period",
-    "epoch",
-    "stage",
-    "detailedClassification"
-})
+@XmlType(name = "", propOrder = { "eon", "era", "period", "epoch", "stage", "detailedClassification" })
 @XmlRootElement(name = "Chronostratigraphic_Unit")
 public class ChronostratigraphicUnit {
 
-    @XmlElement(name = "Eon", required = true)
-    protected String eon;
-    @XmlElement(name = "Era")
-    protected String era;
-    @XmlElement(name = "Period")
-    protected String period;
-    @XmlElement(name = "Epoch")
-    protected String epoch;
-    @XmlElement(name = "Stage")
-    protected String stage;
-    @XmlElement(name = "Detailed_Classification")
-    protected String detailedClassification;
+  @XmlElement(name = "Eon", required = true)
+  protected String eon;
+  @XmlElement(name = "Era")
+  protected String era;
+  @XmlElement(name = "Period")
+  protected String period;
+  @XmlElement(name = "Epoch")
+  protected String epoch;
+  @XmlElement(name = "Stage")
+  protected String stage;
+  @XmlElement(name = "Detailed_Classification")
+  protected String detailedClassification;
 
-    /**
-     * Gets the value of the eon property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getEon() {
-        return eon;
-    }
+  /**
+   * Gets the value of the eon property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getEon() {
+    return eon;
+  }
 
-    /**
-     * Sets the value of the eon property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setEon(String value) {
-        this.eon = value;
-    }
+  /**
+   * Sets the value of the eon property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setEon(String value) {
+    this.eon = value;
+  }
 
-    /**
-     * Gets the value of the era property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getEra() {
-        return era;
-    }
+  /**
+   * Gets the value of the era property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getEra() {
+    return era;
+  }
 
-    /**
-     * Sets the value of the era property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setEra(String value) {
-        this.era = value;
-    }
+  /**
+   * Sets the value of the era property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setEra(String value) {
+    this.era = value;
+  }
 
-    /**
-     * Gets the value of the period property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPeriod() {
-        return period;
-    }
+  /**
+   * Gets the value of the period property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getPeriod() {
+    return period;
+  }
 
-    /**
-     * Sets the value of the period property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPeriod(String value) {
-        this.period = value;
-    }
+  /**
+   * Sets the value of the period property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setPeriod(String value) {
+    this.period = value;
+  }
 
-    /**
-     * Gets the value of the epoch property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getEpoch() {
-        return epoch;
-    }
+  /**
+   * Gets the value of the epoch property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getEpoch() {
+    return epoch;
+  }
 
-    /**
-     * Sets the value of the epoch property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setEpoch(String value) {
-        this.epoch = value;
-    }
+  /**
+   * Sets the value of the epoch property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setEpoch(String value) {
+    this.epoch = value;
+  }
 
-    /**
-     * Gets the value of the stage property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStage() {
-        return stage;
-    }
+  /**
+   * Gets the value of the stage property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getStage() {
+    return stage;
+  }
 
-    /**
-     * Sets the value of the stage property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStage(String value) {
-        this.stage = value;
-    }
+  /**
+   * Sets the value of the stage property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setStage(String value) {
+    this.stage = value;
+  }
 
-    /**
-     * Gets the value of the detailedClassification property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDetailedClassification() {
-        return detailedClassification;
-    }
+  /**
+   * Gets the value of the detailedClassification property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getDetailedClassification() {
+    return detailedClassification;
+  }
 
-    /**
-     * Sets the value of the detailedClassification property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDetailedClassification(String value) {
-        this.detailedClassification = value;
-    }
+  /**
+   * Sets the value of the detailedClassification property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setDetailedClassification(String value) {
+    this.detailedClassification = value;
+  }
 
 }

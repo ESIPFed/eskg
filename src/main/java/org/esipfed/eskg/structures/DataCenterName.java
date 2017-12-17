@@ -26,11 +26,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -48,64 +50,55 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "shortName",
-    "longName"
-})
+@XmlType(name = "", propOrder = { "shortName", "longName" })
 @XmlRootElement(name = "Data_Center_Name")
 public class DataCenterName {
 
-    @XmlElement(name = "Short_Name", required = true)
-    protected String shortName;
-    @XmlElement(name = "Long_Name")
-    protected String longName;
+  @XmlElement(name = "Short_Name", required = true)
+  protected String shortName;
+  @XmlElement(name = "Long_Name")
+  protected String longName;
 
-    /**
-     * Gets the value of the shortName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getShortName() {
-        return shortName;
-    }
+  /**
+   * Gets the value of the shortName property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getShortName() {
+    return shortName;
+  }
 
-    /**
-     * Sets the value of the shortName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setShortName(String value) {
-        this.shortName = value;
-    }
+  /**
+   * Sets the value of the shortName property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setShortName(String value) {
+    this.shortName = value;
+  }
 
-    /**
-     * Gets the value of the longName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLongName() {
-        return longName;
-    }
+  /**
+   * Gets the value of the longName property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getLongName() {
+    return longName;
+  }
 
-    /**
-     * Sets the value of the longName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLongName(String value) {
-        this.longName = value;
-    }
+  /**
+   * Sets the value of the longName property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setLongName(String value) {
+    this.longName = value;
+  }
 
 }

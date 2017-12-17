@@ -28,11 +28,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -51,96 +53,86 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "urlContentType",
-    "url",
-    "description"
-})
+@XmlType(name = "", propOrder = { "urlContentType", "url", "description" })
 @XmlRootElement(name = "Related_URL")
 public class RelatedURL {
 
-    @XmlElement(name = "URL_Content_Type")
-    protected URLContentType urlContentType;
-    @XmlElement(name = "URL", required = true)
-    protected List<String> url;
-    @XmlElement(name = "Description")
-    protected String description;
+  @XmlElement(name = "URL_Content_Type")
+  protected URLContentType urlContentType;
+  @XmlElement(name = "URL", required = true)
+  protected List<String> url;
+  @XmlElement(name = "Description")
+  protected String description;
 
-    /**
-     * Gets the value of the urlContentType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link URLContentType }
-     *     
-     */
-    public URLContentType getURLContentType() {
-        return urlContentType;
-    }
+  /**
+   * Gets the value of the urlContentType property.
+   * 
+   * @return possible object is {@link URLContentType }
+   * 
+   */
+  public URLContentType getURLContentType() {
+    return urlContentType;
+  }
 
-    /**
-     * Sets the value of the urlContentType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link URLContentType }
-     *     
-     */
-    public void setURLContentType(URLContentType value) {
-        this.urlContentType = value;
-    }
+  /**
+   * Sets the value of the urlContentType property.
+   * 
+   * @param value
+   *          allowed object is {@link URLContentType }
+   * 
+   */
+  public void setURLContentType(URLContentType value) {
+    this.urlContentType = value;
+  }
 
-    /**
-     * Gets the value of the url property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the url property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getURL().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
-     */
-    public List<String> getURL() {
-        if (url == null) {
-            url = new ArrayList<String>();
-        }
-        return this.url;
+  /**
+   * Gets the value of the url property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the url property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getURL().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link String }
+   * 
+   * 
+   */
+  public List<String> getURL() {
+    if (url == null) {
+      url = new ArrayList<String>();
     }
+    return this.url;
+  }
 
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDescription() {
-        return description;
-    }
+  /**
+   * Gets the value of the description property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getDescription() {
+    return description;
+  }
 
-    /**
-     * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDescription(String value) {
-        this.description = value;
-    }
+  /**
+   * Sets the value of the description property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setDescription(String value) {
+    this.description = value;
+  }
 
 }

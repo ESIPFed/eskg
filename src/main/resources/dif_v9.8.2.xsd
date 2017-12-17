@@ -370,7 +370,7 @@
 <xs:element name="Other_Reference_Details" type="xs:string"/>
 
 <xs:element name="Summary">
-   <xs:complexType mixed="true">
+   <xs:complexType>
       <xs:sequence>
          <xs:element ref="Abstract" minOccurs="1" maxOccurs="1"/>
          <xs:element ref="Purpose" minOccurs="0" maxOccurs="1"/>

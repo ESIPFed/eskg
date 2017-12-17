@@ -26,11 +26,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -54,226 +56,193 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "southernmostLatitude",
-    "northernmostLatitude",
-    "westernmostLongitude",
-    "easternmostLongitude",
-    "minimumAltitude",
-    "maximumAltitude",
-    "minimumDepth",
-    "maximumDepth"
-})
+@XmlType(name = "", propOrder = { "southernmostLatitude", "northernmostLatitude", "westernmostLongitude", "easternmostLongitude", "minimumAltitude", "maximumAltitude", "minimumDepth", "maximumDepth" })
 @XmlRootElement(name = "Spatial_Coverage")
 public class SpatialCoverage {
 
-    @XmlElement(name = "Southernmost_Latitude")
-    protected String southernmostLatitude;
-    @XmlElement(name = "Northernmost_Latitude")
-    protected String northernmostLatitude;
-    @XmlElement(name = "Westernmost_Longitude")
-    protected String westernmostLongitude;
-    @XmlElement(name = "Easternmost_Longitude")
-    protected String easternmostLongitude;
-    @XmlElement(name = "Minimum_Altitude")
-    protected String minimumAltitude;
-    @XmlElement(name = "Maximum_Altitude")
-    protected String maximumAltitude;
-    @XmlElement(name = "Minimum_Depth")
-    protected String minimumDepth;
-    @XmlElement(name = "Maximum_Depth")
-    protected String maximumDepth;
+  @XmlElement(name = "Southernmost_Latitude")
+  protected String southernmostLatitude;
+  @XmlElement(name = "Northernmost_Latitude")
+  protected String northernmostLatitude;
+  @XmlElement(name = "Westernmost_Longitude")
+  protected String westernmostLongitude;
+  @XmlElement(name = "Easternmost_Longitude")
+  protected String easternmostLongitude;
+  @XmlElement(name = "Minimum_Altitude")
+  protected String minimumAltitude;
+  @XmlElement(name = "Maximum_Altitude")
+  protected String maximumAltitude;
+  @XmlElement(name = "Minimum_Depth")
+  protected String minimumDepth;
+  @XmlElement(name = "Maximum_Depth")
+  protected String maximumDepth;
 
-    /**
-     * Gets the value of the southernmostLatitude property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSouthernmostLatitude() {
-        return southernmostLatitude;
-    }
+  /**
+   * Gets the value of the southernmostLatitude property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getSouthernmostLatitude() {
+    return southernmostLatitude;
+  }
 
-    /**
-     * Sets the value of the southernmostLatitude property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSouthernmostLatitude(String value) {
-        this.southernmostLatitude = value;
-    }
+  /**
+   * Sets the value of the southernmostLatitude property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setSouthernmostLatitude(String value) {
+    this.southernmostLatitude = value;
+  }
 
-    /**
-     * Gets the value of the northernmostLatitude property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNorthernmostLatitude() {
-        return northernmostLatitude;
-    }
+  /**
+   * Gets the value of the northernmostLatitude property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getNorthernmostLatitude() {
+    return northernmostLatitude;
+  }
 
-    /**
-     * Sets the value of the northernmostLatitude property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNorthernmostLatitude(String value) {
-        this.northernmostLatitude = value;
-    }
+  /**
+   * Sets the value of the northernmostLatitude property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setNorthernmostLatitude(String value) {
+    this.northernmostLatitude = value;
+  }
 
-    /**
-     * Gets the value of the westernmostLongitude property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getWesternmostLongitude() {
-        return westernmostLongitude;
-    }
+  /**
+   * Gets the value of the westernmostLongitude property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getWesternmostLongitude() {
+    return westernmostLongitude;
+  }
 
-    /**
-     * Sets the value of the westernmostLongitude property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setWesternmostLongitude(String value) {
-        this.westernmostLongitude = value;
-    }
+  /**
+   * Sets the value of the westernmostLongitude property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setWesternmostLongitude(String value) {
+    this.westernmostLongitude = value;
+  }
 
-    /**
-     * Gets the value of the easternmostLongitude property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getEasternmostLongitude() {
-        return easternmostLongitude;
-    }
+  /**
+   * Gets the value of the easternmostLongitude property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getEasternmostLongitude() {
+    return easternmostLongitude;
+  }
 
-    /**
-     * Sets the value of the easternmostLongitude property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setEasternmostLongitude(String value) {
-        this.easternmostLongitude = value;
-    }
+  /**
+   * Sets the value of the easternmostLongitude property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setEasternmostLongitude(String value) {
+    this.easternmostLongitude = value;
+  }
 
-    /**
-     * Gets the value of the minimumAltitude property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMinimumAltitude() {
-        return minimumAltitude;
-    }
+  /**
+   * Gets the value of the minimumAltitude property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getMinimumAltitude() {
+    return minimumAltitude;
+  }
 
-    /**
-     * Sets the value of the minimumAltitude property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMinimumAltitude(String value) {
-        this.minimumAltitude = value;
-    }
+  /**
+   * Sets the value of the minimumAltitude property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setMinimumAltitude(String value) {
+    this.minimumAltitude = value;
+  }
 
-    /**
-     * Gets the value of the maximumAltitude property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMaximumAltitude() {
-        return maximumAltitude;
-    }
+  /**
+   * Gets the value of the maximumAltitude property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getMaximumAltitude() {
+    return maximumAltitude;
+  }
 
-    /**
-     * Sets the value of the maximumAltitude property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMaximumAltitude(String value) {
-        this.maximumAltitude = value;
-    }
+  /**
+   * Sets the value of the maximumAltitude property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setMaximumAltitude(String value) {
+    this.maximumAltitude = value;
+  }
 
-    /**
-     * Gets the value of the minimumDepth property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMinimumDepth() {
-        return minimumDepth;
-    }
+  /**
+   * Gets the value of the minimumDepth property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getMinimumDepth() {
+    return minimumDepth;
+  }
 
-    /**
-     * Sets the value of the minimumDepth property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMinimumDepth(String value) {
-        this.minimumDepth = value;
-    }
+  /**
+   * Sets the value of the minimumDepth property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setMinimumDepth(String value) {
+    this.minimumDepth = value;
+  }
 
-    /**
-     * Gets the value of the maximumDepth property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMaximumDepth() {
-        return maximumDepth;
-    }
+  /**
+   * Gets the value of the maximumDepth property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getMaximumDepth() {
+    return maximumDepth;
+  }
 
-    /**
-     * Sets the value of the maximumDepth property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMaximumDepth(String value) {
-        this.maximumDepth = value;
-    }
+  /**
+   * Sets the value of the maximumDepth property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setMaximumDepth(String value) {
+    this.maximumDepth = value;
+  }
 
 }

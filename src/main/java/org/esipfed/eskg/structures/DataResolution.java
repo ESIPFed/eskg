@@ -26,11 +26,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -53,199 +55,171 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "latitudeResolution",
-    "longitudeResolution",
-    "horizontalResolutionRange",
-    "verticalResolution",
-    "verticalResolutionRange",
-    "temporalResolution",
-    "temporalResolutionRange"
-})
+@XmlType(name = "", propOrder = { "latitudeResolution", "longitudeResolution", "horizontalResolutionRange", "verticalResolution", "verticalResolutionRange", "temporalResolution",
+        "temporalResolutionRange" })
 @XmlRootElement(name = "Data_Resolution")
 public class DataResolution {
 
-    @XmlElement(name = "Latitude_Resolution")
-    protected String latitudeResolution;
-    @XmlElement(name = "Longitude_Resolution")
-    protected String longitudeResolution;
-    @XmlElement(name = "Horizontal_Resolution_Range")
-    protected String horizontalResolutionRange;
-    @XmlElement(name = "Vertical_Resolution")
-    protected String verticalResolution;
-    @XmlElement(name = "Vertical_Resolution_Range")
-    protected String verticalResolutionRange;
-    @XmlElement(name = "Temporal_Resolution")
-    protected String temporalResolution;
-    @XmlElement(name = "Temporal_Resolution_Range")
-    protected String temporalResolutionRange;
+  @XmlElement(name = "Latitude_Resolution")
+  protected String latitudeResolution;
+  @XmlElement(name = "Longitude_Resolution")
+  protected String longitudeResolution;
+  @XmlElement(name = "Horizontal_Resolution_Range")
+  protected String horizontalResolutionRange;
+  @XmlElement(name = "Vertical_Resolution")
+  protected String verticalResolution;
+  @XmlElement(name = "Vertical_Resolution_Range")
+  protected String verticalResolutionRange;
+  @XmlElement(name = "Temporal_Resolution")
+  protected String temporalResolution;
+  @XmlElement(name = "Temporal_Resolution_Range")
+  protected String temporalResolutionRange;
 
-    /**
-     * Gets the value of the latitudeResolution property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLatitudeResolution() {
-        return latitudeResolution;
-    }
+  /**
+   * Gets the value of the latitudeResolution property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getLatitudeResolution() {
+    return latitudeResolution;
+  }
 
-    /**
-     * Sets the value of the latitudeResolution property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLatitudeResolution(String value) {
-        this.latitudeResolution = value;
-    }
+  /**
+   * Sets the value of the latitudeResolution property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setLatitudeResolution(String value) {
+    this.latitudeResolution = value;
+  }
 
-    /**
-     * Gets the value of the longitudeResolution property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLongitudeResolution() {
-        return longitudeResolution;
-    }
+  /**
+   * Gets the value of the longitudeResolution property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getLongitudeResolution() {
+    return longitudeResolution;
+  }
 
-    /**
-     * Sets the value of the longitudeResolution property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLongitudeResolution(String value) {
-        this.longitudeResolution = value;
-    }
+  /**
+   * Sets the value of the longitudeResolution property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setLongitudeResolution(String value) {
+    this.longitudeResolution = value;
+  }
 
-    /**
-     * Gets the value of the horizontalResolutionRange property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getHorizontalResolutionRange() {
-        return horizontalResolutionRange;
-    }
+  /**
+   * Gets the value of the horizontalResolutionRange property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getHorizontalResolutionRange() {
+    return horizontalResolutionRange;
+  }
 
-    /**
-     * Sets the value of the horizontalResolutionRange property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setHorizontalResolutionRange(String value) {
-        this.horizontalResolutionRange = value;
-    }
+  /**
+   * Sets the value of the horizontalResolutionRange property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setHorizontalResolutionRange(String value) {
+    this.horizontalResolutionRange = value;
+  }
 
-    /**
-     * Gets the value of the verticalResolution property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getVerticalResolution() {
-        return verticalResolution;
-    }
+  /**
+   * Gets the value of the verticalResolution property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getVerticalResolution() {
+    return verticalResolution;
+  }
 
-    /**
-     * Sets the value of the verticalResolution property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setVerticalResolution(String value) {
-        this.verticalResolution = value;
-    }
+  /**
+   * Sets the value of the verticalResolution property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setVerticalResolution(String value) {
+    this.verticalResolution = value;
+  }
 
-    /**
-     * Gets the value of the verticalResolutionRange property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getVerticalResolutionRange() {
-        return verticalResolutionRange;
-    }
+  /**
+   * Gets the value of the verticalResolutionRange property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getVerticalResolutionRange() {
+    return verticalResolutionRange;
+  }
 
-    /**
-     * Sets the value of the verticalResolutionRange property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setVerticalResolutionRange(String value) {
-        this.verticalResolutionRange = value;
-    }
+  /**
+   * Sets the value of the verticalResolutionRange property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setVerticalResolutionRange(String value) {
+    this.verticalResolutionRange = value;
+  }
 
-    /**
-     * Gets the value of the temporalResolution property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTemporalResolution() {
-        return temporalResolution;
-    }
+  /**
+   * Gets the value of the temporalResolution property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getTemporalResolution() {
+    return temporalResolution;
+  }
 
-    /**
-     * Sets the value of the temporalResolution property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTemporalResolution(String value) {
-        this.temporalResolution = value;
-    }
+  /**
+   * Sets the value of the temporalResolution property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setTemporalResolution(String value) {
+    this.temporalResolution = value;
+  }
 
-    /**
-     * Gets the value of the temporalResolutionRange property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTemporalResolutionRange() {
-        return temporalResolutionRange;
-    }
+  /**
+   * Gets the value of the temporalResolutionRange property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getTemporalResolutionRange() {
+    return temporalResolutionRange;
+  }
 
-    /**
-     * Sets the value of the temporalResolutionRange property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTemporalResolutionRange(String value) {
-        this.temporalResolutionRange = value;
-    }
+  /**
+   * Sets the value of the temporalResolutionRange property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setTemporalResolutionRange(String value) {
+    this.temporalResolutionRange = value;
+  }
 
 }

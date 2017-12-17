@@ -41,9 +41,18 @@ $ mvn clean install
 ```
 The above task will install the code locally so you can try out the examples below.
 
-# Tutorial
+# Running ESKG
+Creation of an ESKG dataset can be achieved by executing the main method of [PODAAC Web Services Client](https://github.com/ESIPFed/eskg/blob/master/src/main/java/org/esipfed/eskg/aquisition/PODAACWebServiceClient.java#L229). This will build a local Ontology model which, by default, can be found at ```target/classes/podaacDatasets.ttl```.
 
-Please see the [wiki entry](https://github.com/ESIPFed/eskg/wiki/ESKG-Tutorial--End-to-End-Knowledge-Graph-Construction) covering an end-to-end example of knowledge graph construction using ESKG.
+Conveniently, this can be executed from the command line as follows
+```
+$ mvn exec:java -Dexec.mainClass="org.esipfed.eskg.aquisition.PODAACWebServiceClient"
+```
+
+# ESKG Dataset
+The canonical, current ESKG dataset is hosted at the [ESIP Community Ontology Repository](http://cor.esipfed.org). 
+
+The dataset URI is http://cor.esipfed.org/ont/eskg/
 
 # Acknowledgements
 

@@ -19,35 +19,35 @@ import org.apache.cxf.jaxrs.client.WebClient;
 import org.apache.jena.ontology.OntModel;
 
 /**
- * Enables clients to interact with the ESIP 
- * <a href="https://cor.esipfed.org">Community Ontology Repository</a>.
+ * Enables clients to interact with the ESIP <a
+ * href="https://cor.esipfed.org">Community Ontology Repository</a>.
+ * 
  * @author lewismc
- *
+ * 
  */
 public class ESIPCORClient implements StorageClient {
 
   public ESIPCORClient() {
-    //default constructor
+    // default constructor
   }
 
   @Override
   public void write(OntModel ontModel, Properties props) {
     LocalFileClient fileClient = new LocalFileClient(props);
     fileClient.write(ontModel, props);
-    WebClient client = WebClient.create(
-            props.getProperty("eskg.cor.endpoint", "http://cor.esipfed.org/ont"))
-            .path("upload")
-            .query("file", "").query("format", "_guess");
-    client.post(getClass().getResource(props.getProperty(
-            "eskg.file.name", "podaacDatasets.ttl")).getFile());
+    WebClient client = WebClient.create(props.getProperty("eskg.cor.endpoint", "http://cor.esipfed.org/ont")).path("upload").query("file", "").query("format", "TURTLE");
+    if (getClass().getResource(props.getProperty("eskg.file.name", "podaacDatasets.ttl")).getFile() != null) {
+      client.post(getClass().getResource(props.getProperty("eskg.file.name", "podaacDatasets.ttl")).getFile());
+    }
+    
   }
 
-//  /**
-//   * @param args
-//   */
-//  public static void main(String[] args) {
-//    // TODO Auto-generated method stub
-//
-//  }
+  // /**
+  // * @param args
+  // */
+  // public static void main(String[] args) {
+  // // TODO Auto-generated method stub
+  //
+  // }
 
 }

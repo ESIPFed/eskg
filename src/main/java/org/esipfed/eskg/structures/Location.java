@@ -26,11 +26,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -52,172 +54,147 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "locationCategory",
-    "locationType",
-    "locationSubregion1",
-    "locationSubregion2",
-    "locationSubregion3",
-    "detailedLocation"
-})
+@XmlType(name = "", propOrder = { "locationCategory", "locationType", "locationSubregion1", "locationSubregion2", "locationSubregion3", "detailedLocation" })
 @XmlRootElement(name = "Location")
 public class Location {
 
-    @XmlElement(name = "Location_Category", required = true)
-    protected String locationCategory;
-    @XmlElement(name = "Location_Type")
-    protected String locationType;
-    @XmlElement(name = "Location_Subregion1")
-    protected String locationSubregion1;
-    @XmlElement(name = "Location_Subregion2")
-    protected String locationSubregion2;
-    @XmlElement(name = "Location_Subregion3")
-    protected String locationSubregion3;
-    @XmlElement(name = "Detailed_Location")
-    protected String detailedLocation;
+  @XmlElement(name = "Location_Category", required = true)
+  protected String locationCategory;
+  @XmlElement(name = "Location_Type")
+  protected String locationType;
+  @XmlElement(name = "Location_Subregion1")
+  protected String locationSubregion1;
+  @XmlElement(name = "Location_Subregion2")
+  protected String locationSubregion2;
+  @XmlElement(name = "Location_Subregion3")
+  protected String locationSubregion3;
+  @XmlElement(name = "Detailed_Location")
+  protected String detailedLocation;
 
-    /**
-     * Gets the value of the locationCategory property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLocationCategory() {
-        return locationCategory;
-    }
+  /**
+   * Gets the value of the locationCategory property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getLocationCategory() {
+    return locationCategory;
+  }
 
-    /**
-     * Sets the value of the locationCategory property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLocationCategory(String value) {
-        this.locationCategory = value;
-    }
+  /**
+   * Sets the value of the locationCategory property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setLocationCategory(String value) {
+    this.locationCategory = value;
+  }
 
-    /**
-     * Gets the value of the locationType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLocationType() {
-        return locationType;
-    }
+  /**
+   * Gets the value of the locationType property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getLocationType() {
+    return locationType;
+  }
 
-    /**
-     * Sets the value of the locationType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLocationType(String value) {
-        this.locationType = value;
-    }
+  /**
+   * Sets the value of the locationType property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setLocationType(String value) {
+    this.locationType = value;
+  }
 
-    /**
-     * Gets the value of the locationSubregion1 property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLocationSubregion1() {
-        return locationSubregion1;
-    }
+  /**
+   * Gets the value of the locationSubregion1 property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getLocationSubregion1() {
+    return locationSubregion1;
+  }
 
-    /**
-     * Sets the value of the locationSubregion1 property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLocationSubregion1(String value) {
-        this.locationSubregion1 = value;
-    }
+  /**
+   * Sets the value of the locationSubregion1 property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setLocationSubregion1(String value) {
+    this.locationSubregion1 = value;
+  }
 
-    /**
-     * Gets the value of the locationSubregion2 property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLocationSubregion2() {
-        return locationSubregion2;
-    }
+  /**
+   * Gets the value of the locationSubregion2 property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getLocationSubregion2() {
+    return locationSubregion2;
+  }
 
-    /**
-     * Sets the value of the locationSubregion2 property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLocationSubregion2(String value) {
-        this.locationSubregion2 = value;
-    }
+  /**
+   * Sets the value of the locationSubregion2 property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setLocationSubregion2(String value) {
+    this.locationSubregion2 = value;
+  }
 
-    /**
-     * Gets the value of the locationSubregion3 property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLocationSubregion3() {
-        return locationSubregion3;
-    }
+  /**
+   * Gets the value of the locationSubregion3 property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getLocationSubregion3() {
+    return locationSubregion3;
+  }
 
-    /**
-     * Sets the value of the locationSubregion3 property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLocationSubregion3(String value) {
-        this.locationSubregion3 = value;
-    }
+  /**
+   * Sets the value of the locationSubregion3 property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setLocationSubregion3(String value) {
+    this.locationSubregion3 = value;
+  }
 
-    /**
-     * Gets the value of the detailedLocation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDetailedLocation() {
-        return detailedLocation;
-    }
+  /**
+   * Gets the value of the detailedLocation property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getDetailedLocation() {
+    return detailedLocation;
+  }
 
-    /**
-     * Sets the value of the detailedLocation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDetailedLocation(String value) {
-        this.detailedLocation = value;
-    }
+  /**
+   * Sets the value of the detailedLocation property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setDetailedLocation(String value) {
+    this.detailedLocation = value;
+  }
 
 }

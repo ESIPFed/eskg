@@ -19,3 +19,4 @@
 //
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package org.esipfed.eskg.structures;
+

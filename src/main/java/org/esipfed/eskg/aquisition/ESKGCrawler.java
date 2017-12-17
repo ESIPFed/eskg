@@ -122,7 +122,9 @@ public class ESKGCrawler {
    * <li><b>mDepth</b>; Max allowed crawler depth.</li>
    * <li><b>pDelay</b>; Politeness delay in milliseconds.</li>
    * </ul>
-   * @param args includes options as per description
+   * 
+   * @param args
+   *          includes options as per description
    */
   public static void main(String[] args) {
 

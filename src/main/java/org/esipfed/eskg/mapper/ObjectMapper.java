@@ -20,8 +20,9 @@ import java.util.Properties;
 import org.esipfed.eskg.structures.DIF;
 
 /**
- * Map's various data into POJO's. Individual mapping implementations
- * should implement this interface such as {@link org.esipfed.eskg.mapper.PODAACWebServiceObjectMapper}.
+ * Map's various data into POJO's. Individual mapping implementations should
+ * implement this interface such as
+ * {@link org.esipfed.eskg.mapper.PODAACWebServiceObjectMapper}.
  */
 public interface ObjectMapper {
 
@@ -30,12 +31,16 @@ public interface ObjectMapper {
   }
 
   /**
-   * Map the {@link java.io.ByteArrayInputStream} to the POJO defined
-   * by the mapperId.
-   * @param mapperId the {@link org.esipfed.eskg.mapper.ObjectMapper.MapperID}
-   * @param inputStream a {@link java.io.ByteArrayInputStream} representing the 
-   * content to be mapped to the Ontology Model.
-   * @return a mapped Object, an example being {@link org.esipfed.eskg.structures.DIF}
+   * Map the {@link java.io.ByteArrayInputStream} to the POJO defined by the
+   * mapperId.
+   * 
+   * @param mapperId
+   *          the {@link org.esipfed.eskg.mapper.ObjectMapper.MapperID}
+   * @param inputStream
+   *          a {@link java.io.ByteArrayInputStream} representing the content to
+   *          be mapped to the Ontology Model.
+   * @return a mapped Object, an example being
+   *         {@link org.esipfed.eskg.structures.DIF}
    */
   public Object map(String mapperId, ByteArrayInputStream inputStream);
 

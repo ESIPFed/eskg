@@ -26,11 +26,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -48,64 +50,55 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "startDate",
-    "stopDate"
-})
+@XmlType(name = "", propOrder = { "startDate", "stopDate" })
 @XmlRootElement(name = "Temporal_Coverage")
 public class TemporalCoverage {
 
-    @XmlElement(name = "Start_Date")
-    protected String startDate;
-    @XmlElement(name = "Stop_Date")
-    protected String stopDate;
+  @XmlElement(name = "Start_Date")
+  protected String startDate;
+  @XmlElement(name = "Stop_Date")
+  protected String stopDate;
 
-    /**
-     * Gets the value of the startDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStartDate() {
-        return startDate;
-    }
+  /**
+   * Gets the value of the startDate property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getStartDate() {
+    return startDate;
+  }
 
-    /**
-     * Sets the value of the startDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStartDate(String value) {
-        this.startDate = value;
-    }
+  /**
+   * Sets the value of the startDate property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setStartDate(String value) {
+    this.startDate = value;
+  }
 
-    /**
-     * Gets the value of the stopDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStopDate() {
-        return stopDate;
-    }
+  /**
+   * Gets the value of the stopDate property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getStopDate() {
+    return stopDate;
+  }
 
-    /**
-     * Sets the value of the stopDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStopDate(String value) {
-        this.stopDate = value;
-    }
+  /**
+   * Sets the value of the stopDate property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setStopDate(String value) {
+    this.stopDate = value;
+  }
 
 }

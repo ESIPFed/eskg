@@ -42,8 +42,8 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Class contains functionality for mapping all {@link ByteArrayInputStream}'s
- * generated via {@link org.esipfed.eskg.aquisition.PODAACWebServiceClient}
- * to POJO's. The structre for all POJO's is contained within the 
+ * generated via {@link org.esipfed.eskg.aquisition.PODAACWebServiceClient} to
+ * POJO's. The structre for all POJO's is contained within the
  * <b>org.esipfed.eskg.structures</b> package.
  */
 public class PODAACWebServiceObjectMapper implements ObjectMapper {
@@ -54,11 +54,12 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
    * Default constructor
    */
   public PODAACWebServiceObjectMapper() {
-    //default constructor
+    // default constructor
   }
 
   /**
-   * @see org.esipfed.eskg.mapper.ObjectMapper#map(java.lang.String, java.io.ByteArrayInputStream)
+   * @see org.esipfed.eskg.mapper.ObjectMapper#map(java.lang.String,
+   *      java.io.ByteArrayInputStream)
    */
   @Override
   public Object map(String mapperId, ByteArrayInputStream inputStream) {
@@ -72,7 +73,7 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
   }
 
   private DIF mapGCMDXMLToPOJO(ByteArrayInputStream gcmdByteArrayInputStream) {
-    //create DIF
+    // create DIF
     DIF dif = new DIF();
     try {
       SAXBuilder jdomBuilder = new SAXBuilder();
@@ -81,13 +82,13 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
       Document jdomDocument = jdomBuilder.build(gcmdByteArrayInputStream);
       Element difElement = jdomDocument.getRootElement();
       Namespace ns = difElement.getNamespace();
-      //populate immediate children
+      // populate immediate children
       dif.setEntryID(difElement.getChild("Entry_ID", ns).getTextTrim());
       dif.setEntryTitle(difElement.getChild("Entry_Title", ns).getTextTrim());
       dif.setAccessConstraints(difElement.getChild("Access_Constraints", ns).getTextTrim());
       dif.setUseConstraints(difElement.getChild("Use_Constraints", ns).getTextTrim());
       dif.getDataSetLanguage().add(difElement.getChild("Data_Set_Language", ns).getTextTrim());
-      if (difElement.getChild("Originating_Center", ns).getTextTrim() != null) {
+      if (difElement.getChild("Originating_Center", ns) != null) {
         dif.setOriginatingCenter(difElement.getChild("Originating_Center", ns).getTextTrim());
       }
       dif.setMetadataName(difElement.getChild("Metadata_Name", ns).getTextTrim());
@@ -96,13 +97,13 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
       dif.setLastDIFRevisionDate(difElement.getChild("Last_DIF_Revision_Date", ns).getTextTrim());
       dif.setDIFRevisionHistory(difElement.getChild("DIF_Revision_History", ns).getTextTrim());
 
-      //create ISO_Topic_Catgeory(s)
+      // create ISO_Topic_Catgeory(s)
       List<Element> iSOTopicCategoryList = difElement.getChildren("ISO_Topic_Category", ns);
       for (Element iSOTopicCategory : iSOTopicCategoryList) {
         dif.getISOTopicCategory().add(iSOTopicCategory.getTextTrim());
       }
 
-      //create Data_Set_Citation(s)
+      // create Data_Set_Citation(s)
       List<Element> dataSetCitationList = difElement.getChildren("Data_Set_Citation", ns);
       for (Element dataSetCitationElement : dataSetCitationList) {
         List<Element> dataSetCitationElementChildren = dataSetCitationElement.getChildren();
@@ -129,7 +130,7 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
         dif.getDataSetCitation().add(dataSetCitation);
       }
 
-      //create Personnel(s)
+      // create Personnel(s)
       List<Element> personnelList = difElement.getChildren("Personnel", ns);
       for (Element personnelElement : personnelList) {
         List<Element> personnelElementChildren = personnelElement.getChildren();
@@ -148,7 +149,7 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
         dif.getPersonnel().add(personnel);
       }
 
-      //create Parameters(s)
+      // create Parameters(s)
       List<Element> parameterList = difElement.getChildren("Parameters", ns);
       for (Element parameterElement : parameterList) {
         List<Element> parameterElementChildren = parameterElement.getChildren();
@@ -173,7 +174,7 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
         dif.getParameters().add(parameters);
       }
 
-      //create Sensor_Name(s)
+      // create Sensor_Name(s)
       List<Element> sensorNameList = difElement.getChildren("Sensor_Name", ns);
       for (Element sensorNameElement : sensorNameList) {
         List<Element> sensorNameElementChildren = sensorNameElement.getChildren();
@@ -188,7 +189,7 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
         dif.getSensorName().add(sensorName);
       }
 
-      //create Source_Name(s)
+      // create Source_Name(s)
       List<Element> sourceNameList = difElement.getChildren("Source_Name", ns);
       for (Element sourceNameElement : sourceNameList) {
         List<Element> sourceNameElementChildren = sourceNameElement.getChildren();
@@ -203,7 +204,7 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
         dif.getSourceName().add(sourceName);
       }
 
-      //create Temporal_Coverage(s)
+      // create Temporal_Coverage(s)
       List<Element> temporalCoverageList = difElement.getChildren("Temporal_Coverage", ns);
       for (Element temporalCoverageElement : temporalCoverageList) {
         List<Element> temporalCoverageElementChildren = temporalCoverageElement.getChildren();
@@ -211,14 +212,14 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
         for (Element element : temporalCoverageElementChildren) {
           if ("Start_Date".equals(element.getName())) {
             temporalCoverage.setStartDate(element.getTextTrim());
-          } else if ("Stop_Date".equals(element.getName())){
+          } else if ("Stop_Date".equals(element.getName())) {
             temporalCoverage.setStopDate(element.getTextTrim());
           }
         }
         dif.getTemporalCoverage().add(temporalCoverage);
       }
 
-      //create Spatial_Coverage(s)
+      // create Spatial_Coverage(s)
       List<Element> spatialCoverageList = difElement.getChildren("Spatial_Coverage", ns);
       for (Element spatiaCoverageElement : spatialCoverageList) {
         List<Element> spatiallCoverageElementChildren = spatiaCoverageElement.getChildren();
@@ -245,7 +246,7 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
         dif.getSpatialCoverage().add(spatialCoverage);
       }
 
-      //create Location(s)
+      // create Location(s)
       List<Element> locationList = difElement.getChildren("Location", ns);
       for (Element locationElement : locationList) {
         List<Element> locationElementChildren = locationElement.getChildren();
@@ -268,7 +269,7 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
         dif.getLocation().add(location);
       }
 
-      //create Data_Resolution(s)
+      // create Data_Resolution(s)
       List<Element> dataResolutionList = difElement.getChildren("Data_Resolution", ns);
       for (Element dataResolutionElement : dataResolutionList) {
         List<Element> dataResolutionElementChildren = dataResolutionElement.getChildren();
@@ -293,7 +294,7 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
         dif.getDataResolution().add(dataResolution);
       }
 
-      //create Project(s)
+      // create Project(s)
       List<Element> projectList = difElement.getChildren("Project", ns);
       for (Element projectElement : projectList) {
         List<Element> projectElementChildren = projectElement.getChildren();
@@ -301,27 +302,27 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
         for (Element element : projectElementChildren) {
           if ("Long_Name".equals(element.getName())) {
             project.setLongName(element.getTextTrim());
-          } else if ("Short_Name".equals(element.getName())){
+          } else if ("Short_Name".equals(element.getName())) {
             project.setShortName(element.getTextTrim());
           }
         }
         dif.getProject().add(project);
       }
 
-      //create Data_Center(s)
+      // create Data_Center(s)
       List<Element> dataCenterList = difElement.getChildren("Data_Center", ns);
       for (Element dataCenterElement : dataCenterList) {
         List<Element> dataCenterElementChildren = dataCenterElement.getChildren();
         DataCenter dataCenter = new DataCenter();
         for (Element dataCenterElementChild : dataCenterElementChildren) {
           if ("Data_Center_Name".equals(dataCenterElementChild.getName())) {
-            //create Data_Center_Name
+            // create Data_Center_Name
             DataCenterName dataCenterName = new DataCenterName();
             List<Element> dataCenterNameChildren = dataCenterElementChild.getChildren();
             for (Element dataCenterNameChild : dataCenterNameChildren) {
               if ("Long_Name".equals(dataCenterNameChild.getName())) {
                 dataCenterName.setLongName(dataCenterNameChild.getTextTrim());
-              } else if ("Short_Name".equals(dataCenterNameChild.getName())){
+              } else if ("Short_Name".equals(dataCenterNameChild.getName())) {
                 dataCenterName.setShortName(dataCenterNameChild.getTextTrim());
               }
             }
@@ -329,7 +330,7 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
           } else if ("Data_Center_URL".equals(dataCenterElementChild.getName())) {
             dataCenter.setDataCenterURL(dataCenterElementChild.getTextTrim());
           } else if ("Personnel".equals(dataCenterElementChild.getName())) {
-            //create data center Personnel
+            // create data center Personnel
             Personnel personnel = new Personnel();
             List<Element> dataCenterPersonnelChildren = dataCenterElementChild.getChildren();
             for (Element element : dataCenterPersonnelChildren) {
@@ -349,21 +350,20 @@ public class PODAACWebServiceObjectMapper implements ObjectMapper {
         dif.getDataCenter().add(dataCenter);
       }
 
-      //create Summary(s)
+      // create Summary(s)
       List<Element> summaryList = difElement.getChildren("Summary", ns);
       for (Element summaryListElement : summaryList) {
         Summary summary = new Summary();
         List<Element> summaryListElementChildren = summaryListElement.getChildren();
         for (Element summaryListElementChild : summaryListElementChildren) {
           if ("Abstract".equals(summaryListElementChild.getName())) {
-            ObjectFactory factory = new ObjectFactory();
-            summary.getContent().add(factory.createAbstract(summaryListElementChild.getTextTrim()));
+            summary.setAbstract(summaryListElementChild.getTextTrim());
           }
         }
         dif.setSummary(summary);
       }
 
-      //create IDN_Node(s)
+      // create IDN_Node(s)
       List<Element> idnNodeList = difElement.getChildren("IDN_Node", ns);
       for (Element idnNodeListElement : idnNodeList) {
         IDNNode idnNode = new IDNNode();

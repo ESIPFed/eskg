@@ -28,11 +28,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -52,128 +54,117 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "dataCenterName",
-    "dataCenterURL",
-    "dataSetID",
-    "personnel"
-})
+@XmlType(name = "", propOrder = { "dataCenterName", "dataCenterURL", "dataSetID", "personnel" })
 @XmlRootElement(name = "Data_Center")
 public class DataCenter {
 
-    @XmlElement(name = "Data_Center_Name", required = true)
-    protected DataCenterName dataCenterName;
-    @XmlElement(name = "Data_Center_URL")
-    protected String dataCenterURL;
-    @XmlElement(name = "Data_Set_ID")
-    protected List<String> dataSetID;
-    @XmlElement(name = "Personnel", required = true)
-    protected List<Personnel> personnel;
+  @XmlElement(name = "Data_Center_Name", required = true)
+  protected DataCenterName dataCenterName;
+  @XmlElement(name = "Data_Center_URL")
+  protected String dataCenterURL;
+  @XmlElement(name = "Data_Set_ID")
+  protected List<String> dataSetID;
+  @XmlElement(name = "Personnel", required = true)
+  protected List<Personnel> personnel;
 
-    /**
-     * Gets the value of the dataCenterName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DataCenterName }
-     *     
-     */
-    public DataCenterName getDataCenterName() {
-        return dataCenterName;
-    }
+  /**
+   * Gets the value of the dataCenterName property.
+   * 
+   * @return possible object is {@link DataCenterName }
+   * 
+   */
+  public DataCenterName getDataCenterName() {
+    return dataCenterName;
+  }
 
-    /**
-     * Sets the value of the dataCenterName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DataCenterName }
-     *     
-     */
-    public void setDataCenterName(DataCenterName value) {
-        this.dataCenterName = value;
-    }
+  /**
+   * Sets the value of the dataCenterName property.
+   * 
+   * @param value
+   *          allowed object is {@link DataCenterName }
+   * 
+   */
+  public void setDataCenterName(DataCenterName value) {
+    this.dataCenterName = value;
+  }
 
-    /**
-     * Gets the value of the dataCenterURL property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDataCenterURL() {
-        return dataCenterURL;
-    }
+  /**
+   * Gets the value of the dataCenterURL property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getDataCenterURL() {
+    return dataCenterURL;
+  }
 
-    /**
-     * Sets the value of the dataCenterURL property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDataCenterURL(String value) {
-        this.dataCenterURL = value;
-    }
+  /**
+   * Sets the value of the dataCenterURL property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setDataCenterURL(String value) {
+    this.dataCenterURL = value;
+  }
 
-    /**
-     * Gets the value of the dataSetID property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the dataSetID property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getDataSetID().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * @return the List of dataset ID's
-     */
-    public List<String> getDataSetID() {
+  /**
+   * Gets the value of the dataSetID property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the dataSetID property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getDataSetID().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link String }
+   * 
+   * @return the List of dataset ID's
+   */
+  public List<String> getDataSetID() {
         if (dataSetID == null) {
             dataSetID = new ArrayList<>();
         }
         return this.dataSetID;
     }
 
-    /**
-     * Gets the value of the personnel property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the personnel property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getPersonnel().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Personnel }
-     * 
-     * @return the List of Personnel
-     */
-    public List<Personnel> getPersonnel() {
-        if (personnel == null) {
-            personnel = new ArrayList<Personnel>();
-        }
-        return this.personnel;
+  /**
+   * Gets the value of the personnel property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the personnel property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getPersonnel().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link Personnel }
+   * 
+   * @return the List of Personnel
+   */
+  public List<Personnel> getPersonnel() {
+    if (personnel == null) {
+      personnel = new ArrayList<Personnel>();
     }
+    return this.personnel;
+  }
 
 }

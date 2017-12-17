@@ -27,6 +27,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * A client for interacting with local Ontology files.
+ * 
  * @author lewismc
  */
 public class LocalFileClient implements StorageClient {
@@ -36,10 +37,10 @@ public class LocalFileClient implements StorageClient {
   private Properties props;
 
   public LocalFileClient() {
-    //default constructor
+    // default constructor
   }
-  
-  public LocalFileClient(Properties props){
+
+  public LocalFileClient(Properties props) {
     if (props != null) {
       this.setProps(props);
     } else {
@@ -49,10 +50,10 @@ public class LocalFileClient implements StorageClient {
 
   @Override
   public void write(OntModel ontModel, Properties props) {
-    String ontFile = props.getProperty("eskg.file.name", "podaacDatasets.ttl");
+    String ontFile = props.getProperty("eskg.file.name", "target/classes/podaacDatasets.ttl");
     try (OutputStream fos = new FileOutputStream(ontFile);
             Writer writer = new OutputStreamWriter(fos, Charset.defaultCharset())){
-      ontModel.write(writer);
+      ontModel.write(writer, "TURTLE");
     } catch (IOException e) {
       LOG.error("Error whilst writing Ontology Model to {}.", ontFile, e);
     }
@@ -67,15 +68,15 @@ public class LocalFileClient implements StorageClient {
   }
 
   /**
-   * @param props the props to set
+   * @param props
+   *          the props to set
    */
   public void setProps(Properties props) {
     this.props = props;
   }
 
-
-//  /**
-//   * @param args
-//   */
-//  public static void main(String[] args) {}
+  // /**
+  // * @param args
+  // */
+  // public static void main(String[] args) {}
 }

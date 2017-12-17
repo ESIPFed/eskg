@@ -26,11 +26,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -53,199 +55,170 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "category",
-    "topic",
-    "term",
-    "variableLevel1",
-    "variableLevel2",
-    "variableLevel3",
-    "detailedVariable"
-})
+@XmlType(name = "", propOrder = { "category", "topic", "term", "variableLevel1", "variableLevel2", "variableLevel3", "detailedVariable" })
 @XmlRootElement(name = "Parameters")
 public class Parameters {
 
-    @XmlElement(name = "Category", required = true)
-    protected String category;
-    @XmlElement(name = "Topic", required = true)
-    protected String topic;
-    @XmlElement(name = "Term", required = true)
-    protected String term;
-    @XmlElement(name = "Variable_Level_1")
-    protected String variableLevel1;
-    @XmlElement(name = "Variable_Level_2")
-    protected String variableLevel2;
-    @XmlElement(name = "Variable_Level_3")
-    protected String variableLevel3;
-    @XmlElement(name = "Detailed_Variable")
-    protected String detailedVariable;
+  @XmlElement(name = "Category", required = true)
+  protected String category;
+  @XmlElement(name = "Topic", required = true)
+  protected String topic;
+  @XmlElement(name = "Term", required = true)
+  protected String term;
+  @XmlElement(name = "Variable_Level_1")
+  protected String variableLevel1;
+  @XmlElement(name = "Variable_Level_2")
+  protected String variableLevel2;
+  @XmlElement(name = "Variable_Level_3")
+  protected String variableLevel3;
+  @XmlElement(name = "Detailed_Variable")
+  protected String detailedVariable;
 
-    /**
-     * Gets the value of the category property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCategory() {
-        return category;
-    }
+  /**
+   * Gets the value of the category property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getCategory() {
+    return category;
+  }
 
-    /**
-     * Sets the value of the category property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCategory(String value) {
-        this.category = value;
-    }
+  /**
+   * Sets the value of the category property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setCategory(String value) {
+    this.category = value;
+  }
 
-    /**
-     * Gets the value of the topic property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTopic() {
-        return topic;
-    }
+  /**
+   * Gets the value of the topic property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getTopic() {
+    return topic;
+  }
 
-    /**
-     * Sets the value of the topic property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTopic(String value) {
-        this.topic = value;
-    }
+  /**
+   * Sets the value of the topic property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setTopic(String value) {
+    this.topic = value;
+  }
 
-    /**
-     * Gets the value of the term property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTerm() {
-        return term;
-    }
+  /**
+   * Gets the value of the term property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getTerm() {
+    return term;
+  }
 
-    /**
-     * Sets the value of the term property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTerm(String value) {
-        this.term = value;
-    }
+  /**
+   * Sets the value of the term property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setTerm(String value) {
+    this.term = value;
+  }
 
-    /**
-     * Gets the value of the variableLevel1 property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getVariableLevel1() {
-        return variableLevel1;
-    }
+  /**
+   * Gets the value of the variableLevel1 property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getVariableLevel1() {
+    return variableLevel1;
+  }
 
-    /**
-     * Sets the value of the variableLevel1 property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setVariableLevel1(String value) {
-        this.variableLevel1 = value;
-    }
+  /**
+   * Sets the value of the variableLevel1 property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setVariableLevel1(String value) {
+    this.variableLevel1 = value;
+  }
 
-    /**
-     * Gets the value of the variableLevel2 property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getVariableLevel2() {
-        return variableLevel2;
-    }
+  /**
+   * Gets the value of the variableLevel2 property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getVariableLevel2() {
+    return variableLevel2;
+  }
 
-    /**
-     * Sets the value of the variableLevel2 property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setVariableLevel2(String value) {
-        this.variableLevel2 = value;
-    }
+  /**
+   * Sets the value of the variableLevel2 property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setVariableLevel2(String value) {
+    this.variableLevel2 = value;
+  }
 
-    /**
-     * Gets the value of the variableLevel3 property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getVariableLevel3() {
-        return variableLevel3;
-    }
+  /**
+   * Gets the value of the variableLevel3 property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getVariableLevel3() {
+    return variableLevel3;
+  }
 
-    /**
-     * Sets the value of the variableLevel3 property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setVariableLevel3(String value) {
-        this.variableLevel3 = value;
-    }
+  /**
+   * Sets the value of the variableLevel3 property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setVariableLevel3(String value) {
+    this.variableLevel3 = value;
+  }
 
-    /**
-     * Gets the value of the detailedVariable property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDetailedVariable() {
-        return detailedVariable;
-    }
+  /**
+   * Gets the value of the detailedVariable property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getDetailedVariable() {
+    return detailedVariable;
+  }
 
-    /**
-     * Sets the value of the detailedVariable property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDetailedVariable(String value) {
-        this.detailedVariable = value;
-    }
+  /**
+   * Sets the value of the detailedVariable property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setDetailedVariable(String value) {
+    this.detailedVariable = value;
+  }
 
 }

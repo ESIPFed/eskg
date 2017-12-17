@@ -26,11 +26,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -48,64 +50,55 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "type",
-    "subtype"
-})
+@XmlType(name = "", propOrder = { "type", "subtype" })
 @XmlRootElement(name = "URL_Content_Type")
 public class URLContentType {
 
-    @XmlElement(name = "Type", required = true)
-    protected String type;
-    @XmlElement(name = "Subtype")
-    protected String subtype;
+  @XmlElement(name = "Type", required = true)
+  protected String type;
+  @XmlElement(name = "Subtype")
+  protected String subtype;
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getType() {
-        return type;
-    }
+  /**
+   * Gets the value of the type property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getType() {
+    return type;
+  }
 
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setType(String value) {
-        this.type = value;
-    }
+  /**
+   * Sets the value of the type property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setType(String value) {
+    this.type = value;
+  }
 
-    /**
-     * Gets the value of the subtype property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSubtype() {
-        return subtype;
-    }
+  /**
+   * Gets the value of the subtype property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getSubtype() {
+    return subtype;
+  }
 
-    /**
-     * Sets the value of the subtype property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSubtype(String value) {
-        this.subtype = value;
-    }
+  /**
+   * Sets the value of the subtype property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setSubtype(String value) {
+    this.subtype = value;
+  }
 
 }

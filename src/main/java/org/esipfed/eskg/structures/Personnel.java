@@ -28,11 +28,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -56,246 +58,225 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "role",
-    "firstName",
-    "middleName",
-    "lastName",
-    "email",
-    "phone",
-    "fax",
-    "contactAddress"
-})
+@XmlType(name = "", propOrder = { "role", "firstName", "middleName", "lastName", "email", "phone", "fax", "contactAddress" })
 @XmlRootElement(name = "Personnel")
 public class Personnel {
 
-    @XmlElement(name = "Role", required = true)
-    protected List<String> role;
-    @XmlElement(name = "First_Name")
-    protected String firstName;
-    @XmlElement(name = "Middle_Name")
-    protected String middleName;
-    @XmlElement(name = "Last_Name", required = true)
-    protected String lastName;
-    @XmlElement(name = "Email")
-    protected List<String> email;
-    @XmlElement(name = "Phone")
-    protected List<String> phone;
-    @XmlElement(name = "Fax")
-    protected List<String> fax;
-    @XmlElement(name = "Contact_Address")
-    protected ContactAddress contactAddress;
+  @XmlElement(name = "Role", required = true)
+  protected List<String> role;
+  @XmlElement(name = "First_Name")
+  protected String firstName;
+  @XmlElement(name = "Middle_Name")
+  protected String middleName;
+  @XmlElement(name = "Last_Name", required = true)
+  protected String lastName;
+  @XmlElement(name = "Email")
+  protected List<String> email;
+  @XmlElement(name = "Phone")
+  protected List<String> phone;
+  @XmlElement(name = "Fax")
+  protected List<String> fax;
+  @XmlElement(name = "Contact_Address")
+  protected ContactAddress contactAddress;
 
-    /**
-     * Gets the value of the role property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the role property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getRole().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
-     */
-    public List<String> getRole() {
-        if (role == null) {
-            role = new ArrayList<String>();
-        }
-        return this.role;
+  /**
+   * Gets the value of the role property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the role property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getRole().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link String }
+   * 
+   * 
+   */
+  public List<String> getRole() {
+    if (role == null) {
+      role = new ArrayList<String>();
     }
+    return this.role;
+  }
 
-    /**
-     * Gets the value of the firstName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getFirstName() {
-        return firstName;
-    }
+  /**
+   * Gets the value of the firstName property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getFirstName() {
+    return firstName;
+  }
 
-    /**
-     * Sets the value of the firstName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setFirstName(String value) {
-        this.firstName = value;
-    }
+  /**
+   * Sets the value of the firstName property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setFirstName(String value) {
+    this.firstName = value;
+  }
 
-    /**
-     * Gets the value of the middleName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMiddleName() {
-        return middleName;
-    }
+  /**
+   * Gets the value of the middleName property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getMiddleName() {
+    return middleName;
+  }
 
-    /**
-     * Sets the value of the middleName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMiddleName(String value) {
-        this.middleName = value;
-    }
+  /**
+   * Sets the value of the middleName property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setMiddleName(String value) {
+    this.middleName = value;
+  }
 
-    /**
-     * Gets the value of the lastName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLastName() {
-        return lastName;
-    }
+  /**
+   * Gets the value of the lastName property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getLastName() {
+    return lastName;
+  }
 
-    /**
-     * Sets the value of the lastName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLastName(String value) {
-        this.lastName = value;
-    }
+  /**
+   * Sets the value of the lastName property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setLastName(String value) {
+    this.lastName = value;
+  }
 
-    /**
-     * Gets the value of the email property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the email property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getEmail().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
-     */
-    public List<String> getEmail() {
-        if (email == null) {
-            email = new ArrayList<String>();
-        }
-        return this.email;
+  /**
+   * Gets the value of the email property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the email property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getEmail().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link String }
+   * 
+   * 
+   */
+  public List<String> getEmail() {
+    if (email == null) {
+      email = new ArrayList<String>();
     }
+    return this.email;
+  }
 
-    /**
-     * Gets the value of the phone property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the phone property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getPhone().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
-     */
-    public List<String> getPhone() {
-        if (phone == null) {
-            phone = new ArrayList<String>();
-        }
-        return this.phone;
+  /**
+   * Gets the value of the phone property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the phone property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getPhone().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link String }
+   * 
+   * 
+   */
+  public List<String> getPhone() {
+    if (phone == null) {
+      phone = new ArrayList<String>();
     }
+    return this.phone;
+  }
 
-    /**
-     * Gets the value of the fax property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the fax property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getFax().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
-     */
-    public List<String> getFax() {
-        if (fax == null) {
-            fax = new ArrayList<String>();
-        }
-        return this.fax;
+  /**
+   * Gets the value of the fax property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the fax property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getFax().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link String }
+   * 
+   * 
+   */
+  public List<String> getFax() {
+    if (fax == null) {
+      fax = new ArrayList<String>();
     }
+    return this.fax;
+  }
 
-    /**
-     * Gets the value of the contactAddress property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ContactAddress }
-     *     
-     */
-    public ContactAddress getContactAddress() {
-        return contactAddress;
-    }
+  /**
+   * Gets the value of the contactAddress property.
+   * 
+   * @return possible object is {@link ContactAddress }
+   * 
+   */
+  public ContactAddress getContactAddress() {
+    return contactAddress;
+  }
 
-    /**
-     * Sets the value of the contactAddress property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ContactAddress }
-     *     
-     */
-    public void setContactAddress(ContactAddress value) {
-        this.contactAddress = value;
-    }
+  /**
+   * Sets the value of the contactAddress property.
+   * 
+   * @param value
+   *          allowed object is {@link ContactAddress }
+   * 
+   */
+  public void setContactAddress(ContactAddress value) {
+    this.contactAddress = value;
+  }
 
 }

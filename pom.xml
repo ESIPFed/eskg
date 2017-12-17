@@ -59,6 +59,11 @@
     </repository>
   </repositories>
 
+  <organization>
+    <name>ESIP</name>
+    <url>https://github.com/esipfed/</url>
+  </organization>
+
   <scm>
     <url>https://github.com/ESIPFed/eskg</url>
     <connection>scm:git:git://github.com/ESIPFed/eskg.git</connection>
@@ -162,7 +167,7 @@
       <plugin>
         <groupId>org.jvnet.jaxb2.maven2</groupId>
         <artifactId>maven-jaxb2-plugin</artifactId>
-        <version>0.13.1</version>
+        <version>0.13.3</version>
           <executions>
             <execution>
               <id>generate</id>
@@ -208,6 +213,7 @@
           <testFailureIgnore>false</testFailureIgnore>
         </configuration>
       </plugin>
+      <!-- run mvn java-formatter:format -->
       <plugin>
         <groupId>com.googlecode.maven-java-formatter-plugin</groupId>
         <artifactId>maven-java-formatter-plugin</artifactId>
@@ -356,8 +362,8 @@
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>
     <skipTests>false</skipTests>
     <assembly.finalName>${project.build.finalName}</assembly.finalName>
-    <slf4j.version>1.7.22</slf4j.version>
-    <jena.version>3.2.0</jena.version>
+    <slf4j.version>1.8.0-beta0</slf4j.version>
+    <jena.version>3.5.0</jena.version>
   </properties>
   <dependencies>
 
@@ -454,8 +460,20 @@
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-simple</artifactId>
+      <artifactId>slf4j-log4j12</artifactId>
       <version>${slf4j.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.10.0</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.10.0</version>
       <scope>runtime</scope>
     </dependency>
     <!-- end of logging deps -->

@@ -26,11 +26,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -49,91 +51,78 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "disciplineName",
-    "subdiscipline",
-    "detailedSubdiscipline"
-})
+@XmlType(name = "", propOrder = { "disciplineName", "subdiscipline", "detailedSubdiscipline" })
 @XmlRootElement(name = "Discipline")
 public class Discipline {
 
-    @XmlElement(name = "Discipline_Name", required = true)
-    protected String disciplineName;
-    @XmlElement(name = "Subdiscipline")
-    protected String subdiscipline;
-    @XmlElement(name = "Detailed_Subdiscipline")
-    protected String detailedSubdiscipline;
+  @XmlElement(name = "Discipline_Name", required = true)
+  protected String disciplineName;
+  @XmlElement(name = "Subdiscipline")
+  protected String subdiscipline;
+  @XmlElement(name = "Detailed_Subdiscipline")
+  protected String detailedSubdiscipline;
 
-    /**
-     * Gets the value of the disciplineName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDisciplineName() {
-        return disciplineName;
-    }
+  /**
+   * Gets the value of the disciplineName property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getDisciplineName() {
+    return disciplineName;
+  }
 
-    /**
-     * Sets the value of the disciplineName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDisciplineName(String value) {
-        this.disciplineName = value;
-    }
+  /**
+   * Sets the value of the disciplineName property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setDisciplineName(String value) {
+    this.disciplineName = value;
+  }
 
-    /**
-     * Gets the value of the subdiscipline property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSubdiscipline() {
-        return subdiscipline;
-    }
+  /**
+   * Gets the value of the subdiscipline property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getSubdiscipline() {
+    return subdiscipline;
+  }
 
-    /**
-     * Sets the value of the subdiscipline property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSubdiscipline(String value) {
-        this.subdiscipline = value;
-    }
+  /**
+   * Sets the value of the subdiscipline property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setSubdiscipline(String value) {
+    this.subdiscipline = value;
+  }
 
-    /**
-     * Gets the value of the detailedSubdiscipline property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDetailedSubdiscipline() {
-        return detailedSubdiscipline;
-    }
+  /**
+   * Gets the value of the detailedSubdiscipline property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getDetailedSubdiscipline() {
+    return detailedSubdiscipline;
+  }
 
-    /**
-     * Sets the value of the detailedSubdiscipline property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDetailedSubdiscipline(String value) {
-        this.detailedSubdiscipline = value;
-    }
+  /**
+   * Sets the value of the detailedSubdiscipline property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setDetailedSubdiscipline(String value) {
+    this.detailedSubdiscipline = value;
+  }
 
 }

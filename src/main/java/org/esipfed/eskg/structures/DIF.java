@@ -28,11 +28,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -86,1146 +88,1069 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "entryID",
-    "entryTitle",
-    "dataSetCitation",
-    "personnel",
-    "discipline",
-    "parameters",
-    "isoTopicCategory",
-    "keyword",
-    "sensorName",
-    "sourceName",
-    "temporalCoverage",
-    "paleoTemporalCoverage",
-    "dataSetProgress",
-    "spatialCoverage",
-    "location",
-    "dataResolution",
-    "project",
-    "quality",
-    "accessConstraints",
-    "useConstraints",
-    "dataSetLanguage",
-    "originatingCenter",
-    "dataCenter",
-    "distribution",
-    "multimediaSample",
-    "reference",
-    "summary",
-    "relatedURL",
-    "parentDIF",
-    "idnNode",
-    "originatingMetadataNode",
-    "metadataName",
-    "metadataVersion",
-    "difCreationDate",
-    "lastDIFRevisionDate",
-    "difRevisionHistory",
-    "futureDIFReviewDate",
-    "_private"
-})
+@XmlType(name = "", propOrder = { "entryID", "entryTitle", "dataSetCitation", "personnel", "discipline", "parameters", "isoTopicCategory", "keyword", "sensorName", "sourceName", "temporalCoverage",
+        "paleoTemporalCoverage", "dataSetProgress", "spatialCoverage", "location", "dataResolution", "project", "quality", "accessConstraints", "useConstraints", "dataSetLanguage",
+        "originatingCenter", "dataCenter", "distribution", "multimediaSample", "reference", "summary", "relatedURL", "parentDIF", "idnNode", "originatingMetadataNode", "metadataName",
+        "metadataVersion", "difCreationDate", "lastDIFRevisionDate", "difRevisionHistory", "futureDIFReviewDate", "_private" })
 @XmlRootElement(name = "DIF")
 public class DIF {
 
-    @XmlElement(name = "Entry_ID", required = true)
-    protected String entryID;
-    @XmlElement(name = "Entry_Title", required = true)
-    protected String entryTitle;
-    @XmlElement(name = "Data_Set_Citation")
-    protected List<DataSetCitation> dataSetCitation;
-    @XmlElement(name = "Personnel")
-    protected List<Personnel> personnel;
-    @XmlElement(name = "Discipline")
-    protected List<Discipline> discipline;
-    @XmlElement(name = "Parameters", required = true)
-    protected List<Parameters> parameters;
-    @XmlElement(name = "ISO_Topic_Category")
-    protected List<String> isoTopicCategory;
-    @XmlElement(name = "Keyword")
-    protected List<String> keyword;
-    @XmlElement(name = "Sensor_Name")
-    protected List<SensorName> sensorName;
-    @XmlElement(name = "Source_Name")
-    protected List<SourceName> sourceName;
-    @XmlElement(name = "Temporal_Coverage")
-    protected List<TemporalCoverage> temporalCoverage;
-    @XmlElement(name = "Paleo_Temporal_Coverage")
-    protected List<PaleoTemporalCoverage> paleoTemporalCoverage;
-    @XmlElement(name = "Data_Set_Progress")
-    protected String dataSetProgress;
-    @XmlElement(name = "Spatial_Coverage")
-    protected List<SpatialCoverage> spatialCoverage;
-    @XmlElement(name = "Location")
-    protected List<Location> location;
-    @XmlElement(name = "Data_Resolution")
-    protected List<DataResolution> dataResolution;
-    @XmlElement(name = "Project")
-    protected List<Project> project;
-    @XmlElement(name = "Quality")
-    protected String quality;
-    @XmlElement(name = "Access_Constraints")
-    protected String accessConstraints;
-    @XmlElement(name = "Use_Constraints")
-    protected String useConstraints;
-    @XmlElement(name = "Data_Set_Language")
-    protected List<String> dataSetLanguage;
-    @XmlElement(name = "Originating_Center")
-    protected String originatingCenter;
-    @XmlElement(name = "Data_Center", required = true)
-    protected List<DataCenter> dataCenter;
-    @XmlElement(name = "Distribution")
-    protected List<Distribution> distribution;
-    @XmlElement(name = "Multimedia_Sample")
-    protected List<MultimediaSample> multimediaSample;
-    @XmlElement(name = "Reference")
-    protected List<Reference> reference;
-    @XmlElement(name = "Summary", required = true)
-    protected Summary summary;
-    @XmlElement(name = "Related_URL")
-    protected List<RelatedURL> relatedURL;
-    @XmlElement(name = "Parent_DIF")
-    protected List<String> parentDIF;
-    @XmlElement(name = "IDN_Node")
-    protected List<IDNNode> idnNode;
-    @XmlElement(name = "Originating_Metadata_Node")
-    protected String originatingMetadataNode;
-    @XmlElement(name = "Metadata_Name", required = true)
-    protected String metadataName;
-    @XmlElement(name = "Metadata_Version", required = true)
-    protected String metadataVersion;
-    @XmlElement(name = "DIF_Creation_Date")
-    protected String difCreationDate;
-    @XmlElement(name = "Last_DIF_Revision_Date")
-    protected String lastDIFRevisionDate;
-    @XmlElement(name = "DIF_Revision_History")
-    protected String difRevisionHistory;
-    @XmlElement(name = "Future_DIF_Review_Date")
-    protected String futureDIFReviewDate;
-    @XmlElement(name = "Private")
-    protected String _private;
+  @XmlElement(name = "Entry_ID", required = true)
+  protected String entryID;
+  @XmlElement(name = "Entry_Title", required = true)
+  protected String entryTitle;
+  @XmlElement(name = "Data_Set_Citation")
+  protected List<DataSetCitation> dataSetCitation;
+  @XmlElement(name = "Personnel")
+  protected List<Personnel> personnel;
+  @XmlElement(name = "Discipline")
+  protected List<Discipline> discipline;
+  @XmlElement(name = "Parameters", required = true)
+  protected List<Parameters> parameters;
+  @XmlElement(name = "ISO_Topic_Category")
+  protected List<String> isoTopicCategory;
+  @XmlElement(name = "Keyword")
+  protected List<String> keyword;
+  @XmlElement(name = "Sensor_Name")
+  protected List<SensorName> sensorName;
+  @XmlElement(name = "Source_Name")
+  protected List<SourceName> sourceName;
+  @XmlElement(name = "Temporal_Coverage")
+  protected List<TemporalCoverage> temporalCoverage;
+  @XmlElement(name = "Paleo_Temporal_Coverage")
+  protected List<PaleoTemporalCoverage> paleoTemporalCoverage;
+  @XmlElement(name = "Data_Set_Progress")
+  protected String dataSetProgress;
+  @XmlElement(name = "Spatial_Coverage")
+  protected List<SpatialCoverage> spatialCoverage;
+  @XmlElement(name = "Location")
+  protected List<Location> location;
+  @XmlElement(name = "Data_Resolution")
+  protected List<DataResolution> dataResolution;
+  @XmlElement(name = "Project")
+  protected List<Project> project;
+  @XmlElement(name = "Quality")
+  protected String quality;
+  @XmlElement(name = "Access_Constraints")
+  protected String accessConstraints;
+  @XmlElement(name = "Use_Constraints")
+  protected String useConstraints;
+  @XmlElement(name = "Data_Set_Language")
+  protected List<String> dataSetLanguage;
+  @XmlElement(name = "Originating_Center")
+  protected String originatingCenter;
+  @XmlElement(name = "Data_Center", required = true)
+  protected List<DataCenter> dataCenter;
+  @XmlElement(name = "Distribution")
+  protected List<Distribution> distribution;
+  @XmlElement(name = "Multimedia_Sample")
+  protected List<MultimediaSample> multimediaSample;
+  @XmlElement(name = "Reference")
+  protected List<Reference> reference;
+  @XmlElement(name = "Summary", required = true)
+  protected Summary summary;
+  @XmlElement(name = "Related_URL")
+  protected List<RelatedURL> relatedURL;
+  @XmlElement(name = "Parent_DIF")
+  protected List<String> parentDIF;
+  @XmlElement(name = "IDN_Node")
+  protected List<IDNNode> idnNode;
+  @XmlElement(name = "Originating_Metadata_Node")
+  protected String originatingMetadataNode;
+  @XmlElement(name = "Metadata_Name", required = true)
+  protected String metadataName;
+  @XmlElement(name = "Metadata_Version", required = true)
+  protected String metadataVersion;
+  @XmlElement(name = "DIF_Creation_Date")
+  protected String difCreationDate;
+  @XmlElement(name = "Last_DIF_Revision_Date")
+  protected String lastDIFRevisionDate;
+  @XmlElement(name = "DIF_Revision_History")
+  protected String difRevisionHistory;
+  @XmlElement(name = "Future_DIF_Review_Date")
+  protected String futureDIFReviewDate;
+  @XmlElement(name = "Private")
+  protected String _private;
 
-    /**
-     * Gets the value of the entryID property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getEntryID() {
-        return entryID;
-    }
+  /**
+   * Gets the value of the entryID property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getEntryID() {
+    return entryID;
+  }
 
-    /**
-     * Sets the value of the entryID property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setEntryID(String value) {
-        this.entryID = value;
-    }
+  /**
+   * Sets the value of the entryID property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setEntryID(String value) {
+    this.entryID = value;
+  }
 
-    /**
-     * Gets the value of the entryTitle property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getEntryTitle() {
-        return entryTitle;
-    }
+  /**
+   * Gets the value of the entryTitle property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getEntryTitle() {
+    return entryTitle;
+  }
 
-    /**
-     * Sets the value of the entryTitle property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setEntryTitle(String value) {
-        this.entryTitle = value;
-    }
+  /**
+   * Sets the value of the entryTitle property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setEntryTitle(String value) {
+    this.entryTitle = value;
+  }
 
-    /**
-     * Gets the value of the dataSetCitation property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the dataSetCitation property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getDataSetCitation().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link DataSetCitation }
-     * 
-     * @return the List of DataSetCitation's
-     */
-    public List<DataSetCitation> getDataSetCitation() {
-        if (dataSetCitation == null) {
-            dataSetCitation = new ArrayList<DataSetCitation>();
-        }
-        return this.dataSetCitation;
+  /**
+   * Gets the value of the dataSetCitation property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the dataSetCitation property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getDataSetCitation().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list
+   * {@link DataSetCitation }
+   * 
+   * @return the List of DataSetCitation's
+   */
+  public List<DataSetCitation> getDataSetCitation() {
+    if (dataSetCitation == null) {
+      dataSetCitation = new ArrayList<DataSetCitation>();
     }
+    return this.dataSetCitation;
+  }
 
-    /**
-     * Gets the value of the personnel property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the personnel property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getPersonnel().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Personnel }
-     * 
-     * @return the List of Personnel
-     */
-    public List<Personnel> getPersonnel() {
-        if (personnel == null) {
-            personnel = new ArrayList<Personnel>();
-        }
-        return this.personnel;
+  /**
+   * Gets the value of the personnel property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the personnel property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getPersonnel().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link Personnel }
+   * 
+   * @return the List of Personnel
+   */
+  public List<Personnel> getPersonnel() {
+    if (personnel == null) {
+      personnel = new ArrayList<Personnel>();
     }
+    return this.personnel;
+  }
 
-    /**
-     * Gets the value of the discipline property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the discipline property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getDiscipline().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Discipline }
-     * 
-     * @return the List of Disciplines
-     */
-    public List<Discipline> getDiscipline() {
-        if (discipline == null) {
-            discipline = new ArrayList<Discipline>();
-        }
-        return this.discipline;
+  /**
+   * Gets the value of the discipline property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the discipline property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getDiscipline().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link Discipline }
+   * 
+   * @return the List of Disciplines
+   */
+  public List<Discipline> getDiscipline() {
+    if (discipline == null) {
+      discipline = new ArrayList<Discipline>();
     }
+    return this.discipline;
+  }
 
-    /**
-     * Gets the value of the parameters property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the parameters property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getParameters().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Parameters }
-     * 
-     * @return the List of Parameter's
-     */
-    public List<Parameters> getParameters() {
-        if (parameters == null) {
-            parameters = new ArrayList<Parameters>();
-        }
-        return this.parameters;
+  /**
+   * Gets the value of the parameters property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the parameters property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getParameters().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link Parameters }
+   * 
+   * @return the List of Parameter's
+   */
+  public List<Parameters> getParameters() {
+    if (parameters == null) {
+      parameters = new ArrayList<Parameters>();
     }
+    return this.parameters;
+  }
 
-    /**
-     * Gets the value of the isoTopicCategory property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the isoTopicCategory property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getISOTopicCategory().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * @return the List of ISOTopicCategories
-     */
-    public List<String> getISOTopicCategory() {
-        if (isoTopicCategory == null) {
-            isoTopicCategory = new ArrayList<String>();
-        }
-        return this.isoTopicCategory;
+  /**
+   * Gets the value of the isoTopicCategory property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the isoTopicCategory property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getISOTopicCategory().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link String }
+   * 
+   * @return the List of ISOTopicCategories
+   */
+  public List<String> getISOTopicCategory() {
+    if (isoTopicCategory == null) {
+      isoTopicCategory = new ArrayList<String>();
     }
+    return this.isoTopicCategory;
+  }
 
-    /**
-     * Gets the value of the keyword property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the keyword property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getKeyword().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * @return the List of Keywords
-     */
-    public List<String> getKeyword() {
-        if (keyword == null) {
-            keyword = new ArrayList<String>();
-        }
-        return this.keyword;
+  /**
+   * Gets the value of the keyword property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the keyword property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getKeyword().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link String }
+   * 
+   * @return the List of Keywords
+   */
+  public List<String> getKeyword() {
+    if (keyword == null) {
+      keyword = new ArrayList<String>();
     }
+    return this.keyword;
+  }
 
-    /**
-     * Gets the value of the sensorName property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the sensorName property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSensorName().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link SensorName }
-     * 
-     * @return the List of SensorNames
-     */
-    public List<SensorName> getSensorName() {
-        if (sensorName == null) {
-            sensorName = new ArrayList<SensorName>();
-        }
-        return this.sensorName;
+  /**
+   * Gets the value of the sensorName property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the sensorName property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getSensorName().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link SensorName }
+   * 
+   * @return the List of SensorNames
+   */
+  public List<SensorName> getSensorName() {
+    if (sensorName == null) {
+      sensorName = new ArrayList<SensorName>();
     }
+    return this.sensorName;
+  }
 
-    /**
-     * Gets the value of the sourceName property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the sourceName property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSourceName().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link SourceName }
-     * 
-     * @return the List of SourceName's
-     */
-    public List<SourceName> getSourceName() {
-        if (sourceName == null) {
-            sourceName = new ArrayList<SourceName>();
-        }
-        return this.sourceName;
+  /**
+   * Gets the value of the sourceName property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the sourceName property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getSourceName().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link SourceName }
+   * 
+   * @return the List of SourceName's
+   */
+  public List<SourceName> getSourceName() {
+    if (sourceName == null) {
+      sourceName = new ArrayList<SourceName>();
     }
+    return this.sourceName;
+  }
 
-    /**
-     * Gets the value of the temporalCoverage property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the temporalCoverage property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getTemporalCoverage().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link TemporalCoverage }
-     * 
-     * @return the List of TemporalCoverage's
-     */
-    public List<TemporalCoverage> getTemporalCoverage() {
-        if (temporalCoverage == null) {
-            temporalCoverage = new ArrayList<TemporalCoverage>();
-        }
-        return this.temporalCoverage;
+  /**
+   * Gets the value of the temporalCoverage property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the temporalCoverage property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getTemporalCoverage().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list
+   * {@link TemporalCoverage }
+   * 
+   * @return the List of TemporalCoverage's
+   */
+  public List<TemporalCoverage> getTemporalCoverage() {
+    if (temporalCoverage == null) {
+      temporalCoverage = new ArrayList<TemporalCoverage>();
     }
+    return this.temporalCoverage;
+  }
 
-    /**
-     * Gets the value of the paleoTemporalCoverage property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the paleoTemporalCoverage property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getPaleoTemporalCoverage().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link PaleoTemporalCoverage }
-     * 
-     * @return the List of PaleoTemporalCoverage's
-     */
-    public List<PaleoTemporalCoverage> getPaleoTemporalCoverage() {
-        if (paleoTemporalCoverage == null) {
-            paleoTemporalCoverage = new ArrayList<PaleoTemporalCoverage>();
-        }
-        return this.paleoTemporalCoverage;
+  /**
+   * Gets the value of the paleoTemporalCoverage property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the paleoTemporalCoverage property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getPaleoTemporalCoverage().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list
+   * {@link PaleoTemporalCoverage }
+   * 
+   * @return the List of PaleoTemporalCoverage's
+   */
+  public List<PaleoTemporalCoverage> getPaleoTemporalCoverage() {
+    if (paleoTemporalCoverage == null) {
+      paleoTemporalCoverage = new ArrayList<PaleoTemporalCoverage>();
     }
+    return this.paleoTemporalCoverage;
+  }
 
-    /**
-     * Gets the value of the dataSetProgress property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDataSetProgress() {
-        return dataSetProgress;
-    }
+  /**
+   * Gets the value of the dataSetProgress property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getDataSetProgress() {
+    return dataSetProgress;
+  }
 
-    /**
-     * Sets the value of the dataSetProgress property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDataSetProgress(String value) {
-        this.dataSetProgress = value;
-    }
+  /**
+   * Sets the value of the dataSetProgress property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setDataSetProgress(String value) {
+    this.dataSetProgress = value;
+  }
 
-    /**
-     * Gets the value of the spatialCoverage property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the spatialCoverage property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSpatialCoverage().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link SpatialCoverage }
-     * 
-     * @return the List of SpatialCoverage's
-     */
-    public List<SpatialCoverage> getSpatialCoverage() {
-        if (spatialCoverage == null) {
-            spatialCoverage = new ArrayList<SpatialCoverage>();
-        }
-        return this.spatialCoverage;
+  /**
+   * Gets the value of the spatialCoverage property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the spatialCoverage property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getSpatialCoverage().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list
+   * {@link SpatialCoverage }
+   * 
+   * @return the List of SpatialCoverage's
+   */
+  public List<SpatialCoverage> getSpatialCoverage() {
+    if (spatialCoverage == null) {
+      spatialCoverage = new ArrayList<SpatialCoverage>();
     }
+    return this.spatialCoverage;
+  }
 
-    /**
-     * Gets the value of the location property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the location property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getLocation().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Location }
-     * 
-     * @return the List of Location's
-     */
-    public List<Location> getLocation() {
-        if (location == null) {
-            location = new ArrayList<Location>();
-        }
-        return this.location;
+  /**
+   * Gets the value of the location property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the location property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getLocation().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link Location }
+   * 
+   * @return the List of Location's
+   */
+  public List<Location> getLocation() {
+    if (location == null) {
+      location = new ArrayList<Location>();
     }
+    return this.location;
+  }
 
-    /**
-     * Gets the value of the dataResolution property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the dataResolution property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getDataResolution().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link DataResolution }
-     * 
-     * @return the List of Dataresolution's
-     */
-    public List<DataResolution> getDataResolution() {
-        if (dataResolution == null) {
-            dataResolution = new ArrayList<DataResolution>();
-        }
-        return this.dataResolution;
+  /**
+   * Gets the value of the dataResolution property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the dataResolution property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getDataResolution().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list
+   * {@link DataResolution }
+   * 
+   * @return the List of Dataresolution's
+   */
+  public List<DataResolution> getDataResolution() {
+    if (dataResolution == null) {
+      dataResolution = new ArrayList<DataResolution>();
     }
+    return this.dataResolution;
+  }
 
-    /**
-     * Gets the value of the project property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the project property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getProject().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Project }
-     * 
-     * @return the List of Projects
-     */
-    public List<Project> getProject() {
-        if (project == null) {
-            project = new ArrayList<Project>();
-        }
-        return this.project;
+  /**
+   * Gets the value of the project property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the project property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getProject().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link Project }
+   * 
+   * @return the List of Projects
+   */
+  public List<Project> getProject() {
+    if (project == null) {
+      project = new ArrayList<Project>();
     }
+    return this.project;
+  }
 
-    /**
-     * Gets the value of the quality property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getQuality() {
-        return quality;
-    }
+  /**
+   * Gets the value of the quality property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getQuality() {
+    return quality;
+  }
 
-    /**
-     * Sets the value of the quality property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setQuality(String value) {
-        this.quality = value;
-    }
+  /**
+   * Sets the value of the quality property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setQuality(String value) {
+    this.quality = value;
+  }
 
-    /**
-     * Gets the value of the accessConstraints property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAccessConstraints() {
-        return accessConstraints;
-    }
+  /**
+   * Gets the value of the accessConstraints property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getAccessConstraints() {
+    return accessConstraints;
+  }
 
-    /**
-     * Sets the value of the accessConstraints property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAccessConstraints(String value) {
-        this.accessConstraints = value;
-    }
+  /**
+   * Sets the value of the accessConstraints property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setAccessConstraints(String value) {
+    this.accessConstraints = value;
+  }
 
-    /**
-     * Gets the value of the useConstraints property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getUseConstraints() {
-        return useConstraints;
-    }
+  /**
+   * Gets the value of the useConstraints property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getUseConstraints() {
+    return useConstraints;
+  }
 
-    /**
-     * Sets the value of the useConstraints property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setUseConstraints(String value) {
-        this.useConstraints = value;
-    }
+  /**
+   * Sets the value of the useConstraints property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setUseConstraints(String value) {
+    this.useConstraints = value;
+  }
 
-    /**
-     * Gets the value of the dataSetLanguage property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the dataSetLanguage property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getDataSetLanguage().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * @return the List of DataSetLanguages
-     */
-    public List<String> getDataSetLanguage() {
-        if (dataSetLanguage == null) {
-            dataSetLanguage = new ArrayList<String>();
-        }
-        return this.dataSetLanguage;
+  /**
+   * Gets the value of the dataSetLanguage property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the dataSetLanguage property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getDataSetLanguage().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link String }
+   * 
+   * @return the List of DataSetLanguages
+   */
+  public List<String> getDataSetLanguage() {
+    if (dataSetLanguage == null) {
+      dataSetLanguage = new ArrayList<String>();
     }
+    return this.dataSetLanguage;
+  }
 
-    /**
-     * Gets the value of the originatingCenter property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getOriginatingCenter() {
-        return originatingCenter;
-    }
+  /**
+   * Gets the value of the originatingCenter property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getOriginatingCenter() {
+    return originatingCenter;
+  }
 
-    /**
-     * Sets the value of the originatingCenter property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setOriginatingCenter(String value) {
-        this.originatingCenter = value;
-    }
+  /**
+   * Sets the value of the originatingCenter property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setOriginatingCenter(String value) {
+    this.originatingCenter = value;
+  }
 
-    /**
-     * Gets the value of the dataCenter property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the dataCenter property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getDataCenter().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link DataCenter }
-     * 
-     * @return the List of DataCenter's
-     */
-    public List<DataCenter> getDataCenter() {
-        if (dataCenter == null) {
-            dataCenter = new ArrayList<DataCenter>();
-        }
-        return this.dataCenter;
+  /**
+   * Gets the value of the dataCenter property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the dataCenter property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getDataCenter().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link DataCenter }
+   * 
+   * @return the List of DataCenter's
+   */
+  public List<DataCenter> getDataCenter() {
+    if (dataCenter == null) {
+      dataCenter = new ArrayList<DataCenter>();
     }
+    return this.dataCenter;
+  }
 
-    /**
-     * Gets the value of the distribution property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the distribution property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getDistribution().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Distribution }
-     * 
-     * @return the List of Distributions
-     */
-    public List<Distribution> getDistribution() {
-        if (distribution == null) {
-            distribution = new ArrayList<Distribution>();
-        }
-        return this.distribution;
+  /**
+   * Gets the value of the distribution property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the distribution property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getDistribution().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list
+   * {@link Distribution }
+   * 
+   * @return the List of Distributions
+   */
+  public List<Distribution> getDistribution() {
+    if (distribution == null) {
+      distribution = new ArrayList<Distribution>();
     }
+    return this.distribution;
+  }
 
-    /**
-     * Gets the value of the multimediaSample property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the multimediaSample property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getMultimediaSample().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link MultimediaSample }
-     * 
-     * @return the List of MultimediaSample's
-     */
-    public List<MultimediaSample> getMultimediaSample() {
-        if (multimediaSample == null) {
-            multimediaSample = new ArrayList<MultimediaSample>();
-        }
-        return this.multimediaSample;
+  /**
+   * Gets the value of the multimediaSample property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the multimediaSample property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getMultimediaSample().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list
+   * {@link MultimediaSample }
+   * 
+   * @return the List of MultimediaSample's
+   */
+  public List<MultimediaSample> getMultimediaSample() {
+    if (multimediaSample == null) {
+      multimediaSample = new ArrayList<MultimediaSample>();
     }
+    return this.multimediaSample;
+  }
 
-    /**
-     * Gets the value of the reference property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the reference property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getReference().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Reference }
-     * 
-     * @return the List of References
-     */
-    public List<Reference> getReference() {
-        if (reference == null) {
-            reference = new ArrayList<Reference>();
-        }
-        return this.reference;
+  /**
+   * Gets the value of the reference property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the reference property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getReference().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link Reference }
+   * 
+   * @return the List of References
+   */
+  public List<Reference> getReference() {
+    if (reference == null) {
+      reference = new ArrayList<Reference>();
     }
+    return this.reference;
+  }
 
-    /**
-     * Gets the value of the summary property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Summary }
-     *     
-     */
-    public Summary getSummary() {
-        return summary;
-    }
+  /**
+   * Gets the value of the summary property.
+   * 
+   * @return possible object is {@link Summary }
+   * 
+   */
+  public Summary getSummary() {
+    return summary;
+  }
 
-    /**
-     * Sets the value of the summary property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Summary }
-     *     
-     */
-    public void setSummary(Summary value) {
-        this.summary = value;
-    }
+  /**
+   * Sets the value of the summary property.
+   * 
+   * @param value
+   *          allowed object is {@link Summary }
+   * 
+   */
+  public void setSummary(Summary value) {
+    this.summary = value;
+  }
 
-    /**
-     * Gets the value of the relatedURL property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the relatedURL property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getRelatedURL().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link RelatedURL }
-     * 
-     * @return the List of RelatedURLs
-     */
-    public List<RelatedURL> getRelatedURL() {
-        if (relatedURL == null) {
-            relatedURL = new ArrayList<RelatedURL>();
-        }
-        return this.relatedURL;
+  /**
+   * Gets the value of the relatedURL property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the relatedURL property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getRelatedURL().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link RelatedURL }
+   * 
+   * @return the List of RelatedURLs
+   */
+  public List<RelatedURL> getRelatedURL() {
+    if (relatedURL == null) {
+      relatedURL = new ArrayList<RelatedURL>();
     }
+    return this.relatedURL;
+  }
 
-    /**
-     * Gets the value of the parentDIF property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the parentDIF property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getParentDIF().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * @return the List of ParentDIF's
-     */
-    public List<String> getParentDIF() {
-        if (parentDIF == null) {
-            parentDIF = new ArrayList<String>();
-        }
-        return this.parentDIF;
+  /**
+   * Gets the value of the parentDIF property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the parentDIF property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getParentDIF().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link String }
+   * 
+   * @return the List of ParentDIF's
+   */
+  public List<String> getParentDIF() {
+    if (parentDIF == null) {
+      parentDIF = new ArrayList<String>();
     }
+    return this.parentDIF;
+  }
 
-    /**
-     * Gets the value of the idnNode property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the idnNode property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getIDNNode().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link IDNNode }
-     * 
-     * @return the List of IDNNodes
-     */
-    public List<IDNNode> getIDNNode() {
-        if (idnNode == null) {
-            idnNode = new ArrayList<IDNNode>();
-        }
-        return this.idnNode;
+  /**
+   * Gets the value of the idnNode property.
+   * 
+   * <p>
+   * This accessor method returns a reference to the live list, not a snapshot.
+   * Therefore any modification you make to the returned list will be present
+   * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+   * for the idnNode property.
+   * 
+   * <p>
+   * For example, to add a new item, do as follows:
+   * 
+   * <pre>
+   * getIDNNode().add(newItem);
+   * </pre>
+   * 
+   * 
+   * <p>
+   * Objects of the following type(s) are allowed in the list {@link IDNNode }
+   * 
+   * @return the List of IDNNodes
+   */
+  public List<IDNNode> getIDNNode() {
+    if (idnNode == null) {
+      idnNode = new ArrayList<IDNNode>();
     }
+    return this.idnNode;
+  }
 
-    /**
-     * Gets the value of the originatingMetadataNode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getOriginatingMetadataNode() {
-        return originatingMetadataNode;
-    }
+  /**
+   * Gets the value of the originatingMetadataNode property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getOriginatingMetadataNode() {
+    return originatingMetadataNode;
+  }
 
-    /**
-     * Sets the value of the originatingMetadataNode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setOriginatingMetadataNode(String value) {
-        this.originatingMetadataNode = value;
-    }
+  /**
+   * Sets the value of the originatingMetadataNode property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setOriginatingMetadataNode(String value) {
+    this.originatingMetadataNode = value;
+  }
 
-    /**
-     * Gets the value of the metadataName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMetadataName() {
-        return metadataName;
-    }
+  /**
+   * Gets the value of the metadataName property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getMetadataName() {
+    return metadataName;
+  }
 
-    /**
-     * Sets the value of the metadataName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMetadataName(String value) {
-        this.metadataName = value;
-    }
+  /**
+   * Sets the value of the metadataName property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setMetadataName(String value) {
+    this.metadataName = value;
+  }
 
-    /**
-     * Gets the value of the metadataVersion property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMetadataVersion() {
-        return metadataVersion;
-    }
+  /**
+   * Gets the value of the metadataVersion property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getMetadataVersion() {
+    return metadataVersion;
+  }
 
-    /**
-     * Sets the value of the metadataVersion property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMetadataVersion(String value) {
-        this.metadataVersion = value;
-    }
+  /**
+   * Sets the value of the metadataVersion property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setMetadataVersion(String value) {
+    this.metadataVersion = value;
+  }
 
-    /**
-     * Gets the value of the difCreationDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDIFCreationDate() {
-        return difCreationDate;
-    }
+  /**
+   * Gets the value of the difCreationDate property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getDIFCreationDate() {
+    return difCreationDate;
+  }
 
-    /**
-     * Sets the value of the difCreationDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDIFCreationDate(String value) {
-        this.difCreationDate = value;
-    }
+  /**
+   * Sets the value of the difCreationDate property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setDIFCreationDate(String value) {
+    this.difCreationDate = value;
+  }
 
-    /**
-     * Gets the value of the lastDIFRevisionDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLastDIFRevisionDate() {
-        return lastDIFRevisionDate;
-    }
+  /**
+   * Gets the value of the lastDIFRevisionDate property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getLastDIFRevisionDate() {
+    return lastDIFRevisionDate;
+  }
 
-    /**
-     * Sets the value of the lastDIFRevisionDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLastDIFRevisionDate(String value) {
-        this.lastDIFRevisionDate = value;
-    }
+  /**
+   * Sets the value of the lastDIFRevisionDate property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setLastDIFRevisionDate(String value) {
+    this.lastDIFRevisionDate = value;
+  }
 
-    /**
-     * Gets the value of the difRevisionHistory property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDIFRevisionHistory() {
-        return difRevisionHistory;
-    }
+  /**
+   * Gets the value of the difRevisionHistory property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getDIFRevisionHistory() {
+    return difRevisionHistory;
+  }
 
-    /**
-     * Sets the value of the difRevisionHistory property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDIFRevisionHistory(String value) {
-        this.difRevisionHistory = value;
-    }
+  /**
+   * Sets the value of the difRevisionHistory property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setDIFRevisionHistory(String value) {
+    this.difRevisionHistory = value;
+  }
 
-    /**
-     * Gets the value of the futureDIFReviewDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getFutureDIFReviewDate() {
-        return futureDIFReviewDate;
-    }
+  /**
+   * Gets the value of the futureDIFReviewDate property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getFutureDIFReviewDate() {
+    return futureDIFReviewDate;
+  }
 
-    /**
-     * Sets the value of the futureDIFReviewDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setFutureDIFReviewDate(String value) {
-        this.futureDIFReviewDate = value;
-    }
+  /**
+   * Sets the value of the futureDIFReviewDate property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setFutureDIFReviewDate(String value) {
+    this.futureDIFReviewDate = value;
+  }
 
-    /**
-     * Gets the value of the private property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPrivate() {
-        return _private;
-    }
+  /**
+   * Gets the value of the private property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getPrivate() {
+    return _private;
+  }
 
-    /**
-     * Sets the value of the private property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPrivate(String value) {
-        this._private = value;
-    }
+  /**
+   * Sets the value of the private property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setPrivate(String value) {
+    this._private = value;
+  }
 
 }

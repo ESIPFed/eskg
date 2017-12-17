@@ -26,11 +26,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -50,118 +52,101 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "distributionMedia",
-    "distributionSize",
-    "distributionFormat",
-    "fees"
-})
+@XmlType(name = "", propOrder = { "distributionMedia", "distributionSize", "distributionFormat", "fees" })
 @XmlRootElement(name = "Distribution")
 public class Distribution {
 
-    @XmlElement(name = "Distribution_Media")
-    protected String distributionMedia;
-    @XmlElement(name = "Distribution_Size")
-    protected String distributionSize;
-    @XmlElement(name = "Distribution_Format")
-    protected String distributionFormat;
-    @XmlElement(name = "Fees")
-    protected String fees;
+  @XmlElement(name = "Distribution_Media")
+  protected String distributionMedia;
+  @XmlElement(name = "Distribution_Size")
+  protected String distributionSize;
+  @XmlElement(name = "Distribution_Format")
+  protected String distributionFormat;
+  @XmlElement(name = "Fees")
+  protected String fees;
 
-    /**
-     * Gets the value of the distributionMedia property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDistributionMedia() {
-        return distributionMedia;
-    }
+  /**
+   * Gets the value of the distributionMedia property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getDistributionMedia() {
+    return distributionMedia;
+  }
 
-    /**
-     * Sets the value of the distributionMedia property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDistributionMedia(String value) {
-        this.distributionMedia = value;
-    }
+  /**
+   * Sets the value of the distributionMedia property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setDistributionMedia(String value) {
+    this.distributionMedia = value;
+  }
 
-    /**
-     * Gets the value of the distributionSize property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDistributionSize() {
-        return distributionSize;
-    }
+  /**
+   * Gets the value of the distributionSize property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getDistributionSize() {
+    return distributionSize;
+  }
 
-    /**
-     * Sets the value of the distributionSize property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDistributionSize(String value) {
-        this.distributionSize = value;
-    }
+  /**
+   * Sets the value of the distributionSize property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setDistributionSize(String value) {
+    this.distributionSize = value;
+  }
 
-    /**
-     * Gets the value of the distributionFormat property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDistributionFormat() {
-        return distributionFormat;
-    }
+  /**
+   * Gets the value of the distributionFormat property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getDistributionFormat() {
+    return distributionFormat;
+  }
 
-    /**
-     * Sets the value of the distributionFormat property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDistributionFormat(String value) {
-        this.distributionFormat = value;
-    }
+  /**
+   * Sets the value of the distributionFormat property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setDistributionFormat(String value) {
+    this.distributionFormat = value;
+  }
 
-    /**
-     * Gets the value of the fees property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getFees() {
-        return fees;
-    }
+  /**
+   * Gets the value of the fees property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getFees() {
+    return fees;
+  }
 
-    /**
-     * Sets the value of the fees property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setFees(String value) {
-        this.fees = value;
-    }
+  /**
+   * Sets the value of the fees property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setFees(String value) {
+    this.fees = value;
+  }
 
 }
