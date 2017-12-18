@@ -61,6 +61,7 @@ public class PODAACOntologyMapper implements ObjectMapper {
   private static final String SWEET_REPR_DATA_PRODUCT_NS = SWEET_REPR_DATA_PRODUCT + "/";
   private static final String MUDROD_GCMD_DIF_9_8_2 = "https://raw.githubusercontent.com/mudrod/mudrod_ontologies/master/dif_v9.8.2.owl";
   private static final String MUDROD_GCMD_DIF_9_8_2_NS = MUDROD_GCMD_DIF_9_8_2 + "/";
+  private static final String PODAAC_DATASET = "http://cor.esipfed.org/ont/eskg/";
 
   /**
    * 
@@ -79,19 +80,20 @@ public class PODAACOntologyMapper implements ObjectMapper {
     // create the base model
     OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
     ontModel.setNsPrefix("dif_v9.8.2", MUDROD_GCMD_DIF_9_8_2);
+    ontModel.setNsPrefix("geo", "http://www.opengis.net/ont/geosparql#");
     ontModel.read(SWEET_REPR_DATA_PRODUCT, null, "TURTLE");
 
     // get the https://sweetontology.net/reprDataProduct/Dataset class reference
     Resource dataset = ontModel.getResource(SWEET_REPR_DATA_PRODUCT_NS + "Dataset");
     // create the https://sweetontology.net/reprDataProduct/PODAACDataset class
     // reference
-    OntClass podaacDataset = ontModel.createClass(SWEET_REPR_DATA_PRODUCT_NS + "PODAACDataset");
+    OntClass podaacDataset = ontModel.createClass(PODAAC_DATASET + "PODAACDataset");
     // make PODAACDataset a subclass of Dataset
     podaacDataset.addSuperClass(dataset);
     // create an individual for each DIF POJO
     for (DIF dif : pojoList) {
-      Individual gcmdDif = podaacDataset.createIndividual("http://cor.esipfed.org/ont/eskg/" + dif.getEntryID());
-      buildIndividual(dif, gcmdDif);
+      Individual gcmdDif = podaacDataset.createIndividual(PODAAC_DATASET + dif.getEntryID());
+      buildIndividual(ontModel, dif, gcmdDif);
     }
     writeOntologyModel(ontModel, props);
   }
@@ -112,115 +114,115 @@ public class PODAACOntologyMapper implements ObjectMapper {
     }
   }
 
-  private void buildIndividual(DIF dif, Individual gcmdDif) {
+  private void buildIndividual(OntModel ontModel, DIF dif, Individual gcmdDif) {
 
     gcmdDif.addVersionInfo(new Timestamp(System.currentTimeMillis()).toInstant().toString());
     // Entry_ID
-    gcmdDif.addProperty(p("hasEntryID"), l(dif.getEntryID()));
+    gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Entry_ID"), l(dif.getEntryID()));
     // Entry_Title
-    gcmdDif.addProperty(p("hasEntryTitle"), dif.getEntryTitle(), "en");
+    gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Entry_Title"), dif.getEntryTitle(), "en");
     // ISO_Topic_Category
     for (String isoTopicCategory : dif.getISOTopicCategory()) {
-      gcmdDif.addProperty(p("hasISOTopicCategory"), isoTopicCategory, "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "ISO_Topic_Category"), isoTopicCategory, "en");
     }
     // Access_Constraints
-    gcmdDif.addProperty(p("hasAccessConstraints"), dif.getAccessConstraints(), "en");
+    gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Access_Constraints"), dif.getAccessConstraints(), "en");
     // Use_Constraints
-    gcmdDif.addProperty(p("hasUseConstraints"), dif.getUseConstraints(), "en");
+    gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Use_Constraints"), dif.getUseConstraints(), "en");
     // Data_Set_Language
     for (int i = 0; i < dif.getDataSetLanguage().size(); i++) {
-      gcmdDif.addProperty(p("hasDataSetLanguage"), dif.getDataSetLanguage().get(i), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Data_Set_Language"), dif.getDataSetLanguage().get(i), "en");
     }
     // Originating_Center
     if (dif.getOriginatingCenter() != null) {
-      gcmdDif.addProperty(p("hasOriginatingCenter"), dif.getOriginatingCenter(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Originating_Center"), dif.getOriginatingCenter(), "en");
     }
     // Metadata_Name
-    gcmdDif.addProperty(p("hasMetadataName"), dif.getMetadataName(), "en");
+    gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Metadata_Name"), dif.getMetadataName(), "en");
     // Metadata_Version
-    gcmdDif.addLiteral(p("hasMetadataVersion"), Float.parseFloat(dif.getMetadataVersion()));
+    gcmdDif.addLiteral(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Metadata_Version"), Float.parseFloat(dif.getMetadataVersion()));
     // DIF_Creation_Date
-    gcmdDif.addProperty(p("hasDIFCreationDate"), dif.getDIFCreationDate(), XSDDatatype.XSDdate);
+    gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "DIF_Creation_Date"), dif.getDIFCreationDate(), XSDDatatype.XSDdate);
     // Last_DIF_Revision_Date
-    gcmdDif.addProperty(p("hasLastDIFRevisionDate"), dif.getLastDIFRevisionDate(), XSDDatatype.XSDdate);
+    gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Last_DIF_Revision_Date"), dif.getLastDIFRevisionDate(), XSDDatatype.XSDdate);
     // DIF_Revision_History
-    gcmdDif.addProperty(p("hasDIFRevisionHistory"), dif.getDIFRevisionHistory(), "en");
+    gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "DIF_Revision_History"), dif.getDIFRevisionHistory(), "en");
 
     // Data_Set_Citation
     for (DataSetCitation dataSetCitation : dif.getDataSetCitation()) {
-      gcmdDif.addProperty(p("hasDataSetCitationDatasetCreator"), dataSetCitation.getDatasetCreator(), "en");
-      gcmdDif.addProperty(p("hasDataSetCitationDatasetTitle"), dataSetCitation.getDatasetTitle(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Dataset_Creator"), dataSetCitation.getDatasetCreator(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Dataset_Title"), dataSetCitation.getDatasetTitle(), "en");
       if (dataSetCitation.getDatasetSeriesName() != null) {
-        gcmdDif.addProperty(p("hasDataSetCitationDatasetSeriesName"), dataSetCitation.getDatasetSeriesName(), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Dataset_Series_Name"), dataSetCitation.getDatasetSeriesName(), "en");
       }
-      gcmdDif.addProperty(p("hasDataSetCitationDatasetReleaseDate"), dataSetCitation.getDatasetReleaseDate(), XSDDatatype.XSDdate);
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Dataset_Release_Date"), dataSetCitation.getDatasetReleaseDate(), XSDDatatype.XSDdate);
       if (dataSetCitation.getDatasetReleasePlace() != null) {
-        gcmdDif.addProperty(p("hasDataSetCitationDatasetReleasePlace"), dataSetCitation.getDatasetReleasePlace(), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Dataset_Release_Place"), dataSetCitation.getDatasetReleasePlace(), "en");
       }
       if (dataSetCitation.getDatasetPublisher() != null) {
-        gcmdDif.addProperty(p("hasDataSetCitationDatasetPublisher"), dataSetCitation.getDatasetPublisher(), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Dataset_Publisher"), dataSetCitation.getDatasetPublisher(), "en");
       }
       try {
-        gcmdDif.addLiteral(p("hasDataSetCitationVersion"), Float.parseFloat(dataSetCitation.getVersion()));
+        gcmdDif.addLiteral(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Version"), Float.parseFloat(dataSetCitation.getVersion()));
       } catch (NumberFormatException e) {
-        gcmdDif.addLiteral(p("hasDataSetCitationVersion"), l(dataSetCitation.getVersion()));
+        gcmdDif.addLiteral(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Version"), l(dataSetCitation.getVersion()));
       }
       
       if (dataSetCitation.getOtherCitationDetails() != null) {
-        gcmdDif.addProperty(p("hasDataSetCitationOtherCitationDetails"), dataSetCitation.getOtherCitationDetails(), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Other_Citation_Details"), dataSetCitation.getOtherCitationDetails(), "en");
       }
       //possibility of URL data type?
-      gcmdDif.addProperty(p("hasDataSetCitationOnlineResource"), l(dataSetCitation.getOnlineResource()));
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Online_Resource"), l(dataSetCitation.getOnlineResource()));
     }
 
     // Personnel
     for (Personnel personnel : dif.getPersonnel()) {
       for (int i = 0; i < personnel.getFax().size(); i++) {
-        gcmdDif.addProperty(p("hasPersonnelRole"), personnel.getRole().get(i), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Role"), personnel.getRole().get(i), "en");
       }
-      gcmdDif.addProperty(p("hasPersonnelFirstName"), personnel.getFirstName(), "en");
-      gcmdDif.addProperty(p("hasPersonnelLastName"), personnel.getLastName(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "First_Name"), personnel.getFirstName(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Last_Name"), personnel.getLastName(), "en");
       for (int i = 0; i < personnel.getEmail().size(); i++) {
-        gcmdDif.addProperty(p("hasPersonnelEmail"), personnel.getEmail().get(i), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Email"), personnel.getEmail().get(i), "en");
       }
       for (int i = 0; i < personnel.getFax().size(); i++) {
-        gcmdDif.addProperty(p("hasPersonnelFax"), l(personnel.getFax().get(i)));
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Fax"), l(personnel.getFax().get(i)));
       }
     }
 
     // Parameters
     for (Parameters parameter : dif.getParameters()) {
-      gcmdDif.addProperty(p("hasParameterCategory"), parameter.getCategory(), "en");
-      gcmdDif.addProperty(p("hasParameterTopic"), parameter.getTopic(), "en");
-      gcmdDif.addProperty(p("hasParameterTerm"), parameter.getTerm(), "en");
-      gcmdDif.addProperty(p("hasParameterVariableLevel1"), parameter.getVariableLevel1(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Category"), parameter.getCategory(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Topic"), parameter.getTopic(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Term"), parameter.getTerm(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Variable_Level_1"), parameter.getVariableLevel1(), "en");
       if (parameter.getVariableLevel2() != null) {
-        gcmdDif.addProperty(p("hasParameterVariableLevel2"), parameter.getVariableLevel2(), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Variable_Level_2"), parameter.getVariableLevel2(), "en");
       }
       if (parameter.getVariableLevel3() != null) {
-        gcmdDif.addProperty(p("hasParameterVariableLevel3"), parameter.getVariableLevel3(), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Variable_Level_3"), parameter.getVariableLevel3(), "en");
       }
     }
 
     // Sensor_Name
     for (SensorName sensorName : dif.getSensorName()) {
-      gcmdDif.addProperty(p("hasSensorNameShortName"), sensorName.getShortName(), "en");
-      gcmdDif.addProperty(p("hasSensorNameLongName"), sensorName.getLongName(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Short_Name"), sensorName.getShortName(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Long_Name"), sensorName.getLongName(), "en");
     }
 
     // Source_Name
     for (SourceName sourceName : dif.getSourceName()) {
-      gcmdDif.addProperty(p("hasSourceNameShortName"), sourceName.getShortName(), "en");
-      gcmdDif.addProperty(p("hasSourceNameLongName"), sourceName.getLongName(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Short_Name"), sourceName.getShortName(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Long_Name"), sourceName.getLongName(), "en");
     }
 
     // Temporal_Coverage
     for (TemporalCoverage temporalCoverage : dif.getTemporalCoverage()) {
       if (temporalCoverage.getStartDate() != null) {
-        gcmdDif.addProperty(p("hasTemporalCoverageStartDate"), temporalCoverage.getStartDate(), XSDDatatype.XSDdate);
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Start_Date"), temporalCoverage.getStartDate(), XSDDatatype.XSDdate);
       }
       if (temporalCoverage.getStopDate() != null) {
-        gcmdDif.addProperty(p("hasTemporalCoverageStopDate"), temporalCoverage.getStopDate(), XSDDatatype.XSDdate);
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Stop_Date"), temporalCoverage.getStopDate(), XSDDatatype.XSDdate);
       }
     }
 
@@ -228,134 +230,134 @@ public class PODAACOntologyMapper implements ObjectMapper {
     for (SpatialCoverage spatialCoverage : dif.getSpatialCoverage()) {
       try {
         if (spatialCoverage.getEasternmostLongitude() != null) {
-          gcmdDif.addLiteral(p("hasSpatialCoverageEasternmostLongitude"), Float.parseFloat(spatialCoverage.getEasternmostLongitude()));
+          gcmdDif.addLiteral(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Easternmost_Longitude"), Float.parseFloat(spatialCoverage.getEasternmostLongitude()));
         }
       } catch (NumberFormatException e) {
-        gcmdDif.addLiteral(p("hasSpatialCoverageEasternmostLongitude"), l(spatialCoverage.getEasternmostLongitude()));
+        gcmdDif.addLiteral(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Easternmost_Longitude"), l(spatialCoverage.getEasternmostLongitude()));
       }
       
       if (spatialCoverage.getMaximumAltitude() != null) {
-        gcmdDif.addLiteral(p("hasSpatialCoverageMaximumAltitude"), Float.parseFloat(spatialCoverage.getMaximumAltitude()));
+        gcmdDif.addLiteral(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Maximum_Altitude"), Float.parseFloat(spatialCoverage.getMaximumAltitude()));
       }
       if (spatialCoverage.getMaximumDepth() != null) {
-        gcmdDif.addLiteral(p("hasSpatialCoverageMaximumDepth"), Float.parseFloat(spatialCoverage.getMaximumDepth()));
+        gcmdDif.addLiteral(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Maximum_Depth"), Float.parseFloat(spatialCoverage.getMaximumDepth()));
       }
       if (spatialCoverage.getMinimumAltitude() != null) {
-        gcmdDif.addLiteral(p("hasSpatialCoverageMinimumAltitude"), Float.parseFloat(spatialCoverage.getMinimumAltitude()));
+        gcmdDif.addLiteral(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Minimum_Altitude"), Float.parseFloat(spatialCoverage.getMinimumAltitude()));
       }
       if (spatialCoverage.getMinimumDepth() != null) {
-        gcmdDif.addLiteral(p("hasSpatialCoverageMinimumDepth"), Float.parseFloat(spatialCoverage.getMinimumDepth()));
+        gcmdDif.addLiteral(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Minimum_Depth"), Float.parseFloat(spatialCoverage.getMinimumDepth()));
       }
       try {
         if (spatialCoverage.getNorthernmostLatitude() != null) {
-          gcmdDif.addLiteral(p("hasSpatialCoverageNorthernmostLatitude"), Float.parseFloat(spatialCoverage.getNorthernmostLatitude()));
+          gcmdDif.addLiteral(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Northernmost_Latitude"), Float.parseFloat(spatialCoverage.getNorthernmostLatitude()));
         }
       } catch (NumberFormatException e) {
-        gcmdDif.addLiteral(p("hasSpatialCoverageNorthernmostLatitude"), l(spatialCoverage.getNorthernmostLatitude()));
+        gcmdDif.addLiteral(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Northernmost_Latitude"), l(spatialCoverage.getNorthernmostLatitude()));
       }
       try {
         if (spatialCoverage.getSouthernmostLatitude() != null) {
-          gcmdDif.addLiteral(p("hasSpatialCoverageSouthernmostLatitude"), Float.parseFloat(spatialCoverage.getSouthernmostLatitude()));
+          gcmdDif.addLiteral(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Southernmost_Latitude"), Float.parseFloat(spatialCoverage.getSouthernmostLatitude()));
         }
       } catch (NumberFormatException e) {
-        gcmdDif.addLiteral(p("hasSpatialCoverageSouthernmostLatitude"), l(spatialCoverage.getSouthernmostLatitude()));
+        gcmdDif.addLiteral(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Southernmost_Latitude"), l(spatialCoverage.getSouthernmostLatitude()));
       }
       try {
         if (spatialCoverage.getWesternmostLongitude() != null) {
-          gcmdDif.addLiteral(p("hasSpatialCoverageWesternmostLongitude"), Float.parseFloat(spatialCoverage.getWesternmostLongitude()));
+          gcmdDif.addLiteral(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Westernmost_Longitude"), Float.parseFloat(spatialCoverage.getWesternmostLongitude()));
         }
       } catch (NumberFormatException e) {
-        gcmdDif.addLiteral(p("hasSpatialCoverageWesternmostLongitude"), l(spatialCoverage.getWesternmostLongitude()));
+        gcmdDif.addLiteral(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Westernmost_Longitude"), l(spatialCoverage.getWesternmostLongitude()));
       }
     }
 
     // Location
     for (Location location : dif.getLocation()) {
       if (location.getDetailedLocation() != null) {
-        gcmdDif.addProperty(p("hasLocationDetailedLocation"), location.getDetailedLocation(), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Detailed_Location"), location.getDetailedLocation(), "en");
       }
-      gcmdDif.addProperty(p("hasLocationLocationCategory"), location.getLocationCategory(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Location_Category"), location.getLocationCategory(), "en");
       if (location.getLocationSubregion1() != null) {
-        gcmdDif.addProperty(p("hasLocationLocationSubregion1"), location.getLocationSubregion1(), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Location_Subregion1"), location.getLocationSubregion1(), "en");
       }
       if (location.getLocationSubregion2() != null) {
-        gcmdDif.addProperty(p("hasLocationLocationSubregion2"), location.getLocationSubregion2(), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Location_Subregion2"), location.getLocationSubregion2(), "en");
       }
       if (location.getLocationSubregion3() != null) {
-        gcmdDif.addProperty(p("hasLocationLocationSubregion3"), location.getLocationSubregion3(), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Location_Subregion3"), location.getLocationSubregion3(), "en");
       }
-      gcmdDif.addProperty(p("hasLocationLocationType"), location.getLocationType(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Location_Type"), location.getLocationType(), "en");
     }
 
     // Data_Resolution
     for (DataResolution dataResolution : dif.getDataResolution()) {
       if (dataResolution.getHorizontalResolutionRange() != null) {
-        gcmdDif.addProperty(p("hasDataResolutionHorizontalResolutionRange"), dataResolution.getHorizontalResolutionRange(), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Horizontal_Resolution_Range"), dataResolution.getHorizontalResolutionRange(), "en");
       }
       if (dataResolution.getLatitudeResolution() != null) {
-        gcmdDif.addLiteral(p("hasDataResolutionLatitudeResolution"), Float.parseFloat(dataResolution.getLatitudeResolution()));
+        gcmdDif.addLiteral(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Latitude_Resolution"), Float.parseFloat(dataResolution.getLatitudeResolution()));
       }
       if (dataResolution.getLongitudeResolution() != null) {
-        gcmdDif.addLiteral(p("hasDataResolutionLongitudeResolution"), Float.parseFloat(dataResolution.getLongitudeResolution()));
+        gcmdDif.addLiteral(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Longitude_Resolution"), Float.parseFloat(dataResolution.getLongitudeResolution()));
       }
       if (dataResolution.getTemporalResolution() != null) {
-        gcmdDif.addProperty(p("hasDataResolutionTemporalResolution"), dataResolution.getTemporalResolution(), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Temporal_Resolution"), dataResolution.getTemporalResolution(), "en");
       }
       if (dataResolution.getTemporalResolutionRange() != null) {
-        gcmdDif.addProperty(p("hasDataResolutionTemporalResolutionRange"), dataResolution.getTemporalResolutionRange(), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Temporal_Resolution_Range"), dataResolution.getTemporalResolutionRange(), "en");
       }
       if (dataResolution.getVerticalResolution() != null) {
-        gcmdDif.addProperty(p("hasDataResolutionVerticalResolution"), dataResolution.getVerticalResolution(), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Vertical_Resolution"), dataResolution.getVerticalResolution(), "en");
       }
       if (dataResolution.getVerticalResolutionRange() != null) {
-        gcmdDif.addProperty(p("hasDataResolutionVerticalResolutionRange"), dataResolution.getVerticalResolutionRange(), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Vertical_Resolution_Range"), dataResolution.getVerticalResolutionRange(), "en");
       }
     }
 
     // Project
     for (Project project : dif.getProject()) {
-      gcmdDif.addProperty(p("hasProjectLongName"), project.getLongName(), "en");
-      gcmdDif.addProperty(p("hasProjectShortName"), project.getShortName(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Long_Name"), project.getLongName(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Short_Name"), project.getShortName(), "en");
     }
 
     // Data_Center
     for (DataCenter dataCenter : dif.getDataCenter()) {
       DataCenterName dataCenterName = dataCenter.getDataCenterName();
-      gcmdDif.addProperty(p("hasDataCenterDataCenterNameLongName"), dataCenterName.getLongName(), "en");
-      gcmdDif.addProperty(p("hasDataCenterDataCenterNameShortName"), dataCenterName.getShortName(), "en");
-      gcmdDif.addProperty(p("hasDataCenterDataCenterURL"), l(dataCenter.getDataCenterURL()));
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Long_Name"), dataCenterName.getLongName(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Short_Name"), dataCenterName.getShortName(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Data_Center_URL"), l(dataCenter.getDataCenterURL()));
       List<Personnel> personnelList = dataCenter.getPersonnel();
       for (Personnel personnel : personnelList) {
-        gcmdDif.addProperty(p("hasDataCenterPersonnelFirstName"), personnel.getFirstName(), "en");
-        gcmdDif.addProperty(p("hasDataCenterPersonnelLastName"), personnel.getLastName(), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "First_Name"), personnel.getFirstName(), "en");
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Last_Name"), personnel.getLastName(), "en");
         if (personnel.getMiddleName() != null) {
-          gcmdDif.addProperty(p("hasDataCenterPersonnelMiddleName"), personnel.getMiddleName(), "en");
+          gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Middle_Name"), personnel.getMiddleName(), "en");
         }
         if (personnel.getContactAddress() != null) {
           ContactAddress contactAddress = personnel.getContactAddress();
-          gcmdDif.addProperty(p("hasDataCenterPersonnelContactAddressCity"), contactAddress.getCity(), "en");
-          gcmdDif.addProperty(p("hasDataCenterPersonnelContactAddressCountry"), contactAddress.getCountry(), "en");
-          gcmdDif.addProperty(p("hasDataCenterPersonnelContactAddressPostalCode"), contactAddress.getPostalCode(), "en");
-          gcmdDif.addProperty(p("hasDataCenterPersonnelContactAddressProvinceOrState"), contactAddress.getProvinceOrState(), "en");
+          gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "City"), contactAddress.getCity(), "en");
+          gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Country"), contactAddress.getCountry(), "en");
+          gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Postal_Code"), contactAddress.getPostalCode(), "en");
+          gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Province_Or_State"), contactAddress.getProvinceOrState(), "en");
         }
         if (personnel.getEmail() != null) {
           for (int i = 0; i < personnel.getEmail().size(); i++) {
-            gcmdDif.addProperty(p("hasDataCenterPersonnelEmail"), personnel.getEmail().get(i), "en");
+            gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Email"), personnel.getEmail().get(i), "en");
           }
         }
         if (personnel.getFax() != null) {
           for (int i = 0; i < personnel.getFax().size(); i++) {
-            gcmdDif.addProperty(p("hasDataCenterPersonnelFax"), l(personnel.getFax().get(i)));
+            gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Fax"), l(personnel.getFax().get(i)));
           }
         }
         if (personnel.getPhone() != null) {
           for (int i = 0; i < personnel.getPhone().size(); i++) {
-            gcmdDif.addProperty(p("hasDataCenterPersonnelPhone"), l(personnel.getPhone().get(i)));
+            gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Phone"), l(personnel.getPhone().get(i)));
           }
         }
         if (personnel.getRole() != null) {
           for (int i = 0; i < personnel.getRole().size(); i++) {
-            gcmdDif.addProperty(p("hasDataCenterPersonnelRole"), personnel.getRole().get(i), "en");
+            gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Role"), personnel.getRole().get(i), "en");
           }
         }
       }
@@ -363,23 +365,23 @@ public class PODAACOntologyMapper implements ObjectMapper {
 
     // Reference
     for (Reference reference : dif.getReference()) {
-      gcmdDif.addProperty(p("hasReference"), reference.toString(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Reference"), reference.toString(), "en");
     }
 
     // Summary
     Summary summary = dif.getSummary();
     if (summary != null) {
-      gcmdDif.addProperty(p("hasSummaryAbsract"), summary.getAbstract(), "en");
+      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Absract"), summary.getAbstract(), "en");
     }
 
 
     // IDN_Node
     for (IDNNode idnNode : dif.getIDNNode()) {
       if (idnNode.getLongName() != null) {
-        gcmdDif.addProperty(p("hasIDNNodeLongName"), l(idnNode.getLongName()));
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Long_Name"), idnNode.getLongName(), "en");
       }
       if (idnNode.getShortName() != null) {
-        gcmdDif.addProperty(p("hasIDNNodeShortName"), l(idnNode.getShortName()));
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Short_Name"), idnNode.getShortName(), "en");
       }
     }
 
@@ -390,6 +392,7 @@ public class PODAACOntologyMapper implements ObjectMapper {
     return ResourceFactory.createResource(MUDROD_GCMD_DIF_9_8_2_NS + localname);
   }
 
+  @SuppressWarnings("unused")
   private static Property p(String localname) {
     return ResourceFactory.createProperty(MUDROD_GCMD_DIF_9_8_2_NS, localname);
   }

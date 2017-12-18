@@ -15,8 +15,12 @@ package org.esipfed.eskg.storage;
 
 import java.util.Properties;
 
+import javax.ws.rs.core.Response;
+
 import org.apache.cxf.jaxrs.client.WebClient;
 import org.apache.jena.ontology.OntModel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Enables clients to interact with the ESIP <a
@@ -26,7 +30,9 @@ import org.apache.jena.ontology.OntModel;
  * 
  */
 public class ESIPCORClient implements StorageClient {
-
+  
+  private static final Logger LOG = LoggerFactory.getLogger(ESIPCORClient.class)
+;
   public ESIPCORClient() {
     // default constructor
   }
@@ -35,9 +41,12 @@ public class ESIPCORClient implements StorageClient {
   public void write(OntModel ontModel, Properties props) {
     LocalFileClient fileClient = new LocalFileClient(props);
     fileClient.write(ontModel, props);
-    WebClient client = WebClient.create(props.getProperty("eskg.cor.endpoint", "http://cor.esipfed.org/ont")).path("upload").query("file", "").query("format", "TURTLE");
-    if (getClass().getResource(props.getProperty("eskg.file.name", "podaacDatasets.ttl")).getFile() != null) {
-      client.post(getClass().getResource(props.getProperty("eskg.file.name", "podaacDatasets.ttl")).getFile());
+    String cor = props.getProperty("eskg.cor.endpoint", "http://cor.esipfed.org/ont");
+    WebClient client = WebClient.create(cor).path("upload").query("file", "").query("format", "TURTLE");
+    if (getClass().getClassLoader().getResource("podaacDatasets.ttl").getFile() != null) {
+      LOG.info("Attempting to POST podaacDatasets.ttl to {}", cor);
+      Response response = client.post(getClass().getClassLoader().getResource("podaacDatasets.ttl").getFile());
+      LOG.info("POST Response: {}", response.getStatus());
     }
     
   }
