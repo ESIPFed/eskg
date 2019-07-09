@@ -207,7 +207,8 @@ public class PODAACOntologyMapper implements ObjectMapper {
     // Sensor_Name
     for (SensorName sensorName : dif.getSensorName()) {
       gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Short_Name"), sensorName.getShortName(), "en");
-      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Long_Name"), sensorName.getLongName(), "en");
+      if(sensorName.getLongName() != null)
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Long_Name"), sensorName.getLongName(), "en");
     }
 
     // Source_Name
