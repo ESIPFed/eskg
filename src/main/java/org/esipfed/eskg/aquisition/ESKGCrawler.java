@@ -77,7 +77,7 @@ public class ESKGCrawler {
     try {
       crawler = new SiteCrawler(File.createTempFile("eskg_crawl", ""));
     } catch (IOException e) {
-      LOG.error("Error whilst creating ESKG site crawler: {}.", e);
+      LOG.error("Error whilst creating ESKG site crawler.", e);
     }
   }
 
@@ -96,13 +96,13 @@ public class ESKGCrawler {
     try {
       crawler.start(seedUrl, pageFilter, false);
     } catch (Exception e) {
-      LOG.error("Error whilst starting crawl. {}", e);
+      LOG.error("Error whilst starting crawl.", e);
     }
     synchronized (ESKGCrawler.class) {
       try {
         ESKGCrawler.class.wait(15 * 1000);
       } catch (InterruptedException e) {
-        LOG.error("Crawler has been interrupted: {}", e);
+        LOG.error("Crawler has been interrupted:", e);
         throw new InterruptedException();
       }
     }
@@ -175,7 +175,7 @@ public class ESKGCrawler {
       try {
         seedUrl = new URI(cmd.getOptionValue(SEED_OPT)).toURL();
       } catch (MalformedURLException | URISyntaxException e) {
-        LOG.error("Error whilst creating seed URL. {}", e);
+        LOG.error("Error whilst creating seed URL.", e);
       }
     }
     if (cmd.hasOption(FILTER_OPT)) {
@@ -185,7 +185,7 @@ public class ESKGCrawler {
       try {
         crawler = new SiteCrawler(File.createTempFile(cmd.getOptionValue(STORAGE_OPT), ""));
       } catch (IOException e) {
-        LOG.error("Error whilst creating ESKG site crawler: {}.", e);
+        LOG.error("Error whilst creating ESKG site crawler.", e);
       }
     } else {
       crawler = new SiteCrawler(storageFolder);
