@@ -356,9 +356,9 @@
 
     <!-- General Properties -->
     <implementation.build>${scmBranch}@r${buildNumber}</implementation.build>
-    <javac.src.version>9</javac.src.version>
-    <javac.target.version>9</javac.target.version>
-    <maven.compiler.target>9</maven.compiler.target>
+    <javac.src.version>1.8</javac.src.version>
+    <javac.target.version>1.8</javac.target.version>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>
     <skipTests>false</skipTests>
     <assembly.finalName>${project.build.finalName}</assembly.finalName>
