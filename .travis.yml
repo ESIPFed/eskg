@@ -16,7 +16,7 @@ install:
   - sudo apt-get update
 
 jdk:
-  - oraclejdk9
+  - openjdk8
 
 script:
   - MAVEN_OPTS="-Dorg.slf4j.simpleLogger.defaultLogLevel=ERROR" mvn --batch-mode test install
