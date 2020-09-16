@@ -24,7 +24,6 @@ import org.esipfed.eskg.structures.DataResolution;
 import org.esipfed.eskg.structures.DataSetCitation;
 import org.esipfed.eskg.structures.IDNNode;
 import org.esipfed.eskg.structures.Location;
-import org.esipfed.eskg.structures.ObjectFactory;
 import org.esipfed.eskg.structures.Parameters;
 import org.esipfed.eskg.structures.Personnel;
 import org.esipfed.eskg.structures.Project;

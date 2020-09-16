@@ -30,6 +30,8 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
+import org.apache.jena.riot.Lang;
+import org.apache.jena.riot.RDFDataMgr;
 import org.esipfed.eskg.mapper.ObjectMapper;
 import org.esipfed.eskg.storage.ESIPCORClient;
 //import org.esipfed.eskg.storage.ESIPSemanticPortalClient;
@@ -78,10 +80,12 @@ public class PODAACOntologyMapper implements ObjectMapper {
   @Override
   public void map(List<DIF> pojoList, Properties props) {
     // create the base model
+    //Model ontModel = RDFDataMgr.loadModel(PODAAC_DATASET + "PODAACDataset", Lang.TURTLE);
     OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
+    ontModel.setNsPrefix("base", PODAAC_DATASET + "PODAACDataset");
     ontModel.setNsPrefix("dif_v9.8.2", MUDROD_GCMD_DIF_9_8_2);
-    ontModel.setNsPrefix("geo", "http://www.opengis.net/ont/geosparql#");
-    ontModel.read(SWEET_REPR_DATA_PRODUCT, null, "TURTLE");
+    //ontModel.setNsPrefix("geo", "http://www.opengis.net/ont/geosparql#");
+    //ontModel.read(PODAAC_DATASET + "PODAACDataset", PODAAC_DATASET + "PODAACDataset", "TURTLE");
 
     // get the https://sweetontology.net/reprDataProduct/Dataset class reference
     Resource dataset = ontModel.getResource(SWEET_REPR_DATA_PRODUCT_NS + "Dataset");
@@ -90,6 +94,7 @@ public class PODAACOntologyMapper implements ObjectMapper {
     OntClass podaacDataset = ontModel.createClass(PODAAC_DATASET + "PODAACDataset");
     // make PODAACDataset a subclass of Dataset
     podaacDataset.addSuperClass(dataset);
+    
     // create an individual for each DIF POJO
     for (DIF dif : pojoList) {
       Individual gcmdDif = podaacDataset.createIndividual(PODAAC_DATASET + dif.getEntryID());
