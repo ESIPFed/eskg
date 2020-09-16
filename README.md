@@ -52,7 +52,7 @@ $ mvn exec:java -Dexec.mainClass="org.esipfed.eskg.aquisition.PODAACWebServiceCl
 # ESKG Dataset
 The canonical, current ESKG dataset is hosted at the [ESIP Community Ontology Repository](http://cor.esipfed.org). 
 
-The dataset URI is http://cor.esipfed.org/ont/eskg/
+The dataset URI is http://cor.esipfed.org/ont/eskg/PODAACDataset
 
 # Acknowledgements
 
