@@ -214,7 +214,8 @@ public class PODAACOntologyMapper implements ObjectMapper {
     // Source_Name
     for (SourceName sourceName : dif.getSourceName()) {
       gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Short_Name"), sourceName.getShortName(), "en");
-      gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Long_Name"), sourceName.getLongName(), "en");
+      if(sourceName.getLongName() != null)
+        gcmdDif.addProperty(ontModel.createDatatypeProperty(MUDROD_GCMD_DIF_9_8_2_NS + "Long_Name"), sourceName.getLongName(), "en");
     }
 
     // Temporal_Coverage
